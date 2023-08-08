@@ -1,5 +1,5 @@
 import { Gender } from '../enums';
-import { Cart } from '../interfaces';
+import { Cart } from '.';
 
 export interface User {
   _id: string;

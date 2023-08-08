@@ -1,2 +1,2 @@
-export * from './currency';
-export * from './gender';
+export * from './currency.enum';
+export * from './gender.enum';
