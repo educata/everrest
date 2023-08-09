@@ -13,7 +13,7 @@ export class Product {
   @Prop() stock: number;
   @Prop() rating: number;
   @Prop() brand: string;
-  @Prop() warranty: string;
+  @Prop() warranty: number;
   @Prop([String]) images: string[];
 
   @Prop(

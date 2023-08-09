@@ -12,7 +12,7 @@ export interface Product {
   rating: number;
   category: ProductCategory;
   brand: string;
-  warranty: string;
+  warranty: number;
 }
 
 export interface ProductPrice {

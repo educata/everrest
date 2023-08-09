@@ -12,5 +12,5 @@ export class ProductDto {
   rating: number;
   category: ProductCategory;
   brand: string;
-  warranty: string;
+  warranty: number;
 }

@@ -1,14 +1,17 @@
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
 import { Product, ProductDocument } from 'src/schemas';
 import { CreateProductDto, UpdateProductDto } from '../dtos';
+import { ExceptionService } from 'src/shared';
+import { ExceptionKeys } from 'src/enums';
 
 @Injectable()
 export class ProductsService {
   constructor(
     @InjectModel(Product.name) private productModel: Model<ProductDocument>,
+    private exceptionService: ExceptionService,
   ) {}
 
   async addProduct(product: CreateProductDto): Promise<Product> {
@@ -18,15 +21,18 @@ export class ProductsService {
   }
 
   async getProductById(id: string): Promise<Product> {
-    return this.productModel.findById(id);
+    const product = await this.productModel.findById(id);
+    if (!product) {
+      this.exceptionService.throwError(ExceptionKeys.NotFound);
+    }
+    return product;
   }
 
   async updateProduct(id: string, body: UpdateProductDto) {
-    const exists = await this.productModel.exists({ _id: id });
-    if (!exists) {
-      throw new HttpException('Product not found', HttpStatus.NOT_FOUND);
+    const product = await this.productModel.findOneAndUpdate({ _id: id }, body);
+    if (!product) {
+      this.exceptionService.throwError(ExceptionKeys.NotFound);
     }
-    await this.productModel.updateOne({ _id: id }, body);
-    return this.productModel.findById(id);
+    return product;
   }
 }
