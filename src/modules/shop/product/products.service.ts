@@ -14,7 +14,7 @@ export class ProductsService {
     private exceptionService: ExceptionService,
   ) {}
 
-  async addProduct(product: CreateProductDto): Promise<Product> {
+  addProduct(product: CreateProductDto): Promise<Product> {
     return this.productModel.create({
       ...product,
     });
@@ -28,11 +28,54 @@ export class ProductsService {
     return product;
   }
 
-  async updateProduct(id: string, body: UpdateProductDto) {
+  async updateProduct(id: string, body: UpdateProductDto): Promise<Product> {
     const product = await this.productModel.findOneAndUpdate({ _id: id }, body);
     if (!product) {
       this.exceptionService.throwError(ExceptionKeys.NotFound);
     }
     return product;
+  }
+
+  getAllProduct(): Promise<Product[]> {
+    return this.productModel.find({});
+  }
+
+  async getCategories(): Promise<string[]> {
+    const products = await this.getAllProduct();
+    const category = [];
+    products.forEach((product) => {
+      if (!category.includes(product.category.name.toLowerCase())) {
+        category.push(product.category.name.toLowerCase());
+      }
+    });
+    return category;
+  }
+
+  async getCategoryProducts(categoryName: string): Promise<Product[]> {
+    const products = await this.getAllProduct();
+    const category = products.filter(
+      (product) =>
+        product.category.name.toLowerCase() === categoryName.toLowerCase(),
+    );
+    return category;
+  }
+
+  async getBrands(): Promise<string[]> {
+    const products = await this.getAllProduct();
+    const brands = [];
+    products.forEach((product) => {
+      if (!brands.includes(product.brand.toLowerCase())) {
+        brands.push(product.brand.toLowerCase());
+      }
+    });
+    return brands;
+  }
+
+  async getBrandProducts(brandName: string): Promise<Product[]> {
+    const products = await this.getAllProduct();
+    const brands = products.filter(
+      (product) => product.brand.toLowerCase() === brandName.toLowerCase(),
+    );
+    return brands;
   }
 }

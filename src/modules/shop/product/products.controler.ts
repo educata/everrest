@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto, UpdateProductDto } from '../dtos';
 
@@ -6,12 +6,12 @@ import { CreateProductDto, UpdateProductDto } from '../dtos';
 export class ProductsController {
   constructor(private readonly productsService: ProductsService) {}
 
-  @Get(':id')
+  @Get('id/:id')
   getProductById(@Param('id') id: string) {
     return this.productsService.getProductById(id);
   }
 
-  @Put(':id')
+  @Patch('id/:id')
   updateProduct(
     @Param('id') id: string,
     @Body() updateProductDto: UpdateProductDto,
@@ -22,5 +22,30 @@ export class ProductsController {
   @Post()
   addProduct(@Body() createProductDto: CreateProductDto) {
     return this.productsService.addProduct(createProductDto);
+  }
+
+  @Get('all')
+  getAllProduct() {
+    return this.productsService.getAllProduct();
+  }
+
+  @Get('categories')
+  getCategories() {
+    return this.productsService.getCategories();
+  }
+
+  @Get('category/:category_name')
+  getCategoryProducts(@Param('category_name') categoryName: string) {
+    return this.productsService.getCategoryProducts(categoryName);
+  }
+
+  @Get('brands')
+  getBrands() {
+    return this.productsService.getBrands();
+  }
+
+  @Get('brand/:brand_name')
+  getBrandProducts(@Param('brand_name') brandName: string) {
+    return this.productsService.getBrandProducts(brandName);
   }
 }
