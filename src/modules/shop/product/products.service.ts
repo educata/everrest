@@ -20,6 +20,7 @@ export class ProductsService {
     });
   }
 
+  // TODO: Implement middleware or way to check id | we have to use mongoose.isValidObjectId
   async getProductById(id: string): Promise<Product> {
     const product = await this.productModel.findById(id);
     if (!product) {
@@ -28,6 +29,7 @@ export class ProductsService {
     return product;
   }
 
+  // TODO: Implement middleware or way to check id | we have to use mongoose.isValidObjectId
   async updateProduct(id: string, body: UpdateProductDto): Promise<Product> {
     const product = await this.productModel.findOneAndUpdate({ _id: id }, body);
     if (!product) {
