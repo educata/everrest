@@ -6,6 +6,7 @@ import { Product, ProductDocument } from 'src/schemas';
 import { CreateProductDto, UpdateProductDto } from '../dtos';
 import { ExceptionService } from 'src/shared';
 import { ExceptionKeys } from 'src/enums';
+import { ProductCategory } from 'src/interfaces';
 
 @Injectable()
 export class ProductsService {
@@ -50,12 +51,16 @@ export class ProductsService {
     };
   }
 
-  async getCategories(): Promise<string[]> {
+  async getCategories(): Promise<ProductCategory[]> {
     const products = await this.getAllProduct();
-    const category = [];
+    const category: ProductCategory[] = [];
     products.forEach((product) => {
-      if (!category.includes(product.category.name.toLowerCase())) {
-        category.push(product.category.name.toLowerCase());
+      if (
+        !category.find(
+          (item) => item.name === product.category.name.toLowerCase(),
+        )
+      ) {
+        category.push(product.category);
       }
     });
     return category;
@@ -63,9 +68,8 @@ export class ProductsService {
 
   async getByCategoryId(categoryId: string): Promise<Product[]> {
     const products = await this.productModel.find({
-      category: { id: categoryId },
+      'category.id': categoryId,
     });
-
     return products;
   }
 
