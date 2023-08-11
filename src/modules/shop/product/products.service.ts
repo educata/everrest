@@ -42,6 +42,14 @@ export class ProductsService {
     return this.productModel.find({});
   }
 
+  async getAllProductsDetailed() {
+    const product = await this.getAllProduct();
+    return {
+      product,
+      count: product.length,
+    };
+  }
+
   async getCategories(): Promise<string[]> {
     const products = await this.getAllProduct();
     const category = [];

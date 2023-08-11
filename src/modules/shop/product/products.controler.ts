@@ -34,7 +34,7 @@ export class ProductsController {
 
   @Get('all')
   getAllProduct() {
-    return this.productsService.getAllProduct();
+    return this.productsService.getAllProductsDetailed();
   }
 
   @Delete('all')
