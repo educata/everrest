@@ -53,13 +53,12 @@ export class ProductsService {
     return category;
   }
 
-  async getCategoryProducts(categoryName: string): Promise<Product[]> {
-    const products = await this.getAllProduct();
-    const category = products.filter(
-      (product) =>
-        product.category.name.toLowerCase() === categoryName.toLowerCase(),
-    );
-    return category;
+  async getByCategoryId(categoryId: string): Promise<Product[]> {
+    const products = await this.productModel.find({
+      category: { id: categoryId },
+    });
+
+    return products;
   }
 
   async getBrands(): Promise<string[]> {

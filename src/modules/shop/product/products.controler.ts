@@ -34,9 +34,9 @@ export class ProductsController {
     return this.productsService.getCategories();
   }
 
-  @Get('category/:category_name')
-  getCategoryProducts(@Param('category_name') categoryName: string) {
-    return this.productsService.getCategoryProducts(categoryName);
+  @Get('category/:category_id')
+  getProductsByCategoryId(@Param('category_id') id: string) {
+    return this.productsService.getByCategoryId(id);
   }
 
   @Get('brands')

@@ -30,7 +30,7 @@ prefix - /`shop`/`...`
 - `GET` products/all
 - `GET` products/search?=q (name/id/rate/categor/price_min/price_max)
 - `GET` products/categories
-- `GET` products/category/:category_name
+- `GET` products/category/:category_id
 - `GET` products/brands
 - `GET` products/brand/:brand_name
 - `POST` products/rate | { id, rate }
