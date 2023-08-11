@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto, UpdateProductDto } from '../dtos';
 
@@ -27,6 +35,11 @@ export class ProductsController {
   @Get('all')
   getAllProduct() {
     return this.productsService.getAllProduct();
+  }
+
+  @Delete('all')
+  deleteAllProduct() {
+    return this.productsService.deleteAllProduct();
   }
 
   @Get('categories')

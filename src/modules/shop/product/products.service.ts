@@ -79,4 +79,8 @@ export class ProductsService {
     );
     return brands;
   }
+
+  deleteAllProduct() {
+    return this.productModel.deleteMany({});
+  }
 }
