@@ -28,7 +28,7 @@ prefix - /`shop`/`...`
 
 - `GET` products (endpoint list)
 - `GET` products/all
-- `GET` products/search?=q (name/id/rate/categor/price_min/price_max)
+- `GET` products/search?=q (name/id/rate/category/brand/price_min/price_max)
 - `GET` products/categories
 - `GET` products/category/:category_id
 - `GET` products/brands
