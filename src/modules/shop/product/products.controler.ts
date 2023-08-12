@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import { CreateProductDto, UpdateProductDto } from '../dtos';
@@ -33,8 +34,8 @@ export class ProductsController {
   }
 
   @Get('all')
-  getAllProduct() {
-    return this.productsService.getAllProductsDetailed();
+  getAllProduct(@Query('page') page: number) {
+    return this.productsService.getAllProductsDetailed(page);
   }
 
   @Delete('all')

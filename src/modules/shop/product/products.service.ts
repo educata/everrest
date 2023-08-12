@@ -2,11 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 
-import { Product, ProductDocument } from 'src/schemas';
 import { CreateProductDto, UpdateProductDto } from '../dtos';
+import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
 import { ExceptionKeys } from 'src/enums';
 import { ProductCategory } from 'src/interfaces';
+import { API_CONFIGS } from 'src/consts';
 
 @Injectable()
 export class ProductsService {
@@ -43,11 +44,24 @@ export class ProductsService {
     return this.productModel.find({});
   }
 
-  async getAllProductsDetailed() {
-    const product = await this.getAllProduct();
+  async getAllProductsDetailed(page = 1) {
+    const currentPage = Number(page);
+    if (isNaN(currentPage)) {
+      this.exceptionService.throwError(ExceptionKeys.BadRequest);
+    }
+    const responsePerPage = API_CONFIGS.RESPONSE_PER_PAGE;
+    const skip = responsePerPage * (Math.floor(currentPage) - 1);
+    const limitedProducts = await this.productModel
+      .find({})
+      .limit(responsePerPage)
+      .skip(skip);
+    const allProducts = await this.getAllProduct();
     return {
-      product,
-      count: product.length,
+      total: allProducts.length,
+      limit: responsePerPage,
+      page: currentPage,
+      skip,
+      products: limitedProducts,
     };
   }
 
