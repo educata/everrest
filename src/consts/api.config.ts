@@ -1,3 +1,5 @@
 export const API_CONFIGS = {
   RESPONSE_PER_PAGE: 5,
+  MINIMUM_PRICE: 0.001,
+  MAXIMUM_PRICE: Number.MAX_VALUE,
 };
