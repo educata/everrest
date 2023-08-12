@@ -51,17 +51,17 @@ export class ProductsService {
     }
     const responsePerPage = API_CONFIGS.RESPONSE_PER_PAGE;
     const skip = responsePerPage * (Math.floor(currentPage) - 1);
-    const limitedProducts = await this.productModel
+    const products = await this.productModel
       .find({})
       .limit(responsePerPage)
       .skip(skip);
-    const allProducts = await this.getAllProduct();
+    const productsCount = await this.productModel.countDocuments({});
     return {
-      total: allProducts.length,
+      total: productsCount,
       limit: responsePerPage,
       page: currentPage,
       skip,
-      products: limitedProducts,
+      products,
     };
   }
 
