@@ -3,15 +3,20 @@ import { ExceptionKeys } from 'src/enums';
 
 @Injectable()
 export class ExceptionService {
-  public throwError(exception: ExceptionKeys) {
+  public throwError(exception: ExceptionKeys, message?: string) {
     const status = this.getStatusCode(exception);
-    throw new HttpException(
-      {
-        status,
-        error: exception,
-      },
+    const httpExceptionObject: {
+      status: number;
+      error: ExceptionKeys;
+      message?: string;
+    } = {
       status,
-    );
+      error: exception,
+    };
+    if (message) {
+      httpExceptionObject.message = message;
+    }
+    throw new HttpException(httpExceptionObject, status);
   }
 
   get statusKeys() {
