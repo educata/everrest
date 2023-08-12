@@ -107,6 +107,12 @@ export class ProductsService {
     this.checkQueryNumberParam(priceMin, 'price_min');
     const priceMax = Number(query.price_max ?? API_CONFIGS.MAXIMUM_PRICE);
     this.checkQueryNumberParam(priceMax, 'price_max');
+    if (priceMin > priceMax) {
+      this.exceptionService.throwError(
+        ExceptionKeys.BadRequest,
+        "price_min can't be greater than price_max",
+      );
+    }
     const products = await this.getAllProduct();
     const filteredProducts = products
       .filter(
