@@ -1,5 +1,7 @@
-export const API_CONFIGS = {
+export const API_CONFIG = {
   RESPONSE_PER_PAGE: 5,
   MINIMUM_PRICE: 0.001,
   MAXIMUM_PRICE: Number.MAX_VALUE,
+  MINIMUM_RATING: 1,
+  MAXIMUM_RATING: 5,
 };

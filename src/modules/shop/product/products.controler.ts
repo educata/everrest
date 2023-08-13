@@ -9,8 +9,11 @@ import {
   Query,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
-import { CreateProductDto, UpdateProductDto } from '../dtos';
-import { Query as ExpressQuery } from 'express-serve-static-core';
+import {
+  CreateProductDto,
+  SearchProductsQueryDto,
+  UpdateProductDto,
+} from '../dtos';
 
 @Controller('products')
 export class ProductsController {
@@ -40,7 +43,7 @@ export class ProductsController {
   }
 
   @Get('search')
-  searchProduct(@Query() query: ExpressQuery) {
+  searchProduct(@Query() query: SearchProductsQueryDto) {
     return this.productsService.searchProduct(query);
   }
 

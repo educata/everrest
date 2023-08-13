@@ -9,7 +9,7 @@ export class ProductDto {
   images: string[];
   price: ProductPrice;
   stock: number;
-  rating: number;
+  rating: number[];
   category: ProductCategory;
   brand: string;
   warranty: number;
