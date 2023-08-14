@@ -7,7 +7,7 @@ import {
   Min,
 } from 'class-validator';
 import { API_CONFIG } from 'src/consts';
-import { SortDirection, SortProductsBy } from 'src/enums';
+import { ProductExceptionKeys, SortDirection, SortProductsBy } from 'src/enums';
 
 export class SearchProductsQueryDto {
   @IsOptional()
@@ -16,38 +16,52 @@ export class SearchProductsQueryDto {
 
   @IsOptional()
   @IsString()
-  category: string;
+  category_id: string;
 
   @IsOptional()
   @IsString()
   brand: string;
 
   @IsOptional()
-  @IsNumber()
-  @Min(API_CONFIG.MINIMUM_RATING)
-  @Max(API_CONFIG.MAXIMUM_RATING)
+  @IsNumber({}, { message: ProductExceptionKeys.RatingNotNumber })
+  @Min(API_CONFIG.MINIMUM_RATING, {
+    message: ProductExceptionKeys.RatingTooLow,
+  })
+  @Max(API_CONFIG.MAXIMUM_RATING, {
+    message: ProductExceptionKeys.RatingTooHigh,
+  })
   rating: number;
 
   @IsOptional()
-  @IsNumber()
-  @Min(API_CONFIG.MINIMUM_PRICE)
-  @Max(API_CONFIG.MAXIMUM_PRICE)
+  @IsNumber({}, { message: ProductExceptionKeys.PriceMinNotNumber })
+  @Min(API_CONFIG.MINIMUM_PRICE, {
+    message: ProductExceptionKeys.PriceMinTooLow,
+  })
+  @Max(API_CONFIG.MAXIMUM_PRICE, {
+    message: ProductExceptionKeys.PriceMinTooHigh,
+  })
   price_min: number;
 
   @IsOptional()
-  @IsNumber()
-  @Min(API_CONFIG.MINIMUM_PRICE)
-  @Max(API_CONFIG.MAXIMUM_PRICE)
+  @IsNumber({}, { message: ProductExceptionKeys.PriceMaxNotNumber })
+  @Min(API_CONFIG.MINIMUM_PRICE, {
+    message: ProductExceptionKeys.PriceMaxTooLow,
+  })
+  @Max(API_CONFIG.MAXIMUM_PRICE, {
+    message: ProductExceptionKeys.PriceMaxTooHigh,
+  })
   price_max: number;
 
   // TODO: Implement property interdependance validation
   @IsOptional()
   @IsEnum(SortProductsBy, {
-    // message: 'errors.incorrect_sort_by',
+    message: ProductExceptionKeys.IncorrectSortBy,
   })
   sort_by: SortProductsBy;
 
   @IsOptional()
-  @IsEnum(SortDirection)
+  @IsEnum(SortDirection, {
+    message: ProductExceptionKeys.IncorrectSortDirection,
+  })
   sort_direction: SortDirection;
 }

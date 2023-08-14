@@ -1,20 +1,29 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { ExceptionKeys } from 'src/enums';
+import { ExceptionStatusKeys } from 'src/enums';
 
 @Injectable()
 export class ExceptionService {
-  public throwError(exception: ExceptionKeys, message?: string) {
+  public throwError(
+    exception: ExceptionStatusKeys,
+    message?: string,
+    errorKey?: string | string[],
+  ) {
     const status = this.getStatusCode(exception);
     const httpExceptionObject: {
       status: number;
-      error: ExceptionKeys;
-      message?: string;
+      error: string;
+      message: string[];
     } = {
       status,
-      error: exception,
+      error: message,
+      message: [],
     };
-    if (message) {
-      httpExceptionObject.message = message;
+    if (message && errorKey) {
+      if (typeof errorKey === 'object') {
+        httpExceptionObject.message.push(...errorKey);
+      } else {
+        httpExceptionObject.message.push(errorKey);
+      }
     }
     throw new HttpException(httpExceptionObject, status);
   }
@@ -23,66 +32,66 @@ export class ExceptionService {
     return [
       {
         status: 400,
-        key: ExceptionKeys.BadRequest,
+        key: ExceptionStatusKeys.BadRequest,
       },
       {
         status: 401,
-        key: ExceptionKeys.Unauthorized,
+        key: ExceptionStatusKeys.Unauthorized,
       },
       {
         status: 402,
-        key: ExceptionKeys.PaymentRequired,
+        key: ExceptionStatusKeys.PaymentRequired,
       },
       {
         status: 403,
-        key: ExceptionKeys.Forbidden,
+        key: ExceptionStatusKeys.Forbidden,
       },
       {
         status: 404,
-        key: ExceptionKeys.NotFound,
+        key: ExceptionStatusKeys.NotFound,
       },
       {
         status: 409,
-        key: ExceptionKeys.Conflict,
+        key: ExceptionStatusKeys.Conflict,
       },
       {
         status: 413,
-        key: ExceptionKeys.ContentTooLarge,
+        key: ExceptionStatusKeys.ContentTooLarge,
       },
       {
         status: 415,
-        key: ExceptionKeys.UnsupportedMediaType,
+        key: ExceptionStatusKeys.UnsupportedMediaType,
       },
       {
         status: 418,
-        key: ExceptionKeys.Teapot,
+        key: ExceptionStatusKeys.Teapot,
       },
       {
         status: 420,
-        key: ExceptionKeys.EnhanceYourCalm,
+        key: ExceptionStatusKeys.EnhanceYourCalm,
       },
     ];
   }
 
-  private getStatusCode(key: ExceptionKeys) {
+  private getStatusCode(key: ExceptionStatusKeys) {
     switch (key) {
-      case ExceptionKeys.BadRequest:
+      case ExceptionStatusKeys.BadRequest:
         return HttpStatus.BAD_REQUEST;
-      case ExceptionKeys.Unauthorized:
+      case ExceptionStatusKeys.Unauthorized:
         return HttpStatus.UNAUTHORIZED;
-      case ExceptionKeys.PaymentRequired:
+      case ExceptionStatusKeys.PaymentRequired:
         return HttpStatus.PAYMENT_REQUIRED;
-      case ExceptionKeys.Forbidden:
+      case ExceptionStatusKeys.Forbidden:
         return HttpStatus.FORBIDDEN;
-      case ExceptionKeys.NotFound:
+      case ExceptionStatusKeys.NotFound:
         return HttpStatus.NOT_FOUND;
-      case ExceptionKeys.Conflict:
+      case ExceptionStatusKeys.Conflict:
         return HttpStatus.CONFLICT;
-      case ExceptionKeys.ContentTooLarge:
+      case ExceptionStatusKeys.ContentTooLarge:
         return HttpStatus.PAYLOAD_TOO_LARGE;
-      case ExceptionKeys.UnsupportedMediaType:
+      case ExceptionStatusKeys.UnsupportedMediaType:
         return HttpStatus.UNSUPPORTED_MEDIA_TYPE;
-      case ExceptionKeys.Teapot:
+      case ExceptionStatusKeys.Teapot:
         return HttpStatus.I_AM_A_TEAPOT;
       default:
         return 420;
