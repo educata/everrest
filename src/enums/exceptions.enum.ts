@@ -25,14 +25,12 @@ export enum ProductExceptionKeys {
   IncorrectSortDirection = 'errors.incorrect_sort_direction',
 }
 
-export enum ProductPaginationExceptionKeys {
+export enum GlobalExceptionKeys {
+  IncorrectMongooseID = 'error.incorrect_mongoose_id',
   PageIndexNotNumber = 'errors.page_index.not_number',
   PageIndexTooLow = 'errors.page_index.too_low',
   PageSizeNotNumber = 'errors.page_size.not_number',
   PageSizeTooLow = 'errors.page_size.too_low',
   PageSizeTooHigh = 'errors.page_size.too_high',
-}
-
-export enum GlobalExceptionKeys {
-  IncorrectMongooseID = 'error.incorrect_mongoose_id',
+  EndPointNotFound = 'errors.endpoint_not_found',
 }

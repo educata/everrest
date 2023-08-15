@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import mongoose, { Model } from 'mongoose';
+import mongoose, { Model, SortOrder } from 'mongoose';
 
 import {
   CreateProductDto,
@@ -10,7 +10,12 @@ import {
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
-import { ExceptionStatusKeys, GlobalExceptionKeys } from 'src/enums';
+import {
+  ExceptionStatusKeys,
+  GlobalExceptionKeys,
+  SortDirection,
+  SortProductsBy,
+} from 'src/enums';
 import { ProductCategory } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
 
@@ -69,6 +74,7 @@ export class ProductsService {
     const skip = responsePerPage * (Math.floor(currentPage) - 1);
     const products = await this.productModel
       .find({})
+      .sort({ 'price.current': 1 })
       .limit(responsePerPage)
       .skip(skip);
     const productsCount = await this.productModel.countDocuments({});
@@ -82,8 +88,75 @@ export class ProductsService {
   }
 
   async searchProduct(query: SearchProductsQueryDto) {
-    // TODO: implement later
-    return [];
+    const currentPage = query.page_index || API_CONFIG.MINIMUM_PAGE_INDEX;
+    const responsePerPage = query.page_size || API_CONFIG.RESPONSE_PER_PAGE;
+    const skip = responsePerPage * (Math.floor(currentPage) - 1);
+    const queryObject: {
+      'price.current'?: object;
+      'category.id'?: string;
+      title?: object;
+      brand?: string;
+      rating?: object;
+    } = {};
+
+    const sortObject: {
+      'price.current'?: SortOrder;
+      title?: SortOrder;
+      rating?: SortOrder;
+      issueDate?: SortOrder;
+    } = {};
+
+    if (query.keywords) {
+      queryObject.title = { $regex: query.keywords, $options: 'i' };
+    }
+    if (query.category_id) {
+      queryObject['category.id'] = query.category_id;
+    }
+    if (query.price_min) {
+      queryObject['price.current'] = { $gt: query.price_min };
+    }
+    if (query.price_max) {
+      queryObject['price.current'] = {
+        ...queryObject['price.current'],
+        $lt: query.price_max,
+      };
+    }
+    if (query.brand) {
+      queryObject.brand = query.brand;
+    }
+    if (query.rating) {
+      queryObject.rating = { $gt: query.rating };
+    }
+    if (query.sort_by && query.sort_direction) {
+      const sortDirection: SortOrder =
+        query.sort_direction === SortDirection.Ascending ? 1 : -1;
+      if (query.sort_by === SortProductsBy.Title) {
+        sortObject.title = sortDirection;
+      } else if (query.sort_by === SortProductsBy.Rating) {
+        sortObject.rating = sortDirection;
+      } else if (query.sort_by === SortProductsBy.Price) {
+        sortObject['price.current'] = sortDirection;
+      } else if (query.sort_by === SortProductsBy.IssueDate) {
+        sortObject.issueDate = sortDirection;
+      } else {
+        sortObject['price.current'] = 1;
+      }
+    } else {
+      sortObject['price.current'] = 1;
+    }
+    const productsCount = await this.productModel.countDocuments({});
+    const products = await this.productModel
+      .find({ ...queryObject })
+      .sort({ ...sortObject })
+      .limit(responsePerPage)
+      .skip(skip);
+    return {
+      total: productsCount,
+      limit: responsePerPage,
+      page: currentPage,
+      skip,
+      products,
+    };
   }
 
   async getCategories(): Promise<ProductCategory[]> {

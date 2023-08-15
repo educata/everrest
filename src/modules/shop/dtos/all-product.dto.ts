@@ -1,22 +1,22 @@
 import { IsOptional, IsNumber, Min, Max } from 'class-validator';
 import { API_CONFIG } from 'src/consts';
-import { ProductPaginationExceptionKeys } from 'src/enums';
+import { GlobalExceptionKeys } from 'src/enums';
 
 export class AllProductsQueryDto {
   @IsOptional()
-  @IsNumber({}, { message: ProductPaginationExceptionKeys.PageIndexNotNumber })
+  @IsNumber({}, { message: GlobalExceptionKeys.PageIndexNotNumber })
   @Min(API_CONFIG.MINIMUM_PAGE_INDEX, {
-    message: ProductPaginationExceptionKeys.PageIndexTooLow,
+    message: GlobalExceptionKeys.PageIndexTooLow,
   })
   page_index: number;
 
   @IsOptional()
-  @IsNumber({}, { message: ProductPaginationExceptionKeys.PageSizeNotNumber })
+  @IsNumber({}, { message: GlobalExceptionKeys.PageSizeNotNumber })
   @Min(API_CONFIG.MINIMUM_PAGE_SIZE, {
-    message: ProductPaginationExceptionKeys.PageSizeTooLow,
+    message: GlobalExceptionKeys.PageSizeTooLow,
   })
   @Max(API_CONFIG.MAXIMUM_PAGE_SIZE, {
-    message: ProductPaginationExceptionKeys.PageSizeTooHigh,
+    message: GlobalExceptionKeys.PageSizeTooHigh,
   })
   page_size: number;
 }
