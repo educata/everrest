@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import {
-  AllProductsQueryDto,
+  PaginationProductQueryDto,
   CreateProductDto,
   SearchProductsQueryDto,
   UpdateProductDto,
@@ -39,7 +39,7 @@ export class ProductsController {
   }
 
   @Get('all')
-  getAllProduct(@Query() query: AllProductsQueryDto) {
+  getAllProduct(@Query() query: PaginationProductQueryDto) {
     return this.productsService.getAllProductsDetailed(query);
   }
 

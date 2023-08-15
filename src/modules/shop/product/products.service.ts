@@ -6,7 +6,7 @@ import {
   CreateProductDto,
   SearchProductsQueryDto,
   UpdateProductDto,
-  AllProductsQueryDto,
+  PaginationProductQueryDto,
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
@@ -68,10 +68,16 @@ export class ProductsService {
     return this.productModel.find({});
   }
 
-  async getAllProductsDetailed(query: AllProductsQueryDto) {
+  getPaginationData(query: { page_index: number; page_size: number }) {
     const currentPage = query.page_index || API_CONFIG.MINIMUM_PAGE_INDEX;
     const responsePerPage = query.page_size || API_CONFIG.RESPONSE_PER_PAGE;
     const skip = responsePerPage * (Math.floor(currentPage) - 1);
+    return { currentPage, responsePerPage, skip };
+  }
+
+  async getAllProductsDetailed(query: PaginationProductQueryDto) {
+    const { currentPage, responsePerPage, skip } =
+      this.getPaginationData(query);
     const products = await this.productModel
       .find({})
       .sort({ 'price.current': 1 })
@@ -88,9 +94,8 @@ export class ProductsService {
   }
 
   async searchProduct(query: SearchProductsQueryDto) {
-    const currentPage = query.page_index || API_CONFIG.MINIMUM_PAGE_INDEX;
-    const responsePerPage = query.page_size || API_CONFIG.RESPONSE_PER_PAGE;
-    const skip = responsePerPage * (Math.floor(currentPage) - 1);
+    const { currentPage, responsePerPage, skip } =
+      this.getPaginationData(query);
     const queryObject: {
       'price.current'?: object;
       'category.id'?: string;
@@ -154,6 +159,8 @@ export class ProductsService {
       total: productsCount,
       limit: responsePerPage,
       page: currentPage,
+      sortedBy: Object.keys(sortObject)[0],
+      sortedDirection: query.sort_direction ?? 'asc',
       skip,
       products,
     };
@@ -202,16 +209,5 @@ export class ProductsService {
 
   deleteAllProduct() {
     return this.productModel.deleteMany({});
-  }
-
-  private checkQueryNumberParam(param: number, key: string) {
-    if (isNaN(param) || param <= 0) {
-      this.exceptionService.throwError(
-        ExceptionStatusKeys.BadRequest,
-        param <= 0
-          ? `${key} should be greater than 0`
-          : `${key} should be number`,
-      );
-    }
   }
 }
