@@ -149,7 +149,9 @@ export class ProductsService {
     } else {
       sortObject['price.current'] = 1;
     }
-    const productsCount = await this.productModel.countDocuments({});
+    const productsCount = await this.productModel.countDocuments({
+      ...queryObject,
+    });
     const products = await this.productModel
       .find({ ...queryObject })
       .sort({ ...sortObject })
@@ -181,11 +183,24 @@ export class ProductsService {
     return category;
   }
 
-  async getByCategoryId(categoryId: string): Promise<Product[]> {
-    const products = await this.productModel.find({
+  async getByCategoryId(categoryId: string, query: PaginationProductQueryDto) {
+    const { currentPage, responsePerPage, skip } =
+      this.getPaginationData(query);
+    const products = await this.productModel
+      .find({ 'category.id': categoryId })
+      .sort({ 'price.current': 1 })
+      .limit(responsePerPage)
+      .skip(skip);
+    const productsCount = await this.productModel.countDocuments({
       'category.id': categoryId,
     });
-    return products;
+    return {
+      total: productsCount,
+      limit: responsePerPage,
+      page: currentPage,
+      skip,
+      products,
+    };
   }
 
   async getBrands(): Promise<string[]> {
@@ -199,12 +214,24 @@ export class ProductsService {
     return brands;
   }
 
-  async getBrandProducts(brandName: string): Promise<Product[]> {
-    const products = await this.getAllProduct();
-    const brands = products.filter(
-      (product) => product.brand.toLowerCase() === brandName.toLowerCase(),
-    );
-    return brands;
+  async getBrandProducts(brandName: string, query: PaginationProductQueryDto) {
+    const { currentPage, responsePerPage, skip } =
+      this.getPaginationData(query);
+    const products = await this.productModel
+      .find({ brand: brandName })
+      .sort({ 'price.current': 1 })
+      .limit(responsePerPage)
+      .skip(skip);
+    const productsCount = await this.productModel.countDocuments({
+      brand: brandName,
+    });
+    return {
+      total: productsCount,
+      limit: responsePerPage,
+      page: currentPage,
+      skip,
+      products,
+    };
   }
 
   deleteAllProduct() {

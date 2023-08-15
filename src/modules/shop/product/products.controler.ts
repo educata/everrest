@@ -59,8 +59,11 @@ export class ProductsController {
   }
 
   @Get('category/:category_id')
-  getProductsByCategoryId(@Param('category_id') id: string) {
-    return this.productsService.getByCategoryId(id);
+  getProductsByCategoryId(
+    @Param('category_id') id: string,
+    @Query() query: PaginationProductQueryDto,
+  ) {
+    return this.productsService.getByCategoryId(id, query);
   }
 
   @Get('brands')
@@ -69,7 +72,10 @@ export class ProductsController {
   }
 
   @Get('brand/:brand_name')
-  getBrandProducts(@Param('brand_name') brandName: string) {
-    return this.productsService.getBrandProducts(brandName);
+  getBrandProducts(
+    @Param('brand_name') brandName: string,
+    @Query() query: PaginationProductQueryDto,
+  ) {
+    return this.productsService.getBrandProducts(brandName, query);
   }
 }
