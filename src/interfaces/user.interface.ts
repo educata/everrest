@@ -1,5 +1,4 @@
 import { Gender } from '../enums';
-import { Cart } from '.';
 
 export interface User {
   _id: string;
@@ -7,12 +6,13 @@ export interface User {
   lastName: string;
   age: number;
   email: string;
+  password: string;
   address: string;
   phone: string;
   zipcode: string;
   avatar: string;
   gender: Gender;
   // additional
-  cart: Cart;
+  cartID: string;
   chatIds: string[];
 }
