@@ -1,4 +1,4 @@
-import { Gender } from 'src/enums';
+import { Gender, UserRole } from 'src/enums';
 import { User } from 'src/interfaces';
 // dummy data before initial database
 // TODO: Fill later
@@ -11,6 +11,7 @@ export const USERS: User[] = [
     email: 'johndoe@gmail.com',
     password: 'password123',
     address: 'nowhere',
+    role: UserRole.Default,
     phone: '+123456789',
     zipcode: '1234',
     avatar: 'https://api.dicebear.com/6.x/lorelei/svg?flip=false',

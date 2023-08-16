@@ -1,4 +1,4 @@
-import { Gender } from '../enums';
+import { Gender, UserRole } from '../enums';
 
 export interface User {
   _id: string;
@@ -8,6 +8,7 @@ export interface User {
   email: string;
   password: string;
   address: string;
+  role: UserRole;
   phone: string;
   zipcode: string;
   avatar: string;
