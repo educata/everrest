@@ -10,6 +10,7 @@ export interface Product {
   price: ProductPrice;
   stock: number;
   rating: number;
+  ratings?: ProductRating[]; // TODO: update schema and endpoint later
   category: ProductCategory;
   brand: string;
   warranty: number;
@@ -26,4 +27,10 @@ export interface ProductCategory {
   id: string;
   name: string;
   image: string;
+}
+
+export interface ProductRating {
+  userId: string;
+  value: number;
+  createdAt: string;
 }
