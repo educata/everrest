@@ -38,4 +38,7 @@ export enum GlobalExceptionKeys {
 export enum AuthExpectionKeys {
   IncorrectEmailOrPassword = 'errors.incorrect_email_or_password',
   EmailInUse = 'errors.email_in_use',
+  TokenInvalid = 'errors.token_invalid',
+  TokenExpired = 'errors.token_expired',
+  TokenNotFound = 'errors.token_not_found',
 }
