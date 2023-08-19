@@ -8,7 +8,6 @@ export class CreateProductDto {
   images: string[];
   price: ProductPrice;
   stock: number;
-  rating: number;
   category: ProductCategory;
   brand: string;
   warranty: number;

@@ -29,6 +29,8 @@ export class ProductsService {
   addProduct(product: CreateProductDto): Promise<Product> {
     return this.productModel.create({
       ...product,
+      rating: 0,
+      ratings: [],
     });
   }
 

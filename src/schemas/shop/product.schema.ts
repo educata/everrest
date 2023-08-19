@@ -1,6 +1,6 @@
 import { Schema, Prop, raw, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
-import { ProductPrice, ProductCategory } from 'src/interfaces';
+import { ProductPrice, ProductCategory, ProductRating } from 'src/interfaces';
 
 export type ProductDocument = HydratedDocument<Product>;
 
@@ -15,6 +15,17 @@ export class Product {
   @Prop() brand: string;
   @Prop() warranty: number;
   @Prop([String]) images: string[];
+
+  @Prop({
+    type: [
+      {
+        userId: { type: String },
+        value: { type: Number },
+        createdAt: { type: String },
+      },
+    ],
+  })
+  ratings: ProductRating[];
 
   @Prop(
     raw({

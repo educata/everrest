@@ -21,12 +21,22 @@ export class HttpExceptionsFilter implements ExceptionFilter {
       statusCode: number;
     };
 
+    const exceptionResponseNotFoundURL = [
+      `Cannot GET ${request.url}`,
+      `Cannot POST ${request.url}`,
+      `Cannot PATCH ${request.url}`,
+      `Cannot PUT ${request.url}`,
+      `Cannot DELETE ${request.url}`,
+      `Cannot OPTIONS ${request.url}`,
+    ];
+
     response.status(status).json({
       error: exceptionResponse.error,
-      errorKeys:
-        exceptionResponse.message === `Cannot GET ${request.url}`
-          ? [GlobalExceptionKeys.EndPointNotFound]
-          : exceptionResponse.message,
+      errorKeys: exceptionResponseNotFoundURL.includes(
+        exceptionResponse.message as string,
+      )
+        ? [GlobalExceptionKeys.EndPointNotFound]
+        : exceptionResponse.message,
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,

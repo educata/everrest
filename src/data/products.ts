@@ -40,6 +40,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
     },
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 5,
+    ratings: [],
     category: {
       id: '1',
       name: 'laptops',
@@ -71,6 +72,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
     },
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 5,
+    ratings: [],
     category: {
       id: '1',
       name: 'laptops',
@@ -104,6 +106,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
     },
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 4.5,
+    ratings: [],
     category: {
       id: '1',
       name: 'laptops',
@@ -135,6 +138,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
     },
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 4.9,
+    ratings: [],
     category: {
       id: '1',
       name: 'laptops',
@@ -166,6 +170,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
     },
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 4.7,
+    ratings: [],
     category: {
       id: '1',
       name: 'laptops',
@@ -183,6 +188,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
       'https://alta.ge/images/thumbnails/900/650/detailed/279/11_s2p2-m2.png.jpg',
     stock: 200,
     rating: 4,
+    ratings: [],
     brand: 'samsung',
     warranty: 12,
     images: [
@@ -211,6 +217,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
       'https://alta.ge/images/thumbnails/900/650/detailed/278/1_hnqs-2n.png.jpg',
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 5,
+    ratings: [],
     brand: 'xiaomi',
     warranty: 12,
     images: [
@@ -238,6 +245,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
       'https://alta.ge/images/thumbnails/900/650/detailed/259/WWEN_iPhone14Pro_Q422_Deep-Purple_PDP-IMAGES_Position-1a.jpg.jpg',
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 5,
+    ratings: [],
     brand: 'apple',
     warranty: 12,
     images: [
@@ -268,6 +276,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
       'https://alta.ge/images/thumbnails/900/650/detailed/263/1g.png.jpg',
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 4.8,
+    ratings: [],
     brand: 'honor',
     warranty: 12,
     images: [
@@ -300,6 +309,7 @@ export const PRODUCTS: Omit<Product, '_id'>[] = [
       'https://alta.ge/images/thumbnails/900/650/detailed/264/11_6r3d-5d.png.jpg',
     stock: Math.floor(Math.random() * 100) + 10,
     rating: 4.3,
+    ratings: [],
     brand: 'oneplus',
     warranty: 24,
     images: [
