@@ -7,6 +7,7 @@ import {
   SearchProductsQueryDto,
   UpdateProductDto,
   PaginationProductQueryDto,
+  UpdateRatingProductDto,
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
@@ -16,7 +17,7 @@ import {
   SortDirection,
   SortProductsBy,
 } from 'src/enums';
-import { ProductCategory } from 'src/interfaces';
+import { ProductCategory, User } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
 
 @Injectable()
@@ -47,6 +48,7 @@ export class ProductsService {
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
     }
+    // TODO: implement way to remove ratings array from response
     return product;
   }
 
@@ -63,7 +65,34 @@ export class ProductsService {
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
     }
+    // TODO: implement way to remove ratings array from response
     return product;
+  }
+
+  async updateProductRating(
+    updateRatingProductDto: UpdateRatingProductDto,
+    user: Omit<User, 'password' | 'cartID' | 'chatIds'>,
+  ) {
+    const product = await this.getProductById(updateRatingProductDto.productId);
+    const updatedProductRating = [...product.ratings];
+    updatedProductRating.push({
+      userId: user._id,
+      value: updateRatingProductDto.rate,
+      createdAt: new Date().toISOString(),
+    });
+    const newProduct = await this.productModel.findOneAndUpdate(
+      {
+        _id: updateRatingProductDto.productId,
+      },
+      {
+        rating: (
+          updatedProductRating.reduce((prev, cur) => prev + cur.value, 0) /
+          updatedProductRating.length
+        ).toFixed(3),
+        ratings: updatedProductRating,
+      },
+    );
+    return this.getProductById(newProduct.id);
   }
 
   getAllProduct(): Promise<Product[]> {
@@ -86,6 +115,7 @@ export class ProductsService {
       .limit(responsePerPage)
       .skip(skip);
     const productsCount = await this.productModel.countDocuments({});
+    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,
@@ -159,6 +189,7 @@ export class ProductsService {
       .sort({ ...sortObject })
       .limit(responsePerPage)
       .skip(skip);
+    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,
@@ -196,6 +227,7 @@ export class ProductsService {
     const productsCount = await this.productModel.countDocuments({
       'category.id': categoryId,
     });
+    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,
@@ -227,6 +259,7 @@ export class ProductsService {
     const productsCount = await this.productModel.countDocuments({
       brand: brandName,
     });
+    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,

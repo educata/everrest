@@ -9,8 +9,9 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from '../dtos';
-import { JwtGuard, LocalAuthGuard, RefreshJwtGuard } from './guards';
+import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
+import { JwtGuard } from '../../../shared';
 
 @Controller('auth')
 export class AuthController {
@@ -30,6 +31,7 @@ export class AuthController {
   @UseGuards(JwtGuard)
   @Get('test')
   someSafeRoute() {
+    // TODO: remove it later
     return 'safe route reached';
   }
 

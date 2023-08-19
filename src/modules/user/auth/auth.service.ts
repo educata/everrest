@@ -30,7 +30,7 @@ export class AuthService {
 
     const hashedPassword = await this.encryptionService.hash(body.password);
 
-    // TODO: Serialize user response object (to hide password)
+    // ! TODO: Serialize user response object (to hide password)
     const user = await this.userModel.create({
       ...body,
       password: hashedPassword,
@@ -44,8 +44,17 @@ export class AuthService {
 
   private createPayload(user: UserInterface) {
     return {
-      // ! TODO: UPDATE IT LATER
+      _id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      age: user.age,
       email: user.email,
+      address: user.address,
+      role: user.role,
+      zipcode: user.zipcode,
+      avatar: user.avatar,
+      gender: user.gender,
+      phone: user.phone,
     };
   }
 
@@ -55,7 +64,7 @@ export class AuthService {
       user &&
       (await this.encryptionService.compareHash(password, user.password))
     ) {
-      // TODO: Serialize user response object (to hide password)
+      // ! TODO: Serialize user response object (to hide password)
       return user;
     }
     return null;

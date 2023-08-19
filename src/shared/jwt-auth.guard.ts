@@ -1,4 +1,4 @@
-import { ExceptionService } from './../../../../shared/exception.service';
+import { ExceptionService } from './exception.service';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';

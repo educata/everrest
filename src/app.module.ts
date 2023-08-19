@@ -7,7 +7,6 @@ import { AppService } from './app.service';
 import { ShopModule, UserModule } from './modules';
 import { ExceptionService } from './shared';
 import { EncryptionService } from './shared/encryption.service';
-
 @Module({
   imports: [
     ConfigModule.forRoot(),

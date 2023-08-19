@@ -33,6 +33,7 @@ prefix - /`shop`/`...`
 - `GET` products/category/:category_id
 - `GET` products/brands
 - `GET` products/brand/:brand_name
+- `GET` products/rates/:product_id
 - `POST` products/rate | { id, rate } | jwt
 
 ### Cart

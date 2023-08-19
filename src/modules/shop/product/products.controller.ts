@@ -7,6 +7,8 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
+  Request,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import {
@@ -14,7 +16,9 @@ import {
   CreateProductDto,
   SearchProductsQueryDto,
   UpdateProductDto,
+  UpdateRatingProductDto,
 } from '../dtos';
+import { JwtGuard } from 'src/shared';
 
 @Controller('shop/products')
 export class ProductsController {
@@ -31,6 +35,15 @@ export class ProductsController {
     @Body() updateProductDto: UpdateProductDto,
   ) {
     return this.productsService.updateProduct(id, updateProductDto);
+  }
+
+  @UseGuards(JwtGuard)
+  @Post('rate')
+  updateProductRating(
+    @Body() updateProductDto: UpdateRatingProductDto,
+    @Request() req,
+  ) {
+    return this.productsService.updateProductRating(updateProductDto, req.user);
   }
 
   @Post()
