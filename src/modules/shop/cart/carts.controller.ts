@@ -37,8 +37,15 @@ export class CartsController {
   }
 
   @Patch('product')
-  updateCart() {
-    return {};
+  updateCart(
+    @Auth({
+      exceptionService: new ExceptionService(),
+      jwtService: new JwtService(),
+    })
+    user: UserPayload,
+    @Body() body: CartDto,
+  ) {
+    return this.cartsService.updateCart(user, body);
   }
 
   @Delete('product')

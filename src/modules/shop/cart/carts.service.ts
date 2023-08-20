@@ -88,4 +88,48 @@ export class CartsService {
 
     return cart;
   }
+
+  async updateCart(userPayload: UserPayload, body: CartDto) {
+    const user = await this.userModel.findOne({ _id: userPayload._id });
+
+    if (user && !user.cartID) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.Conflict,
+        'User has to create cart first',
+        CartExpectionKeys.UserDontHaveCart,
+      );
+    }
+
+    const product = await this.productModel.findOne({ _id: body.id });
+
+    if (!product) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        `Product with ${body.id} id not found`,
+        ProductExceptionKeys.ProductNotFound,
+      );
+    }
+
+    const cart = await this.cartModel.findOne({ _id: user.cartID });
+    const itemIndex = cart.products.findIndex(
+      (product) => product.productId === body.id,
+    );
+
+    if (itemIndex === -1) {
+      cart.products.push({
+        quantity: body.quanity,
+        pricePerQuantity: product.price.current,
+        productId: product.id,
+      });
+    } else {
+      if (body.quanity <= 0) {
+        cart.products.splice(itemIndex, 1);
+      } else {
+        cart.products[itemIndex].quantity = body.quanity;
+      }
+    }
+
+    await cart.save();
+    return cart;
+  }
 }
