@@ -38,7 +38,7 @@ prefix - /`shop`/`...`
 
 ### Cart
 
-- `GET` cart | (currnet user cart) | jwt
+- `GET` cart | (current user cart) | jwt
 - `POST` cart/product | { id, quantity } | jwt
 - `POST` cart/checkout | jwt
 - `PATCH` cart/product | { id, quantity } | jwt

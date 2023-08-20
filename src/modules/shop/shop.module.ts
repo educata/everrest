@@ -4,6 +4,7 @@ import { Product, ProductSchema } from 'src/schemas';
 import { ProductsController, ProductsService } from './product';
 import { ExceptionService } from 'src/shared';
 import { JwtModule } from '@nestjs/jwt';
+import { CartsController, CartsService } from './cart';
 
 @Module({
   imports: [
@@ -14,7 +15,7 @@ import { JwtModule } from '@nestjs/jwt';
       signOptions: { expiresIn: `${process.env.JWT_EXPIRES_IN || '1'}h` },
     }),
   ],
-  providers: [ProductsService, ExceptionService],
-  controllers: [ProductsController],
+  providers: [ExceptionService, ProductsService, CartsService],
+  controllers: [ProductsController, CartsController],
 })
 export class ShopModule {}
