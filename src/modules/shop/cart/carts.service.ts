@@ -129,6 +129,19 @@ export class CartsService {
       }
     }
 
+    cart.total = {
+      price: {
+        current: cart.products.reduce((prev, curr) => {
+          return prev + curr.pricePerQuantity * curr.quantity;
+        }, 0),
+        beforeDiscount: 1, // TODO: handle it later
+      },
+      quantity: cart.products.reduce((prev, curr) => {
+        return prev + curr.quantity;
+      }, 0),
+      products: cart.products.length,
+    };
+
     await cart.save();
     return cart;
   }
