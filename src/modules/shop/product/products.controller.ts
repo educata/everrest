@@ -39,12 +39,12 @@ export class ProductsController {
 
   @Post('rate')
   updateProductRating(
-    @Body() updateProductDto: UpdateRatingProductDto,
     @Auth({
       exceptionService: new ExceptionService(),
       jwtService: new JwtService(),
     })
     user: UserPayload,
+    @Body() updateProductDto: UpdateRatingProductDto,
   ) {
     return this.productsService.updateProductRating(updateProductDto, user);
   }

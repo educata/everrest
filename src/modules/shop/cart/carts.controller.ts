@@ -1,9 +1,9 @@
-import { ExceptionService } from './../../../shared/exception.service';
-import { Controller, Get, Post, Patch, Delete } from '@nestjs/common';
-import { CartsService } from './carts.service';
-import { Auth } from 'src/shared';
+import { Controller, Get, Post, Patch, Delete, Body } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { CartsService } from './carts.service';
+import { Auth, ExceptionService } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
+import { CartDto } from '../dtos';
 @Controller('shop/cart')
 export class CartsController {
   constructor(private cartsService: CartsService) {}
@@ -16,12 +16,19 @@ export class CartsController {
     })
     user: UserPayload,
   ) {
-    return { ...user };
+    return this.cartsService.getCurrentCart(user);
   }
 
   @Post('product')
-  initCartWithProduct() {
-    return {};
+  initCartWithProduct(
+    @Auth({
+      exceptionService: new ExceptionService(),
+      jwtService: new JwtService(),
+    })
+    user: UserPayload,
+    @Body() body: CartDto,
+  ) {
+    return this.cartsService.createCartWithProduct(user, body);
   }
 
   @Post('checkout')

@@ -4,13 +4,17 @@ import { CartProduct, CartTotal } from 'src/interfaces';
 
 export type CartDocument = HydratedDocument<Cart>;
 
-Schema();
+@Schema()
 export class Cart {
+  @Prop() userId: string;
+  @Prop() createdAt: string;
+
   @Prop(
     raw({
-      price: {
-        type: { current: { type: Number }, beforeDiscount: { type: Number } },
-      },
+      price: raw({
+        current: { type: Number },
+        beforeDiscount: { type: Number },
+      }),
       quantity: { type: Number },
       products: { type: Number },
     }),
@@ -20,6 +24,7 @@ export class Cart {
   @Prop({
     type: [
       {
+        _id: false,
         quantity: { type: Number },
         pricePerQuantity: { type: Number },
         productId: { type: String },

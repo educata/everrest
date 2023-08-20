@@ -1,5 +1,7 @@
 export interface Cart {
   _id: string;
+  userId: string;
+  createdAt: string;
   products: CartProduct[];
   total: CartTotal;
 }

@@ -1,7 +1,14 @@
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
-import { Cart, CartSchema, Product, ProductSchema } from 'src/schemas';
+import {
+  Cart,
+  CartSchema,
+  Product,
+  ProductSchema,
+  User,
+  UserSchema,
+} from 'src/schemas';
 import { ExceptionService } from 'src/shared';
 import { ProductsController, ProductsService } from './product';
 import { CartsController, CartsService } from './cart';
@@ -11,6 +18,7 @@ import { CartsController, CartsService } from './cart';
     MongooseModule.forFeature([
       { name: Product.name, schema: ProductSchema },
       { name: Cart.name, schema: CartSchema },
+      { name: User.name, schema: UserSchema },
     ]),
     JwtModule.register({
       // TODO: implement way to register once

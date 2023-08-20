@@ -12,6 +12,7 @@ export enum ExceptionStatusKeys {
 }
 
 export enum ProductExceptionKeys {
+  ProductNotFound = 'errors.product_not_found',
   RatingNotNumber = 'errors.rating_not_number',
   RatingTooLow = 'errors.rating_too_low',
   RatingTooHigh = 'errors.rating_too_high',
@@ -41,4 +42,9 @@ export enum AuthExpectionKeys {
   TokenInvalid = 'errors.token_invalid',
   TokenExpired = 'errors.token_expired',
   TokenNotFound = 'errors.token_not_found',
+}
+
+export enum CartExpectionKeys {
+  UserDontHaveCart = 'errors.user_cart_not_exists',
+  UserCartAlreadyExists = 'errors.user_cart_already_exists',
 }
