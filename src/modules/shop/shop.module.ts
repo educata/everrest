@@ -1,9 +1,9 @@
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
-import { Product, ProductSchema } from 'src/schemas';
-import { ProductsController, ProductsService } from './product';
-import { ExceptionService } from 'src/shared';
 import { JwtModule } from '@nestjs/jwt';
+import { Product, ProductSchema } from 'src/schemas';
+import { ExceptionService } from 'src/shared';
+import { ProductsController, ProductsService } from './product';
 import { CartsController, CartsService } from './cart';
 
 @Module({

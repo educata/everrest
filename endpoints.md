@@ -43,3 +43,4 @@ prefix - /`shop`/`...`
 - `POST` cart/checkout | jwt
 - `PATCH` cart/product | { id, quantity } | jwt
 - `DELETE` cart/product | { id } | jwt
+- `DELETE` cart | (clear current cart) | jwt
