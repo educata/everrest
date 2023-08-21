@@ -7,6 +7,8 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import {
@@ -16,8 +18,7 @@ import {
   UpdateProductDto,
   UpdateRatingProductDto,
 } from '../dtos';
-import { Auth, ExceptionService } from 'src/shared';
-import { JwtService } from '@nestjs/jwt';
+import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 
 @Controller('shop/products')
@@ -38,12 +39,10 @@ export class ProductsController {
   }
 
   @Post('rate')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
   updateProductRating(
-    @Auth({
-      exceptionService: new ExceptionService(),
-      jwtService: new JwtService(),
-    })
-    user: UserPayload,
+    @CurrentUser() user: UserPayload,
     @Body() updateProductDto: UpdateRatingProductDto,
   ) {
     return this.productsService.updateProductRating(updateProductDto, user);

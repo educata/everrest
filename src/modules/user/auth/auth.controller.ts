@@ -9,8 +9,9 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { SignUpDto } from '../dtos';
-import { LocalAuthGuard, RefreshJwtGuard, JwtGuard } from './guards';
+import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
+import { JwtGuard } from 'src/shared';
 
 @Controller('auth')
 export class AuthController {

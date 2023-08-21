@@ -1,4 +1,4 @@
-import { ExceptionService } from '../../../../shared/exception.service';
+import { ExceptionService } from './exception.service';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
@@ -22,11 +22,11 @@ export class JwtGuard implements CanActivate {
       );
     }
     try {
-      const payload = await this.jwtService.verifyAsync(token, {
+      await this.jwtService.verifyAsync(token, {
         secret: `${process.env.JWT_SECRET}`,
       });
-      request['user'] = payload;
     } catch (err) {
+      // TODO: if it is possible improve error handling for expired/invalid tokens
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Invalid token',

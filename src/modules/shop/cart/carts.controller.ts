@@ -1,33 +1,30 @@
-import { Controller, Get, Post, Patch, Delete, Body } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import {
+  Controller,
+  Get,
+  Post,
+  Patch,
+  Delete,
+  Body,
+  UseGuards,
+  UseInterceptors,
+} from '@nestjs/common';
 import { CartsService } from './carts.service';
-import { Auth, ExceptionService } from 'src/shared';
+import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 import { CartDto } from '../dtos';
 @Controller('shop/cart')
+@UseGuards(JwtGuard)
+@UseInterceptors(CurrentUserInterceptor)
 export class CartsController {
   constructor(private cartsService: CartsService) {}
 
   @Get()
-  getCurrentCart(
-    @Auth({
-      exceptionService: new ExceptionService(),
-      jwtService: new JwtService(),
-    })
-    user: UserPayload,
-  ) {
+  getCurrentCart(@CurrentUser() user: UserPayload) {
     return this.cartsService.getCurrentCart(user);
   }
 
   @Post('product')
-  initCartWithProduct(
-    @Auth({
-      exceptionService: new ExceptionService(),
-      jwtService: new JwtService(),
-    })
-    user: UserPayload,
-    @Body() body: CartDto,
-  ) {
+  initCartWithProduct(@CurrentUser() user: UserPayload, @Body() body: CartDto) {
     return this.cartsService.createCartWithProduct(user, body);
   }
 
@@ -37,14 +34,7 @@ export class CartsController {
   }
 
   @Patch('product')
-  updateCart(
-    @Auth({
-      exceptionService: new ExceptionService(),
-      jwtService: new JwtService(),
-    })
-    user: UserPayload,
-    @Body() body: CartDto,
-  ) {
+  updateCart(@CurrentUser() user: UserPayload, @Body() body: CartDto) {
     return this.cartsService.updateCart(user, body);
   }
 
