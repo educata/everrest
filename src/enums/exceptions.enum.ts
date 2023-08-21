@@ -13,6 +13,8 @@ export enum ExceptionStatusKeys {
 
 export enum ProductExceptionKeys {
   ProductNotFound = 'errors.product_not_found',
+  ProductStockOutnumbered = 'errors.product_stock_outnumbered',
+  ProductStockSoldBeforeCheckout = 'errors.product_stock_sold_before_checkout',
   RatingNotNumber = 'errors.rating_not_number',
   RatingTooLow = 'errors.rating_too_low',
   RatingTooHigh = 'errors.rating_too_high',
@@ -47,4 +49,6 @@ export enum AuthExpectionKeys {
 export enum CartExpectionKeys {
   UserDontHaveCart = 'errors.user_cart_not_exists',
   UserCartAlreadyExists = 'errors.user_cart_already_exists',
+  CartDontHaveThisItem = 'errors.cart_do_not_have_this_item',
+  CartAlreadyDeleted = 'errors.cart_already_deleted',
 }
