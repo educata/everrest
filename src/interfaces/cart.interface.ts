@@ -19,4 +19,5 @@ export interface CartProduct {
   quantity: number;
   pricePerQuantity: number;
   productId: string;
+  beforeDiscountPrice: number;
 }

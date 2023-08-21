@@ -78,6 +78,7 @@ export class CartsService {
         {
           quantity: body.quanity,
           pricePerQuantity: product.price.current,
+          beforeDiscountPrice: product.price.beforeDiscount,
           productId: body.id,
         },
       ],
@@ -120,6 +121,7 @@ export class CartsService {
         quantity: body.quanity,
         pricePerQuantity: product.price.current,
         productId: product.id,
+        beforeDiscountPrice: product.price.beforeDiscount,
       });
     } else {
       if (body.quanity <= 0) {
@@ -134,7 +136,9 @@ export class CartsService {
         current: cart.products.reduce((prev, curr) => {
           return prev + curr.pricePerQuantity * curr.quantity;
         }, 0),
-        beforeDiscount: 1, // TODO: handle it later
+        beforeDiscount: cart.products.reduce((prev, curr) => {
+          return prev + curr.beforeDiscountPrice * curr.quantity;
+        }, 0),
       },
       quantity: cart.products.reduce((prev, curr) => {
         return prev + curr.quantity;

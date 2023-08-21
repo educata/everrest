@@ -27,6 +27,7 @@ export class Cart {
         _id: false,
         quantity: { type: Number },
         pricePerQuantity: { type: Number },
+        beforeDiscountPrice: { type: Number },
         productId: { type: String },
       },
     ],
