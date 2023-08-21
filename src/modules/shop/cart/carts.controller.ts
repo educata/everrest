@@ -44,7 +44,7 @@ export class CartsController {
   }
 
   @Delete()
-  clearCart() {
-    return {};
+  clearCart(@CurrentUser() user: UserPayload) {
+    return this.cartsService.clearCart(user);
   }
 }

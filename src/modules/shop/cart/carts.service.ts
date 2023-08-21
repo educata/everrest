@@ -203,4 +203,31 @@ export class CartsService {
       products: products.length,
     };
   }
+
+  async clearCart(userPayload: UserPayload) {
+    const user = await this.userModel.findOne({ _id: userPayload._id });
+
+    if (user && !user.cartID) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.Conflict,
+        'User has to create cart first',
+        CartExpectionKeys.UserDontHaveCart,
+      );
+    }
+
+    const cart = await this.cartModel.findOneAndDelete({ _id: user.cartID });
+
+    if (!cart) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        'User cart already was deleted',
+        CartExpectionKeys.CartAlreadyDeleted,
+      );
+    }
+
+    user.cartID = '';
+    await user.save();
+
+    return { success: true };
+  }
 }

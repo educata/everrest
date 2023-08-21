@@ -49,4 +49,5 @@ export enum CartExpectionKeys {
   UserDontHaveCart = 'errors.user_cart_not_exists',
   UserCartAlreadyExists = 'errors.user_cart_already_exists',
   CartDontHaveThisItem = 'errors.cart_do_not_have_this_item',
+  CartAlreadyDeleted = 'errors.cart_already_deleted',
 }
