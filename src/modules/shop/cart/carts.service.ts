@@ -6,7 +6,7 @@ import {
   ExceptionStatusKeys,
   ProductExceptionKeys,
 } from 'src/enums';
-import { UserPayload } from 'src/interfaces';
+import { UserPayload, CartProduct } from 'src/interfaces';
 import {
   Cart,
   CartDocument,
@@ -16,7 +16,7 @@ import {
   UserDocument,
 } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
-import { CartDto } from '../dtos';
+import { CartDto, ProductIdDto } from '../dtos';
 
 @Injectable()
 export class CartsService {
@@ -139,22 +139,68 @@ export class CartsService {
       }
     }
 
-    cart.total = {
-      price: {
-        current: cart.products.reduce((prev, curr) => {
-          return prev + curr.pricePerQuantity * curr.quantity;
-        }, 0),
-        beforeDiscount: cart.products.reduce((prev, curr) => {
-          return prev + curr.beforeDiscountPrice * curr.quantity;
-        }, 0),
-      },
-      quantity: cart.products.reduce((prev, curr) => {
-        return prev + curr.quantity;
-      }, 0),
-      products: cart.products.length,
-    };
+    cart.total = this.calculateCartTotal(cart.products);
 
     await cart.save();
     return cart;
+  }
+
+  async deleteCartItem(userPayload: UserPayload, body: ProductIdDto) {
+    const user = await this.userModel.findOne({ _id: userPayload._id });
+
+    if (user && !user.cartID) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.Conflict,
+        'User has to create cart first',
+        CartExpectionKeys.UserDontHaveCart,
+      );
+    }
+
+    const product = await this.productModel.findOne({ _id: body.id });
+
+    if (!product) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        `Product with ${body.id} id not found`,
+        ProductExceptionKeys.ProductNotFound,
+      );
+    }
+
+    const cart = await this.cartModel.findOne({ _id: user.cartID });
+
+    const productIndex = cart.products.findIndex(
+      (product) => product.productId === body.id,
+    );
+
+    if (productIndex === -1) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        `Cart doesn't have item with this ${body.id} id`,
+        CartExpectionKeys.CartDontHaveThisItem,
+      );
+    }
+
+    cart.products.splice(productIndex, 1);
+    cart.total = this.calculateCartTotal(cart.products);
+
+    await cart.save();
+    return cart;
+  }
+
+  private calculateCartTotal(products: CartProduct[]) {
+    return {
+      price: {
+        current: products.reduce((prev, curr) => {
+          return prev + curr.pricePerQuantity * curr.quantity;
+        }, 0),
+        beforeDiscount: products.reduce((prev, curr) => {
+          return prev + curr.beforeDiscountPrice * curr.quantity;
+        }, 0),
+      },
+      quantity: products.reduce((prev, curr) => {
+        return prev + curr.quantity;
+      }, 0),
+      products: products.length,
+    };
   }
 }

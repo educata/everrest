@@ -11,7 +11,7 @@ import {
 import { CartsService } from './carts.service';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
-import { CartDto } from '../dtos';
+import { CartDto, ProductIdDto } from '../dtos';
 @Controller('shop/cart')
 @UseGuards(JwtGuard)
 @UseInterceptors(CurrentUserInterceptor)
@@ -39,8 +39,8 @@ export class CartsController {
   }
 
   @Delete('product')
-  deleteCartItem() {
-    return {};
+  deleteCartItem(@CurrentUser() user: UserPayload, @Body() body: ProductIdDto) {
+    return this.cartsService.deleteCartItem(user, body);
   }
 
   @Delete()
