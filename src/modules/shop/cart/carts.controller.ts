@@ -29,8 +29,8 @@ export class CartsController {
   }
 
   @Post('checkout')
-  checkout() {
-    return {};
+  checkout(@CurrentUser() user: UserPayload) {
+    return this.cartsService.checkout(user);
   }
 
   @Patch('product')

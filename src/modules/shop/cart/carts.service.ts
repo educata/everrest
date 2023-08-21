@@ -63,6 +63,14 @@ export class CartsService {
       );
     }
 
+    if (product.stock < body.quantity) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Product stock is outnumbered, product have only ${product.stock} item in stock`,
+        ProductExceptionKeys.ProductStockOutnumbered,
+      );
+    }
+
     const cart = await this.cartModel.create({
       userId: userPayload._id,
       createdAt: new Date().toISOString(),
@@ -229,5 +237,54 @@ export class CartsService {
     await user.save();
 
     return { success: true };
+  }
+
+  async checkout(userPayload: UserPayload) {
+    // TODO: do we need to verify payment ? like adding card and it's validation
+    const user = await this.userModel.findOne({ _id: userPayload._id });
+
+    if (user && !user.cartID) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        "User doesn't have cart",
+        CartExpectionKeys.UserDontHaveCart,
+      );
+    }
+
+    const cart = await this.cartModel.findOne({ _id: user.cartID });
+    const cacheOfProducts = [];
+    let total = 0;
+    cart.products.forEach(async (doc, index) => {
+      const product = await this.productModel.findOne({ _id: doc.productId });
+      if (product) {
+        const productStock = product.stock;
+        product.stock -= doc.quantity;
+        if (product.stock < 0) {
+          this.exceptionService.throwError(
+            ExceptionStatusKeys.Conflict,
+            `Product with this ${doc.productId} id, already sold some items, currently can't checkout becouse product have ${productStock} and user want's ${doc.quantity}`,
+            ProductExceptionKeys.ProductStockSoldBeforeCheckout,
+          );
+          return;
+        }
+        total += doc.quantity;
+        cacheOfProducts.push(product);
+      }
+      if (index + 1 === cart.products.length) {
+        cacheOfProducts.forEach(async (item) => {
+          await this.productModel.findOneAndUpdate(
+            { _id: item.id },
+            { stock: item.stock },
+          );
+        });
+      }
+    });
+    user.cartID = '';
+    await user.save();
+    await cart.deleteOne();
+    return {
+      success: true,
+      message: `Stocks were updated, currently ${total} item were sold. Cart will be cleared, user have to create new cart with POST request`,
+    };
   }
 }

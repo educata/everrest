@@ -14,6 +14,7 @@ export enum ExceptionStatusKeys {
 export enum ProductExceptionKeys {
   ProductNotFound = 'errors.product_not_found',
   ProductStockOutnumbered = 'errors.product_stock_outnumbered',
+  ProductStockSoldBeforeCheckout = 'errors.product_stock_sold_before_checkout',
   RatingNotNumber = 'errors.rating_not_number',
   RatingTooLow = 'errors.rating_too_low',
   RatingTooHigh = 'errors.rating_too_high',
