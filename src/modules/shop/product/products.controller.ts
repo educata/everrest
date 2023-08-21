@@ -8,7 +8,7 @@ import {
   Post,
   Query,
   UseGuards,
-  Request,
+  UseInterceptors,
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import {
@@ -18,7 +18,8 @@ import {
   UpdateProductDto,
   UpdateRatingProductDto,
 } from '../dtos';
-import { JwtGuard } from 'src/shared';
+import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
+import { UserPayload } from 'src/interfaces';
 
 @Controller('shop/products')
 export class ProductsController {
@@ -37,13 +38,14 @@ export class ProductsController {
     return this.productsService.updateProduct(id, updateProductDto);
   }
 
-  @UseGuards(JwtGuard)
   @Post('rate')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
   updateProductRating(
+    @CurrentUser() user: UserPayload,
     @Body() updateProductDto: UpdateRatingProductDto,
-    @Request() req,
   ) {
-    return this.productsService.updateProductRating(updateProductDto, req.user);
+    return this.productsService.updateProductRating(updateProductDto, user);
   }
 
   @Post()

@@ -22,6 +22,7 @@ export class Product {
         userId: { type: String },
         value: { type: Number },
         createdAt: { type: String },
+        _id: false,
       },
     ],
   })

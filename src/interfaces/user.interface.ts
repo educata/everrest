@@ -17,3 +17,7 @@ export interface User {
   cartID: string;
   chatIds: string[];
 }
+
+export type UnwantedKeys = 'password' | 'cartID' | 'chatIds';
+
+export type UserPayload = Omit<User, UnwantedKeys>;

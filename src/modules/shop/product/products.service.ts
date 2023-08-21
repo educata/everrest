@@ -17,7 +17,7 @@ import {
   SortDirection,
   SortProductsBy,
 } from 'src/enums';
-import { ProductCategory, User } from 'src/interfaces';
+import { ProductCategory, UserPayload } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
 
 @Injectable()
@@ -71,7 +71,7 @@ export class ProductsService {
 
   async updateProductRating(
     updateRatingProductDto: UpdateRatingProductDto,
-    user: Omit<User, 'password' | 'cartID' | 'chatIds'>,
+    user: UserPayload,
   ) {
     const product = await this.getProductById(updateRatingProductDto.productId);
     const updatedProductRating = [...product.ratings];

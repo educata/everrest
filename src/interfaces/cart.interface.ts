@@ -1,19 +1,23 @@
-import { Product } from './product.interface';
-
 export interface Cart {
   _id: string;
+  userId: string;
+  createdAt: string;
   products: CartProduct[];
-  total: {
-    price: {
-      current: number;
-      beforeDiscount: number;
-    };
-    quantity: number;
-    products: number;
-  };
+  total: CartTotal;
 }
 
-export interface CartProduct extends Product {
+export interface CartTotal {
+  price: {
+    current: number;
+    beforeDiscount: number;
+  };
+  quantity: number;
+  products: number;
+}
+
+export interface CartProduct {
   quantity: number;
   pricePerQuantity: number;
+  productId: string;
+  beforeDiscountPrice: number;
 }

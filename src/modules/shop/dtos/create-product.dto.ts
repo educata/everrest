@@ -1,5 +1,5 @@
 import { ProductPrice, ProductCategory } from 'src/interfaces';
-
+// TODO: add validation
 export class CreateProductDto {
   title: string;
   description: string;

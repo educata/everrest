@@ -11,7 +11,7 @@ import { AuthService } from './auth.service';
 import { SignUpDto } from '../dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
-import { JwtGuard } from '../../../shared';
+import { JwtGuard } from 'src/shared';
 
 @Controller('auth')
 export class AuthController {

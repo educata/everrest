@@ -22,11 +22,11 @@ export class JwtGuard implements CanActivate {
       );
     }
     try {
-      const payload = await this.jwtService.verifyAsync(token, {
+      await this.jwtService.verifyAsync(token, {
         secret: `${process.env.JWT_SECRET}`,
       });
-      request['user'] = payload;
     } catch (err) {
+      // TODO: if it is possible improve error handling for expired/invalid tokens
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Invalid token',
