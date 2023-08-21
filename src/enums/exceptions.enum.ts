@@ -13,6 +13,7 @@ export enum ExceptionStatusKeys {
 
 export enum ProductExceptionKeys {
   ProductNotFound = 'errors.product_not_found',
+  ProductStockOutnumbered = 'errors.product_stock_outnumbered',
   RatingNotNumber = 'errors.rating_not_number',
   RatingTooLow = 'errors.rating_too_low',
   RatingTooHigh = 'errors.rating_too_high',

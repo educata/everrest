@@ -68,15 +68,15 @@ export class CartsService {
       createdAt: new Date().toISOString(),
       total: {
         price: {
-          current: product.price.current * body.quanity,
-          beforeDiscount: product.price.beforeDiscount * body.quanity,
+          current: product.price.current * body.quantity,
+          beforeDiscount: product.price.beforeDiscount * body.quantity,
         },
-        quantity: body.quanity,
+        quantity: body.quantity,
         products: 1,
       },
       products: [
         {
-          quantity: body.quanity,
+          quantity: body.quantity,
           pricePerQuantity: product.price.current,
           beforeDiscountPrice: product.price.beforeDiscount,
           productId: body.id,
@@ -111,6 +111,14 @@ export class CartsService {
       );
     }
 
+    if (product.stock < body.quantity) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Product stock is outnumbered, product have only ${product.stock} item in stock`,
+        ProductExceptionKeys.ProductStockOutnumbered,
+      );
+    }
+
     const cart = await this.cartModel.findOne({ _id: user.cartID });
     const itemIndex = cart.products.findIndex(
       (product) => product.productId === body.id,
@@ -118,16 +126,16 @@ export class CartsService {
 
     if (itemIndex === -1) {
       cart.products.push({
-        quantity: body.quanity,
+        quantity: body.quantity,
         pricePerQuantity: product.price.current,
         productId: product.id,
         beforeDiscountPrice: product.price.beforeDiscount,
       });
     } else {
-      if (body.quanity <= 0) {
+      if (body.quantity <= 0) {
         cart.products.splice(itemIndex, 1);
       } else {
-        cart.products[itemIndex].quantity = body.quanity;
+        cart.products[itemIndex].quantity = body.quantity;
       }
     }
 
