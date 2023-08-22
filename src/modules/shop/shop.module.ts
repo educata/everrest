@@ -12,6 +12,7 @@ import {
 import { ExceptionService } from 'src/shared';
 import { ProductsController, ProductsService } from './product';
 import { CartsController, CartsService } from './cart';
+import { MongooseValidatorService } from 'src/shared/mongoose-validator.service';
 
 @Module({
   imports: [
@@ -26,7 +27,12 @@ import { CartsController, CartsService } from './cart';
       signOptions: { expiresIn: `${process.env.JWT_EXPIRES_IN || '1'}h` },
     }),
   ],
-  providers: [ExceptionService, ProductsService, CartsService],
+  providers: [
+    ExceptionService,
+    ProductsService,
+    CartsService,
+    MongooseValidatorService,
+  ],
   controllers: [ProductsController, CartsController],
 })
 export class ShopModule {}
