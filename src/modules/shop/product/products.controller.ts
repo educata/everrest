@@ -20,13 +20,18 @@ import {
 } from '../dtos';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
+import { MongooseValidatorService } from 'src/shared/mongoose-validator.service';
 
 @Controller('shop/products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(
+    private readonly productsService: ProductsService,
+    private readonly mongooseValidator: MongooseValidatorService,
+  ) {}
 
   @Get('id/:id')
   getProductById(@Param('id') id: string) {
+    this.mongooseValidator.isValidObjectId(id);
     return this.productsService.getProductById(id);
   }
 
@@ -35,6 +40,7 @@ export class ProductsController {
     @Param('id') id: string,
     @Body() updateProductDto: UpdateProductDto,
   ) {
+    this.mongooseValidator.isValidObjectId(id);
     return this.productsService.updateProduct(id, updateProductDto);
   }
 

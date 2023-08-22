@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import mongoose, { Model, SortOrder } from 'mongoose';
+import { Model, SortOrder } from 'mongoose';
 
 import {
   CreateProductDto,
@@ -11,12 +11,7 @@ import {
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
-import {
-  ExceptionStatusKeys,
-  GlobalExceptionKeys,
-  SortDirection,
-  SortProductsBy,
-} from 'src/enums';
+import { ExceptionStatusKeys, SortDirection, SortProductsBy } from 'src/enums';
 import { ProductCategory, UserPayload } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
 
@@ -36,14 +31,6 @@ export class ProductsService {
   }
 
   async getProductById(id: string): Promise<Product> {
-    // TODO: Implement pipe or way to check id | we have to use mongoose.isValidObjectId
-    if (!mongoose.isValidObjectId(id)) {
-      this.exceptionService.throwError(
-        ExceptionStatusKeys.BadRequest,
-        'id must provided from product',
-        GlobalExceptionKeys.IncorrectMongooseID,
-      );
-    }
     const product = await this.productModel.findById(id);
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
@@ -52,15 +39,7 @@ export class ProductsService {
     return product;
   }
 
-  // TODO: Implement middleware or way to check id | we have to use mongoose.isValidObjectId
   async updateProduct(id: string, body: UpdateProductDto): Promise<Product> {
-    if (!mongoose.isValidObjectId(id)) {
-      this.exceptionService.throwError(
-        ExceptionStatusKeys.BadRequest,
-        'id must provided from product',
-        GlobalExceptionKeys.IncorrectMongooseID,
-      );
-    }
     const product = await this.productModel.findOneAndUpdate({ _id: id }, body);
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);

@@ -1,5 +1,10 @@
+import { IsString } from 'class-validator';
+import { MongooseId } from 'src/shared/mongoose-id.decorator';
+
 // TODO: add validation
 export class CartDto {
-  id: string; // TODO: validation for mongooseId
+  @IsString()
+  @MongooseId()
+  id: string;
   quantity: number;
 }
