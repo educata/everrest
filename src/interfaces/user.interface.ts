@@ -13,6 +13,7 @@ export interface User {
   zipcode: string;
   avatar: string;
   gender: Gender;
+  verified: boolean;
   // additional
   cartID: string;
   chatIds: string[];

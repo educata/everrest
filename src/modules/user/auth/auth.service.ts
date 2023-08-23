@@ -37,6 +37,7 @@ export class AuthService {
       chatIds: [],
       cartID: '',
       role: UserRole.Default,
+      verified: false,
     });
 
     return user;
@@ -55,6 +56,7 @@ export class AuthService {
       avatar: user.avatar,
       gender: user.gender,
       phone: user.phone,
+      verified: user.verified,
     };
   }
 

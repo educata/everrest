@@ -18,6 +18,7 @@ export class User {
   @Prop() avatar: string;
   @Prop() gender: Gender;
   @Prop() cartID: string;
+  @Prop() verified: boolean;
   @Prop([String]) chatIds: string[];
 }
 
