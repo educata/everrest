@@ -35,7 +35,6 @@ export class ProductsService {
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
     }
-    // TODO: implement way to remove ratings array from response
     return product;
   }
 
@@ -44,7 +43,6 @@ export class ProductsService {
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
     }
-    // TODO: implement way to remove ratings array from response
     return product;
   }
 
@@ -52,7 +50,14 @@ export class ProductsService {
     updateRatingProductDto: UpdateRatingProductDto,
     user: UserPayload,
   ) {
-    const product = await this.getProductById(updateRatingProductDto.productId);
+    const product = await this.productModel
+      .findById(updateRatingProductDto.productId)
+      .populate('ratings');
+
+    if (!product) {
+      this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
+    }
+
     const updatedProductRating = [...product.ratings];
     updatedProductRating.push({
       userId: user._id,
@@ -71,6 +76,7 @@ export class ProductsService {
         ratings: updatedProductRating,
       },
     );
+
     return this.getProductById(newProduct.id);
   }
 
@@ -94,7 +100,6 @@ export class ProductsService {
       .limit(responsePerPage)
       .skip(skip);
     const productsCount = await this.productModel.countDocuments({});
-    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,
@@ -168,7 +173,6 @@ export class ProductsService {
       .sort({ ...sortObject })
       .limit(responsePerPage)
       .skip(skip);
-    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,
@@ -206,7 +210,6 @@ export class ProductsService {
     const productsCount = await this.productModel.countDocuments({
       'category.id': categoryId,
     });
-    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,
@@ -238,7 +241,6 @@ export class ProductsService {
     const productsCount = await this.productModel.countDocuments({
       brand: brandName,
     });
-    // TODO: implement way to remove ratings array from response
     return {
       total: productsCount,
       limit: responsePerPage,

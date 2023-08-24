@@ -1,16 +1,5 @@
-import { ProductPrice, ProductCategory } from 'src/interfaces';
+import { Product } from 'src/schemas';
+
 // TODO: add validation
-export class ProductDto {
-  id: string;
-  title: string;
-  description: string;
-  issueDate: string;
-  thumbnail: string;
-  images: string[];
-  price: ProductPrice;
-  stock: number;
-  rating: number[];
-  category: ProductCategory;
-  brand: string;
-  warranty: number;
-}
+
+export class ProductDto extends Product {}

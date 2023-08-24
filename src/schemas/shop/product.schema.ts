@@ -25,6 +25,7 @@ export class Product {
         _id: false,
       },
     ],
+    select: false,
   })
   ratings: ProductRating[];
 
