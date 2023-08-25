@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/schemas';
 import { JwtStrategy, LocalStrategy } from './auth/strategies';
 import { RefreshJwtGuard } from './auth/guards';
+import { MailModule } from '../mail';
 
 @Module({
   imports: [
@@ -17,6 +18,7 @@ import { RefreshJwtGuard } from './auth/guards';
       secret: `${process.env.JWT_SECRET}`,
       signOptions: { expiresIn: `${process.env.JWT_EXPIRES_IN || '1'}h` },
     }),
+    MailModule,
   ],
   providers: [
     ExceptionService,

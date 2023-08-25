@@ -12,9 +12,11 @@ import {
 import { ExceptionService } from 'src/shared';
 import { ProductsController, ProductsService } from './product';
 import { CartsController, CartsService } from './cart';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     MongooseModule.forFeature([
       { name: Product.name, schema: ProductSchema },
       { name: Cart.name, schema: CartSchema },

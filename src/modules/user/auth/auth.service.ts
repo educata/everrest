@@ -8,6 +8,7 @@ import { User as UserInterface } from 'src/interfaces';
 import { AuthExpectionKeys, ExceptionStatusKeys, UserRole } from 'src/enums';
 import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
+import { MailService } from 'src/modules/mail';
 
 @Injectable()
 export class AuthService {
@@ -16,6 +17,7 @@ export class AuthService {
     private exceptionService: ExceptionService,
     private encryptionService: EncryptionService,
     private jwtService: JwtService,
+    private mailService: MailService,
   ) {}
 
   async signUp(body: SignUpDto) {
@@ -109,5 +111,17 @@ export class AuthService {
     return {
       access_token: accessToken,
     };
+  }
+
+  async test() {
+    await this.mailService.sendEmail({
+      email: 'kdautinishvili@gmail.com',
+      template: './test',
+      subject: 'test',
+      context: {
+        name: 'test',
+      },
+    });
+    return 'email sent';
   }
 }

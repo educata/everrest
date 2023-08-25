@@ -31,8 +31,7 @@ export class AuthController {
   @UseGuards(JwtGuard)
   @Get('test')
   someSafeRoute() {
-    // TODO: remove it later
-    return 'safe route reached';
+    return this.authService.test();
   }
 
   @UseGuards(RefreshJwtGuard)
