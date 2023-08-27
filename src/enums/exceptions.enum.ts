@@ -44,6 +44,8 @@ export enum AuthExpectionKeys {
   TokenInvalid = 'errors.token_invalid',
   TokenExpired = 'errors.token_expired',
   TokenNotFound = 'errors.token_not_found',
+  TokenContainsIncorrectUser = 'errors.token_contain_incorrect_email',
+  AlreadyVerified = 'errors.already_verified',
 }
 
 export enum CartExpectionKeys {

@@ -1,14 +1,21 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
+import { Response } from 'express';
 import { User, UserDocument } from 'src/schemas';
 import { EncryptionService, ExceptionService } from 'src/shared';
-import { SignUpDto } from '../dtos';
+import { BASE_URL } from 'src/consts';
 import { User as UserInterface } from 'src/interfaces';
-import { AuthExpectionKeys, ExceptionStatusKeys, UserRole } from 'src/enums';
-import { JwtService } from '@nestjs/jwt';
-import { Response } from 'express';
+import {
+  AuthExpectionKeys,
+  ExceptionStatusKeys,
+  UserRole,
+  AuthActions,
+} from 'src/enums';
 import { MailService } from 'src/modules/mail';
+import { SignUpDto } from '../dtos';
+import { generateVerifyPageTemplate } from 'src/modules/mail/templates';
 
 @Injectable()
 export class AuthService {
@@ -41,6 +48,8 @@ export class AuthService {
       role: UserRole.Default,
       verified: false,
     });
+
+    this.verifyEmail(user.email, true);
 
     return user;
   }
@@ -114,14 +123,123 @@ export class AuthService {
   }
 
   async test() {
-    await this.mailService.sendEmail({
-      email: 'kdautinishvili@gmail.com',
-      template: './test',
-      subject: 'test',
-      context: {
-        name: 'test',
+    return 'Safe route reached';
+  }
+
+  async verifyEmail(email: string, isFromSignUp = false) {
+    const user = await this.userModel.findOne({ email });
+
+    if (user) {
+      if (user.verified) {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          `User with this '${email}' already verified`,
+          AuthExpectionKeys.AlreadyVerified,
+        );
+      } else {
+        await this.mailService.sendEmail({
+          email: user.email,
+          template: './verify',
+          subject: 'Verify account',
+          context: {
+            showExpireTime: !isFromSignUp,
+            name: user.firstName,
+            link: `${BASE_URL}/auth/verify/${this.jwtService.sign(
+              {
+                email,
+                action: AuthActions.Verify,
+              },
+              { expiresIn: isFromSignUp ? '10y' : '1h' },
+            )}`,
+          },
+        });
+      }
+    }
+
+    return {
+      status: 200,
+      message:
+        'If we find the email in the database, we will send a recovery email',
+    };
+  }
+
+  async generateDocument(token: string) {
+    const result = await this.getResultWhileDecodeFromURL(token);
+
+    const user = await this.userModel.findOne({ email: result.email });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${result.email}' does not exists`,
+        AuthExpectionKeys.TokenContainsIncorrectUser,
+      );
+    }
+
+    return generateVerifyPageTemplate(
+      {
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
       },
-    });
-    return 'email sent';
+      `${BASE_URL}/auth/submit/${this.jwtService.sign({
+        email: user.email,
+        action: AuthActions.Submit,
+      })}`,
+    );
+  }
+
+  async submitEmailToken(token: string) {
+    const result = await this.getResultWhileDecodeFromURL(token);
+
+    const user = await this.userModel.findOne({ email: result.email });
+
+    if (user) {
+      if (result.action === AuthActions.Submit) {
+        if (user.verified) {
+          return { success: false, message: 'User already verified' };
+        } else {
+          user.verified = true;
+          user.save();
+          return { success: true, message: 'User successfully verified' };
+        }
+      } else {
+        return { success: false, message: 'Incorrect action' };
+      }
+    } else {
+      return { success: false, message: 'User not found' };
+    }
+  }
+
+  private async getResultWhileDecodeFromURL(token: string) {
+    let result: {
+      email: string;
+      iat: number;
+      exp: number;
+      action: string;
+    };
+
+    try {
+      result = await this.jwtService.verifyAsync(token, {
+        secret: `${process.env.JWT_SECRET}`,
+      });
+    } catch (err) {
+      const errorName = err.name || '';
+      if (errorName === 'TokenExpiredError') {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          `Token expired, expired at: "${err.expiredAt}"`,
+          AuthExpectionKeys.TokenExpired,
+        );
+      } else {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          'Invalid token',
+          AuthExpectionKeys.TokenInvalid,
+        );
+      }
+    }
+
+    return result;
   }
 }

@@ -6,9 +6,10 @@ import {
   Request,
   Get,
   Res,
+  Param,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignUpDto } from '../dtos';
+import { SignUpDto, VerifyEmailDto } from '../dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
 import { JwtGuard } from 'src/shared';
@@ -38,5 +39,20 @@ export class AuthController {
   @Post('refresh')
   refreshToken(@Request() req, @Res({ passthrough: true }) response: Response) {
     return this.authService.refreshToken(req.user, response);
+  }
+
+  @Post('verify_email')
+  verifyEmail(@Body() body: VerifyEmailDto) {
+    return this.authService.verifyEmail(body.email, false);
+  }
+
+  @Get('verify/:token')
+  verifyDocument(@Param('token') token: string) {
+    return this.authService.generateDocument(token);
+  }
+
+  @Get('submit/:token')
+  submitEmail(@Param('token') token: string) {
+    return this.authService.submitEmailToken(token);
   }
 }
