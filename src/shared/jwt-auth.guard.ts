@@ -26,12 +26,20 @@ export class JwtGuard implements CanActivate {
         secret: `${process.env.JWT_SECRET}`,
       });
     } catch (err) {
-      // TODO: if it is possible improve error handling for expired/invalid tokens
-      this.exceptionService.throwError(
-        ExceptionStatusKeys.BadRequest,
-        'Invalid token',
-        AuthExpectionKeys.TokenInvalid,
-      );
+      const errorName = err.name || '';
+      if (errorName === 'TokenExpiredError') {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          `Token expired, expired at: ${err.expiredAt}`,
+          AuthExpectionKeys.TokenExpired,
+        );
+      } else {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          'Invalid token',
+          AuthExpectionKeys.TokenInvalid,
+        );
+      }
     }
     return true;
   }
