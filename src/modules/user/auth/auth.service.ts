@@ -368,9 +368,11 @@ export class AuthService {
   }
 
   async deleteCurrentUser(userPayload: UserPayload) {
-    const user = await this.userModel.deleteOne({ email: userPayload.email });
+    const user = await this.userModel.findOneAndDelete({
+      email: userPayload.email,
+    });
 
-    if (user.deletedCount === 0) {
+    if (!user) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `User already deleted`,
