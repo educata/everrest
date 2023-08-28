@@ -9,6 +9,7 @@ import {
   Param,
   Patch,
   UseInterceptors,
+  Delete,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
@@ -89,5 +90,12 @@ export class AuthController {
     @Body() body: UpdateUserPasswordDto,
   ) {
     return this.authService.updateUserPassword(user, body);
+  }
+
+  @Delete('delete')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  deleteCurrentUser(@CurrentUser() user: UserPayload) {
+    return this.authService.deleteCurrentUser(user);
   }
 }

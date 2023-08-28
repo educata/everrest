@@ -366,4 +366,8 @@ export class AuthService {
 
     return this.createPayload(user as unknown as UserInterface);
   }
+
+  deleteCurrentUser(userPayload: UserPayload) {
+    return this.userModel.deleteOne({ email: userPayload.email });
+  }
 }
