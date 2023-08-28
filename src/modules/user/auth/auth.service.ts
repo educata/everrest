@@ -6,7 +6,7 @@ import { Response } from 'express';
 import { User, UserDocument } from 'src/schemas';
 import { EncryptionService, ExceptionService } from 'src/shared';
 import { BASE_URL } from 'src/consts';
-import { User as UserInterface } from 'src/interfaces';
+import { User as UserInterface, UserPayload } from 'src/interfaces';
 import {
   AuthExpectionKeys,
   ExceptionStatusKeys,
@@ -14,7 +14,7 @@ import {
   AuthActions,
 } from 'src/enums';
 import { MailService } from 'src/modules/mail';
-import { SignUpDto } from '../dtos';
+import { SignUpDto, UpdateUserDto } from '../dtos';
 import {
   generateVerifyPageTemplate,
   generateResetPageTemplate,
@@ -315,5 +315,23 @@ export class AuthService {
     });
 
     return generateResetPageTemplate(user.email);
+  }
+
+  async updateUser(userPayload: UserPayload, body: UpdateUserDto) {
+    const user = await this.userModel.findOneAndUpdate(
+      { email: userPayload.email },
+      {
+        firstName: body.firstName,
+        lastName: body.lastName,
+        age: body.age,
+        email: body.email,
+        address: body.address,
+        phone: body.phone,
+        zipcode: body.zipcode,
+        avatar: body.avatar,
+        gender: body.gender,
+      },
+    );
+    return this.userModel.findOne({ _id: user.id });
   }
 }

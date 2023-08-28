@@ -7,12 +7,15 @@ import {
   Get,
   Res,
   Param,
+  Patch,
+  UseInterceptors,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignUpDto, VerifyEmailDto } from '../dtos';
+import { SignUpDto, UpdateUserDto, VerifyEmailDto } from '../dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
-import { JwtGuard } from 'src/shared';
+import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
+import { UserPayload } from 'src/interfaces';
 
 @Controller('auth')
 export class AuthController {
@@ -64,5 +67,12 @@ export class AuthController {
   @Get('recovery/:token')
   recoveryPasswordPage(@Param('token') token: string) {
     return this.authService.generatePasswordReset(token);
+  }
+
+  @Patch('update')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  updateUser(@CurrentUser() user: UserPayload, @Body() body: UpdateUserDto) {
+    return this.authService.updateUser(user, body);
   }
 }

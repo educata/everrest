@@ -25,6 +25,7 @@ export class JwtGuard implements CanActivate {
       await this.jwtService.verifyAsync(token, {
         secret: `${process.env.JWT_SECRET}`,
       });
+      // TODO: check if decoded token contains correct user email
     } catch (err) {
       const errorName = err.name || '';
       if (errorName === 'TokenExpiredError') {
