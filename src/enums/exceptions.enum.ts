@@ -49,6 +49,7 @@ export enum AuthExpectionKeys {
   AlreadyVerified = 'errors.already_verified',
   OldPasswordIncorrect = 'errors.old_password_incorrect',
   ChangePasswordsMatch = 'errors.change_passwords_matchs',
+  UserAlreadyDeleted = 'errors.user_already_deleted',
 }
 
 export enum CartExpectionKeys {

@@ -367,7 +367,19 @@ export class AuthService {
     return this.createPayload(user as unknown as UserInterface);
   }
 
-  deleteCurrentUser(userPayload: UserPayload) {
-    return this.userModel.deleteOne({ email: userPayload.email });
+  async deleteCurrentUser(userPayload: UserPayload) {
+    const user = await this.userModel.deleteOne({ email: userPayload.email });
+
+    if (user.deletedCount === 0) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User already deleted`,
+        AuthExpectionKeys.UserAlreadyDeleted,
+      );
+    }
+
+    return {
+      acknowledged: true,
+    };
   }
 }
