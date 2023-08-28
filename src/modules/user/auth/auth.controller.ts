@@ -55,4 +55,14 @@ export class AuthController {
   submitEmail(@Param('token') token: string) {
     return this.authService.submitEmailToken(token);
   }
+
+  @Post('recovery')
+  recoveryPassword(@Body() body: VerifyEmailDto) {
+    return this.authService.recoveryPassword(body.email);
+  }
+
+  @Get('recovery/:token')
+  recoveryPasswordPage(@Param('token') token: string) {
+    return this.authService.generatePasswordReset(token);
+  }
 }

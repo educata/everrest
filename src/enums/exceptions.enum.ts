@@ -45,6 +45,7 @@ export enum AuthExpectionKeys {
   TokenExpired = 'errors.token_expired',
   TokenNotFound = 'errors.token_not_found',
   TokenContainsIncorrectUser = 'errors.token_contain_incorrect_email',
+  TokenContainsIncorrectAction = 'errors.token_contain_incorrect_action',
   AlreadyVerified = 'errors.already_verified',
 }
 

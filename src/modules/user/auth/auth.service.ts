@@ -15,7 +15,10 @@ import {
 } from 'src/enums';
 import { MailService } from 'src/modules/mail';
 import { SignUpDto } from '../dtos';
-import { generateVerifyPageTemplate } from 'src/modules/mail/templates';
+import {
+  generateVerifyPageTemplate,
+  generateResetPageTemplate,
+} from 'src/modules/mail/templates';
 
 @Injectable()
 export class AuthService {
@@ -159,7 +162,7 @@ export class AuthService {
     return {
       status: 200,
       message:
-        'If we find the email in the database, we will send a recovery email',
+        'If we find the email in the database, we will send a verify mail',
     };
   }
 
@@ -241,5 +244,76 @@ export class AuthService {
     }
 
     return result;
+  }
+
+  async recoveryPassword(email: string) {
+    const user = await this.userModel.findOne({ email });
+
+    if (user) {
+      if (user.verified) {
+        await this.mailService.sendEmail({
+          email: user.email,
+          template: './recovery',
+          subject: 'Recovery password',
+          context: {
+            name: user.firstName,
+            email: user.email,
+            link: `${BASE_URL}/auth/recovery/${this.jwtService.sign(
+              {
+                email,
+                action: AuthActions.Recovery,
+              },
+              { expiresIn: '15m' },
+            )}`,
+          },
+        });
+      }
+    }
+
+    return {
+      status: 200,
+      message:
+        'If we find the verified email in the database, we will send a recovery mail',
+    };
+  }
+
+  async generatePasswordReset(token: string) {
+    const result = await this.getResultWhileDecodeFromURL(token);
+
+    if (result.action !== AuthActions.Recovery) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Incorrect action, wrong path usage`,
+        AuthExpectionKeys.TokenContainsIncorrectAction,
+      );
+    }
+
+    const randomPassword = this.encryptionService.generateRandomPassword(10);
+    const hashedPassword = await this.encryptionService.hash(randomPassword);
+
+    const user = await this.userModel.findOne({ email: result.email });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${result.email}' does not exists`,
+        AuthExpectionKeys.TokenContainsIncorrectUser,
+      );
+    }
+
+    user.password = hashedPassword;
+    await user.save();
+
+    await this.mailService.sendEmail({
+      email: user.email,
+      template: './recovery-result',
+      subject: 'Recovery password result',
+      context: {
+        name: user.firstName,
+        password: randomPassword,
+      },
+    });
+
+    return generateResetPageTemplate(user.email);
   }
 }
