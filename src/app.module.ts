@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ShopModule, UserModule } from './modules';
+import { ShopModule, UserModule, MailModule } from './modules';
 import { ExceptionService } from './shared';
 import { EncryptionService } from './shared/encryption.service';
 @Module({
@@ -13,6 +13,7 @@ import { EncryptionService } from './shared/encryption.service';
     MongooseModule.forRoot(process.env.DATABASE_URL),
     ShopModule,
     UserModule,
+    MailModule,
   ],
   controllers: [AppController],
   providers: [AppService, ExceptionService, EncryptionService],

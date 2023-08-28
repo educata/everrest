@@ -1,13 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
+import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
+import { Response } from 'express';
 import { User, UserDocument } from 'src/schemas';
 import { EncryptionService, ExceptionService } from 'src/shared';
-import { SignUpDto } from '../dtos';
-import { User as UserInterface } from 'src/interfaces';
-import { AuthExpectionKeys, ExceptionStatusKeys, UserRole } from 'src/enums';
-import { JwtService } from '@nestjs/jwt';
-import { Response } from 'express';
+import { BASE_URL } from 'src/consts';
+import { User as UserInterface, UserPayload } from 'src/interfaces';
+import {
+  AuthExpectionKeys,
+  ExceptionStatusKeys,
+  UserRole,
+  AuthActions,
+} from 'src/enums';
+import { MailService } from 'src/modules/mail';
+import { SignUpDto, UpdateUserDto, UpdateUserPasswordDto } from '../dtos';
+import {
+  generateVerifyPageTemplate,
+  generateResetPageTemplate,
+} from 'src/modules/mail/templates';
 
 @Injectable()
 export class AuthService {
@@ -16,6 +27,7 @@ export class AuthService {
     private exceptionService: ExceptionService,
     private encryptionService: EncryptionService,
     private jwtService: JwtService,
+    private mailService: MailService,
   ) {}
 
   async signUp(body: SignUpDto) {
@@ -37,7 +49,10 @@ export class AuthService {
       chatIds: [],
       cartID: '',
       role: UserRole.Default,
+      verified: false,
     });
+
+    this.verifyEmail(user.email, true);
 
     return user;
   }
@@ -55,6 +70,7 @@ export class AuthService {
       avatar: user.avatar,
       gender: user.gender,
       phone: user.phone,
+      verified: user.verified,
     };
   }
 
@@ -106,6 +122,266 @@ export class AuthService {
     });
     return {
       access_token: accessToken,
+    };
+  }
+
+  async test() {
+    return 'Safe route reached';
+  }
+
+  async verifyEmail(email: string, isFromSignUp = false) {
+    const user = await this.userModel.findOne({ email });
+
+    if (user) {
+      if (user.verified) {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          `User with this '${email}' already verified`,
+          AuthExpectionKeys.AlreadyVerified,
+        );
+      } else {
+        await this.mailService.sendEmail({
+          email: user.email,
+          template: './verify',
+          subject: 'Verify account',
+          context: {
+            showExpireTime: !isFromSignUp,
+            name: user.firstName,
+            link: `${BASE_URL}/auth/verify/${this.jwtService.sign(
+              {
+                email,
+                action: AuthActions.Verify,
+              },
+              { expiresIn: isFromSignUp ? '10y' : '1h' },
+            )}`,
+          },
+        });
+      }
+    }
+
+    return {
+      status: 200,
+      message:
+        'If we find the email in the database, we will send a verify mail',
+    };
+  }
+
+  async generateDocument(token: string) {
+    const result = await this.getResultWhileDecodeFromURL(token);
+
+    const user = await this.userModel.findOne({ email: result.email });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${result.email}' does not exists`,
+        AuthExpectionKeys.TokenContainsIncorrectUser,
+      );
+    }
+
+    return generateVerifyPageTemplate(
+      {
+        email: user.email,
+        firstName: user.firstName,
+        lastName: user.lastName,
+      },
+      `${BASE_URL}/auth/submit/${this.jwtService.sign({
+        email: user.email,
+        action: AuthActions.Submit,
+      })}`,
+    );
+  }
+
+  async submitEmailToken(token: string) {
+    const result = await this.getResultWhileDecodeFromURL(token);
+
+    const user = await this.userModel.findOne({ email: result.email });
+
+    if (user) {
+      if (result.action === AuthActions.Submit) {
+        if (user.verified) {
+          return { success: false, message: 'User already verified' };
+        } else {
+          user.verified = true;
+          user.save();
+          return { success: true, message: 'User successfully verified' };
+        }
+      } else {
+        return { success: false, message: 'Incorrect action' };
+      }
+    } else {
+      return { success: false, message: 'User not found' };
+    }
+  }
+
+  private async getResultWhileDecodeFromURL(token: string) {
+    let result: {
+      email: string;
+      iat: number;
+      exp: number;
+      action: string;
+    };
+
+    try {
+      result = await this.jwtService.verifyAsync(token, {
+        secret: `${process.env.JWT_SECRET}`,
+      });
+    } catch (err) {
+      const errorName = err.name || '';
+      if (errorName === 'TokenExpiredError') {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          `Token expired, expired at: "${err.expiredAt}"`,
+          AuthExpectionKeys.TokenExpired,
+        );
+      } else {
+        this.exceptionService.throwError(
+          ExceptionStatusKeys.BadRequest,
+          'Invalid token',
+          AuthExpectionKeys.TokenInvalid,
+        );
+      }
+    }
+
+    return result;
+  }
+
+  async recoveryPassword(email: string) {
+    const user = await this.userModel.findOne({ email });
+
+    if (user) {
+      if (user.verified) {
+        await this.mailService.sendEmail({
+          email: user.email,
+          template: './recovery',
+          subject: 'Recovery password',
+          context: {
+            name: user.firstName,
+            email: user.email,
+            link: `${BASE_URL}/auth/recovery/${this.jwtService.sign(
+              {
+                email,
+                action: AuthActions.Recovery,
+              },
+              { expiresIn: '15m' },
+            )}`,
+          },
+        });
+      }
+    }
+
+    return {
+      status: 200,
+      message:
+        'If we find the verified email in the database, we will send a recovery mail',
+    };
+  }
+
+  async generatePasswordReset(token: string) {
+    const result = await this.getResultWhileDecodeFromURL(token);
+
+    if (result.action !== AuthActions.Recovery) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Incorrect action, wrong path usage`,
+        AuthExpectionKeys.TokenContainsIncorrectAction,
+      );
+    }
+
+    const randomPassword = this.encryptionService.generateRandomPassword(10);
+    const hashedPassword = await this.encryptionService.hash(randomPassword);
+
+    const user = await this.userModel.findOne({ email: result.email });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${result.email}' does not exists`,
+        AuthExpectionKeys.TokenContainsIncorrectUser,
+      );
+    }
+
+    user.password = hashedPassword;
+    await user.save();
+
+    await this.mailService.sendEmail({
+      email: user.email,
+      template: './recovery-result',
+      subject: 'Recovery password result',
+      context: {
+        name: user.firstName,
+        password: randomPassword,
+      },
+    });
+
+    return generateResetPageTemplate(user.email);
+  }
+
+  async updateUser(userPayload: UserPayload, body: UpdateUserDto) {
+    const user = await this.userModel.findOneAndUpdate(
+      { email: userPayload.email },
+      {
+        firstName: body.firstName,
+        lastName: body.lastName,
+        age: body.age,
+        email: body.email,
+        address: body.address,
+        phone: body.phone,
+        zipcode: body.zipcode,
+        avatar: body.avatar,
+        gender: body.gender,
+      },
+    );
+    return this.userModel.findOne({ _id: user.id });
+  }
+
+  async updateUserPassword(
+    userPayload: UserPayload,
+    body: UpdateUserPasswordDto,
+  ) {
+    if (body.newPassword === body.oldPassword) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Old and new passwords can not be same`,
+        AuthExpectionKeys.ChangePasswordsMatch,
+      );
+    }
+
+    const user = await this.userModel.findOne({ email: userPayload.email });
+    const isCorrect = await this.encryptionService.compareHash(
+      body.oldPassword,
+      user.password,
+    );
+
+    if (!isCorrect) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Old password is incorrect`,
+        AuthExpectionKeys.OldPasswordIncorrect,
+      );
+    }
+
+    user.password = body.newPassword;
+    await user.save();
+
+    return this.createPayload(user as unknown as UserInterface);
+  }
+
+  async deleteCurrentUser(userPayload: UserPayload) {
+    const user = await this.userModel.findOneAndDelete({
+      email: userPayload.email,
+    });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User already deleted`,
+        AuthExpectionKeys.UserAlreadyDeleted,
+      );
+    }
+
+    return {
+      acknowledged: true,
     };
   }
 }

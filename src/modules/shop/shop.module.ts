@@ -12,10 +12,12 @@ import {
 import { ExceptionService } from 'src/shared';
 import { ProductsController, ProductsService } from './product';
 import { CartsController, CartsService } from './cart';
+import { ConfigModule } from '@nestjs/config';
 import { MongooseValidatorService } from 'src/shared/mongoose-validator.service';
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     MongooseModule.forFeature([
       { name: Product.name, schema: ProductSchema },
       { name: Cart.name, schema: CartSchema },

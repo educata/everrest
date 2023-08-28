@@ -8,3 +8,6 @@ export const API_CONFIG = {
   MINIMUM_PAGE_SIZE: 1,
   MAXIMUM_PAGE_SIZE: 50,
 };
+
+// ! TODO: Update at prod
+export const BASE_URL = 'http://localhost:3000';
