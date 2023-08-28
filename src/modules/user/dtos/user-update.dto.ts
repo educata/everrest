@@ -1,5 +1,5 @@
 import { Gender } from 'src/enums';
-
+// TODO: add validation
 export class UpdateUserDto {
   firstName: string;
   lastName: string;

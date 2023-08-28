@@ -11,7 +11,12 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
-import { SignUpDto, UpdateUserDto, VerifyEmailDto } from '../dtos';
+import {
+  SignUpDto,
+  UpdateUserDto,
+  UpdateUserPasswordDto,
+  VerifyEmailDto,
+} from '../dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
@@ -74,5 +79,15 @@ export class AuthController {
   @UseInterceptors(CurrentUserInterceptor)
   updateUser(@CurrentUser() user: UserPayload, @Body() body: UpdateUserDto) {
     return this.authService.updateUser(user, body);
+  }
+
+  @Patch('change_password')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  updateUserPassword(
+    @CurrentUser() user: UserPayload,
+    @Body() body: UpdateUserPasswordDto,
+  ) {
+    return this.authService.updateUserPassword(user, body);
   }
 }

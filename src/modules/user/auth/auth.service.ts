@@ -14,7 +14,7 @@ import {
   AuthActions,
 } from 'src/enums';
 import { MailService } from 'src/modules/mail';
-import { SignUpDto, UpdateUserDto } from '../dtos';
+import { SignUpDto, UpdateUserDto, UpdateUserPasswordDto } from '../dtos';
 import {
   generateVerifyPageTemplate,
   generateResetPageTemplate,
@@ -333,5 +333,37 @@ export class AuthService {
       },
     );
     return this.userModel.findOne({ _id: user.id });
+  }
+
+  async updateUserPassword(
+    userPayload: UserPayload,
+    body: UpdateUserPasswordDto,
+  ) {
+    if (body.newPassword === body.oldPassword) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Old and new passwords can not be same`,
+        AuthExpectionKeys.ChangePasswordsMatch,
+      );
+    }
+
+    const user = await this.userModel.findOne({ email: userPayload.email });
+    const isCorrect = await this.encryptionService.compareHash(
+      body.oldPassword,
+      user.password,
+    );
+
+    if (!isCorrect) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Old password is incorrect`,
+        AuthExpectionKeys.OldPasswordIncorrect,
+      );
+    }
+
+    user.password = body.newPassword;
+    await user.save();
+
+    return this.createPayload(user as unknown as UserInterface);
   }
 }
