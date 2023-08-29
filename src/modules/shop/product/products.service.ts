@@ -12,7 +12,7 @@ import {
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
 import { ExceptionStatusKeys, SortDirection, SortProductsBy } from 'src/enums';
-import { ProductCategory, UserPayload } from 'src/interfaces';
+import { ProductCategory, ProductRating, UserPayload } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
 
 @Injectable()
@@ -58,22 +58,41 @@ export class ProductsService {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
     }
 
-    const updatedProductRating = [...product.ratings];
-    updatedProductRating.push({
-      userId: user._id,
-      value: updateRatingProductDto.rate,
-      createdAt: new Date().toISOString(),
-    });
+    const updatedProductRatings = [...product.ratings] as ProductRating[];
+
+    const existingRatingIndex = updatedProductRatings.findIndex(
+      (rating) => rating.userId === user._id,
+    );
+
+    // If the user has rated this product before
+    if (existingRatingIndex >= 0) {
+      updatedProductRatings[existingRatingIndex] = {
+        createdAt: new Date().toISOString(),
+        userId: user._id,
+        value: updateRatingProductDto.rate,
+      };
+    } else {
+      updatedProductRatings.push({
+        userId: user._id,
+        value: updateRatingProductDto.rate,
+        createdAt: new Date().toISOString(),
+      });
+    }
+
+    console.log(updatedProductRatings);
+
+    const calculatedRating = (
+      updatedProductRatings.reduce((prev, cur) => prev + cur.value, 0) /
+      updatedProductRatings.length
+    ).toFixed(3);
+
     const newProduct = await this.productModel.findOneAndUpdate(
       {
         _id: updateRatingProductDto.productId,
       },
       {
-        rating: (
-          updatedProductRating.reduce((prev, cur) => prev + cur.value, 0) /
-          updatedProductRating.length
-        ).toFixed(3),
-        ratings: updatedProductRating,
+        rating: calculatedRating,
+        ratings: updatedProductRatings,
       },
     );
 

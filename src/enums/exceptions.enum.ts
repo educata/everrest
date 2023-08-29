@@ -36,6 +36,8 @@ export enum GlobalExceptionKeys {
   PageSizeTooLow = 'errors.page_size.too_low',
   PageSizeTooHigh = 'errors.page_size.too_high',
   EndPointNotFound = 'errors.endpoint_not_found',
+  RatingTooHigh = 'errors.rating_too_high',
+  RatingTooLow = 'errors.rating_too_low',
 }
 
 export enum AuthExpectionKeys {
