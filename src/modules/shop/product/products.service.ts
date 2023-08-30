@@ -7,7 +7,7 @@ import {
   SearchProductsQueryDto,
   UpdateProductDto,
   PaginationProductQueryDto,
-  UpdateRatingProductDto,
+  UpdateProductRatingDto,
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
@@ -46,12 +46,9 @@ export class ProductsService {
     return product;
   }
 
-  async updateProductRating(
-    updateRatingProductDto: UpdateRatingProductDto,
-    user: UserPayload,
-  ) {
+  async updateProductRating(dto: UpdateProductRatingDto, user: UserPayload) {
     const product = await this.productModel
-      .findById(updateRatingProductDto.productId)
+      .findById(dto.productId)
       .populate('ratings');
 
     if (!product) {
@@ -69,12 +66,12 @@ export class ProductsService {
       updatedProductRatings[existingRatingIndex] = {
         createdAt: new Date().toISOString(),
         userId: user._id,
-        value: updateRatingProductDto.rate,
+        value: dto.rate,
       };
     } else {
       updatedProductRatings.push({
         userId: user._id,
-        value: updateRatingProductDto.rate,
+        value: dto.rate,
         createdAt: new Date().toISOString(),
       });
     }
@@ -88,7 +85,7 @@ export class ProductsService {
 
     const newProduct = await this.productModel.findOneAndUpdate(
       {
-        _id: updateRatingProductDto.productId,
+        _id: dto.productId,
       },
       {
         rating: calculatedRating,

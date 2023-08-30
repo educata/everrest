@@ -16,7 +16,7 @@ import {
   CreateProductDto,
   SearchProductsQueryDto,
   UpdateProductDto,
-  UpdateRatingProductDto,
+  UpdateProductRatingDto,
 } from '../dtos';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
@@ -49,7 +49,7 @@ export class ProductsController {
   @UseInterceptors(CurrentUserInterceptor)
   updateProductRating(
     @CurrentUser() user: UserPayload,
-    @Body() updateProductDto: UpdateRatingProductDto,
+    @Body() updateProductDto: UpdateProductRatingDto,
   ) {
     return this.productsService.updateProductRating(updateProductDto, user);
   }
