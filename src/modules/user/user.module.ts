@@ -5,7 +5,7 @@ import { EncryptionService, ExceptionService } from 'src/shared';
 import { AuthController, AuthService } from './auth';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/schemas';
-import { JwtStrategy, LocalStrategy } from './auth/strategies';
+import { GoogleStrategy, JwtStrategy, LocalStrategy } from './auth/strategies';
 import { RefreshJwtGuard } from './auth/guards';
 import { MailModule } from '../mail';
 
@@ -27,6 +27,7 @@ import { MailModule } from '../mail';
     LocalStrategy,
     JwtStrategy,
     RefreshJwtGuard,
+    GoogleStrategy,
   ],
   controllers: [AuthController],
 })

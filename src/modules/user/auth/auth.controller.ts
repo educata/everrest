@@ -10,6 +10,7 @@ import {
   Patch,
   UseInterceptors,
   Delete,
+  Req,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
@@ -22,6 +23,7 @@ import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
@@ -97,5 +99,24 @@ export class AuthController {
   @UseInterceptors(CurrentUserInterceptor)
   deleteCurrentUser(@CurrentUser() user: UserPayload) {
     return this.authService.deleteCurrentUser(user);
+  }
+
+  @Get('sign_in_google')
+  @UseGuards(AuthGuard('google'))
+  async googleAuth() {
+    // no code needed
+    // guard will handle full provider code here
+  }
+
+  @Get('google/callback')
+  @UseGuards(AuthGuard('google'))
+  googleAuthRedirect(@Req() req) {
+    if (!req.user) {
+      return 'no user from google';
+    }
+    return {
+      message: 'user from google',
+      user: req.user,
+    };
   }
 }
