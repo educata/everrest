@@ -50,9 +50,16 @@ export class JwtGuard implements CanActivate {
     const user = await this.userModel.findOne({ email: decoded.email });
     if (!user) {
       this.exceptionService.throwError(
-        ExceptionStatusKeys.BadRequest,
+        ExceptionStatusKeys.NotFound,
         `Token contains incorrect user`,
         AuthExpectionKeys.TokenContainsIncorrectUser,
+      );
+    }
+    if (!user.verified) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.Conflict,
+        `User needs to verify email`,
+        AuthExpectionKeys.UserEmailNotVerified,
       );
     }
     return true;
