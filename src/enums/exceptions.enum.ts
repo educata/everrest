@@ -44,12 +44,13 @@ export enum AuthExpectionKeys {
   TokenInvalid = 'errors.token_invalid',
   TokenExpired = 'errors.token_expired',
   TokenNotFound = 'errors.token_not_found',
-  TokenContainsIncorrectUser = 'errors.token_contain_incorrect_email',
+  TokenContainsIncorrectUser = 'errors.token_contain_incorrect_user',
   TokenContainsIncorrectAction = 'errors.token_contain_incorrect_action',
   AlreadyVerified = 'errors.already_verified',
   OldPasswordIncorrect = 'errors.old_password_incorrect',
   ChangePasswordsMatch = 'errors.change_passwords_matchs',
   UserAlreadyDeleted = 'errors.user_already_deleted',
+  UserEmailNotVerified = 'errors.user_email_not_verified',
 }
 
 export enum CartExpectionKeys {

@@ -1,12 +1,17 @@
 import { ExceptionService } from './exception.service';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { InjectModel } from '@nestjs/mongoose';
 import { Request } from 'express';
+import { Model } from 'mongoose';
 import { AuthExpectionKeys, ExceptionStatusKeys } from 'src/enums';
+import { UserPayload } from 'src/interfaces';
+import { User, UserDocument } from 'src/schemas';
 
 @Injectable()
 export class JwtGuard implements CanActivate {
   constructor(
+    @InjectModel(User.name) private userModel: Model<UserDocument>,
     private jwtService: JwtService,
     private exceptionService: ExceptionService,
   ) {}
@@ -21,11 +26,11 @@ export class JwtGuard implements CanActivate {
         AuthExpectionKeys.TokenNotFound,
       );
     }
+    let decoded: UserPayload;
     try {
-      await this.jwtService.verifyAsync(token, {
+      decoded = await this.jwtService.verifyAsync(token, {
         secret: `${process.env.JWT_SECRET}`,
       });
-      // TODO: check if decoded token contains correct user email
     } catch (err) {
       const errorName = err.name || '';
       if (errorName === 'TokenExpiredError') {
@@ -41,6 +46,21 @@ export class JwtGuard implements CanActivate {
           AuthExpectionKeys.TokenInvalid,
         );
       }
+    }
+    const user = await this.userModel.findOne({ email: decoded.email });
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        `Token contains incorrect user`,
+        AuthExpectionKeys.TokenContainsIncorrectUser,
+      );
+    }
+    if (!user.verified) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.Conflict,
+        `User needs to verify email`,
+        AuthExpectionKeys.UserEmailNotVerified,
+      );
     }
     return true;
   }
