@@ -66,6 +66,20 @@ export enum AuthExpectionKeys {
   TokenInvalid = 'errors.token_invalid',
   TokenExpired = 'errors.token_expired',
   TokenNotFound = 'errors.token_not_found',
+  InvalidEmail = 'errors.invalid_email',
+  InvalidAge = 'errors.invalid_age',
+  InvalidPassword = 'errors.invalid_password',
+  InvalidAddress = 'errors.invalid_address',
+  InvalidPhoneNumber = 'errors.invalid_phone_number',
+  InvalidZipcode = 'errors.invalid_zipcode',
+  InvalidAvatar = 'errors.invalid_avatar',
+  InvalidGender = 'errors.invalid_gender',
+  FirstnameTooLong = 'errors.firstname_too_long',
+  FirstnameTooShort = 'errors.firstname_too_short',
+  LastnameTooLong = 'errors.lastname_too_long',
+  LastnameTooShort = 'errors.lastname_too_short',
+  PasswordTooShort = 'errors.password_too_short',
+  PasswordTooLong = 'errors.password_too_long',
 }
 
 export enum CartExpectionKeys {
