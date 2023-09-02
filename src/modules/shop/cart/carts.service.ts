@@ -16,7 +16,7 @@ import {
   UserDocument,
 } from 'src/schemas';
 import { ExceptionService } from 'src/shared';
-import { CartDto, ProductIdDto } from '../dtos';
+import { AddProductToCartDto, ProductIdDto } from '../dtos';
 
 @Injectable()
 export class CartsService {
@@ -42,7 +42,10 @@ export class CartsService {
     return cart;
   }
 
-  async createCartWithProduct(userPayload: UserPayload, body: CartDto) {
+  async createCartWithProduct(
+    userPayload: UserPayload,
+    body: AddProductToCartDto,
+  ) {
     const user = await this.userModel.findOne({ _id: userPayload._id });
 
     if (user && user.cartID) {
@@ -98,7 +101,7 @@ export class CartsService {
     return cart;
   }
 
-  async updateCart(userPayload: UserPayload, body: CartDto) {
+  async updateCart(userPayload: UserPayload, body: AddProductToCartDto) {
     const user = await this.userModel.findOne({ _id: userPayload._id });
 
     if (user && !user.cartID) {

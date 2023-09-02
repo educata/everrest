@@ -11,7 +11,7 @@ import {
 import { CartsService } from './carts.service';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
-import { CartDto, ProductIdDto } from '../dtos';
+import { AddProductToCartDto, ProductIdDto } from '../dtos';
 @Controller('shop/cart')
 @UseGuards(JwtGuard)
 @UseInterceptors(CurrentUserInterceptor)
@@ -24,7 +24,10 @@ export class CartsController {
   }
 
   @Post('product')
-  initCartWithProduct(@CurrentUser() user: UserPayload, @Body() body: CartDto) {
+  initCartWithProduct(
+    @CurrentUser() user: UserPayload,
+    @Body() body: AddProductToCartDto,
+  ) {
     return this.cartsService.createCartWithProduct(user, body);
   }
 
@@ -34,7 +37,10 @@ export class CartsController {
   }
 
   @Patch('product')
-  updateCart(@CurrentUser() user: UserPayload, @Body() body: CartDto) {
+  updateCart(
+    @CurrentUser() user: UserPayload,
+    @Body() body: AddProductToCartDto,
+  ) {
     return this.cartsService.updateCart(user, body);
   }
 
