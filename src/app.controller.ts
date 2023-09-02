@@ -1,7 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 import { ExceptionService } from './shared';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('root')
 @Controller()
 export class AppController {
   constructor(

@@ -21,7 +21,9 @@ import {
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 import { MongooseValidatorService } from 'src/shared/mongoose-validator.service';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('products')
 @Controller('shop/products')
 export class ProductsController {
   constructor(
