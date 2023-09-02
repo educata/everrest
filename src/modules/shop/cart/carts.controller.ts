@@ -12,6 +12,9 @@ import { CartsService } from './carts.service';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 import { AddProductToCartDto, ProductIdDto } from '../dtos';
+import { ApiTags } from '@nestjs/swagger';
+
+@ApiTags('cart')
 @Controller('shop/cart')
 @UseGuards(JwtGuard)
 @UseInterceptors(CurrentUserInterceptor)
