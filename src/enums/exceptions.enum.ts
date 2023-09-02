@@ -80,6 +80,13 @@ export enum AuthExpectionKeys {
   LastnameTooShort = 'errors.lastname_too_short',
   PasswordTooShort = 'errors.password_too_short',
   PasswordTooLong = 'errors.password_too_long',
+  TokenContainsIncorrectUser = 'errors.token_contain_incorrect_user',
+  TokenContainsIncorrectAction = 'errors.token_contain_incorrect_action',
+  AlreadyVerified = 'errors.already_verified',
+  OldPasswordIncorrect = 'errors.old_password_incorrect',
+  ChangePasswordsMatch = 'errors.change_passwords_matchs',
+  UserAlreadyDeleted = 'errors.user_already_deleted',
+  UserEmailNotVerified = 'errors.user_email_not_verified',
 }
 
 export enum CartExpectionKeys {

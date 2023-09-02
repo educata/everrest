@@ -18,5 +18,6 @@ export const USERS: User[] = [
     gender: Gender.Male,
     cartID: '',
     chatIds: [],
+    verified: false,
   },
 ];
