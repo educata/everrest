@@ -2,7 +2,7 @@ import { IsDateString, IsNumber, IsString, Max, Min } from 'class-validator';
 import { API_CONFIG } from 'src/consts';
 import { ProductExceptionKeys } from 'src/enums';
 import { ProductRating } from 'src/interfaces';
-import { MongooseId } from 'src/shared/mongoose-id.decorator';
+import { MongooseId } from 'src/shared';
 
 export class ProductRatingDto implements ProductRating {
   @IsString()

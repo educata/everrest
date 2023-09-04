@@ -5,8 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShopModule, UserModule, MailModule } from './modules';
-import { ExceptionService } from './shared';
-import { EncryptionService } from './shared/encryption.service';
+import { ExceptionService, EncryptionService } from './shared';
 @Module({
   imports: [
     ConfigModule.forRoot(),

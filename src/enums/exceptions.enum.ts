@@ -87,6 +87,7 @@ export enum AuthExpectionKeys {
   ChangePasswordsMatch = 'errors.change_passwords_matchs',
   UserAlreadyDeleted = 'errors.user_already_deleted',
   UserEmailNotVerified = 'errors.user_email_not_verified',
+  UserPermissionNotGranted = 'errors.user_permission_not_granted',
 }
 
 export enum CartExpectionKeys {

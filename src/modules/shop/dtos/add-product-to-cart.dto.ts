@@ -1,6 +1,6 @@
 import { IsNumber, IsString, Min } from 'class-validator';
 import { ProductExceptionKeys } from 'src/enums';
-import { MongooseId } from 'src/shared/mongoose-id.decorator';
+import { MongooseId } from 'src/shared';
 
 export class AddProductToCartDto {
   @IsString()
