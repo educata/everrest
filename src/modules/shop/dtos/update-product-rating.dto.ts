@@ -1,7 +1,7 @@
 import { IsNumber, IsString, Max, Min } from 'class-validator';
 import { API_CONFIG } from 'src/consts';
 import { GlobalExceptionKeys } from 'src/enums';
-import { MongooseId } from 'src/shared/mongoose-id.decorator';
+import { MongooseId } from 'src/shared';
 
 export class UpdateProductRatingDto {
   @IsString()

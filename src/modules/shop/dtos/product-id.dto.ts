@@ -1,5 +1,5 @@
 import { IsString } from 'class-validator';
-import { MongooseId } from 'src/shared/mongoose-id.decorator';
+import { MongooseId } from 'src/shared';
 
 export class ProductIdDto {
   @IsString()
