@@ -80,8 +80,7 @@ export class AuthService {
       user &&
       (await this.encryptionService.compareHash(password, user.password))
     ) {
-      // ! TODO: Serialize user response object (to hide password)
-      return user;
+      return this.createPayload(user as unknown as UserInterface);
     }
     return null;
   }
