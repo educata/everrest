@@ -22,7 +22,7 @@ import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
 import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('auth')
@@ -58,11 +58,13 @@ export class AuthController {
   }
 
   @Get('verify/:token')
+  @ApiExcludeEndpoint(true)
   verifyDocument(@Param('token') token: string) {
     return this.authService.generateDocument(token);
   }
 
   @Get('submit/:token')
+  @ApiExcludeEndpoint(true)
   submitEmail(@Param('token') token: string) {
     return this.authService.submitEmailToken(token);
   }
@@ -73,6 +75,7 @@ export class AuthController {
   }
 
   @Get('recovery/:token')
+  @ApiExcludeEndpoint(true)
   recoveryPasswordPage(@Param('token') token: string) {
     return this.authService.generatePasswordReset(token);
   }
