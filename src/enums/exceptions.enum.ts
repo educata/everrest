@@ -69,6 +69,8 @@ export enum AuthExpectionKeys {
   InvalidEmail = 'errors.invalid_email',
   InvalidAge = 'errors.invalid_age',
   InvalidPassword = 'errors.invalid_password',
+  InvalidOldPassword = 'errors.invalid_old_password',
+  InvalidChangePassword = 'errors.invalid_change_password',
   InvalidAddress = 'errors.invalid_address',
   InvalidPhoneNumber = 'errors.invalid_phone_number',
   InvalidZipcode = 'errors.invalid_zipcode',
