@@ -47,6 +47,7 @@ export enum ProductExceptionKeys {
   DiscountTooHigh = 'errors.discount_too_high',
   DiscountTooLow = 'errors.discount_too_low',
   WarrantyMustBeNumber = 'errors.warranty_must_be_number',
+  QuantityMustBeNumber = 'errors.quantity_must_be_number',
 }
 
 export enum GlobalExceptionKeys {
