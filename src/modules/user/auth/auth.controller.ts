@@ -34,22 +34,22 @@ export class AuthController {
     return this.authService.signUp(body);
   }
 
-  @UseGuards(LocalAuthGuard)
   @Post('sign_in')
+  @UseGuards(LocalAuthGuard)
   signIn(@Request() req, @Res({ passthrough: true }) response: Response) {
     return this.authService.signIn(req.user, response);
   }
 
-  @UseGuards(JwtGuard)
   @Get('test')
+  @UseGuards(JwtGuard)
   someSafeRoute() {
     return this.authService.test();
   }
 
-  @UseGuards(RefreshJwtGuard)
   @Post('refresh')
-  refreshToken(@Request() req, @Res({ passthrough: true }) response: Response) {
-    return this.authService.refreshToken(req.user, response);
+  @UseGuards(RefreshJwtGuard)
+  refreshToken(@Res({ passthrough: true }) response: Response) {
+    return this.authService.refreshToken(response);
   }
 
   @Post('verify_email')
