@@ -325,6 +325,23 @@ export class AuthService {
   }
 
   async updateUser(userPayload: UserPayload, body: UpdateUserDto) {
+    if (
+      !body.firstName &&
+      !body.lastName &&
+      !body.age &&
+      !body.email &&
+      !body.address &&
+      !body.phone &&
+      !body.zipcode &&
+      !body.avatar &&
+      !body.gender
+    ) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Nothing to update, provide at least one property`,
+        AuthExpectionKeys.NothingToUpdate,
+      );
+    }
     const user = await this.userModel.findOneAndUpdate(
       { email: userPayload.email },
       {
