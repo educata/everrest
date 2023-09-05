@@ -31,7 +31,7 @@ export class ProductsService {
   }
 
   async getProductById(id: string): Promise<Product> {
-    const product = await this.productModel.findById(id);
+    const product = await this.productModel.findById(id).select('+ratings');
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
     }
