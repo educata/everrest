@@ -80,8 +80,7 @@ export class AuthService {
       user &&
       (await this.encryptionService.compareHash(password, user.password))
     ) {
-      // ! TODO: Serialize user response object (to hide password)
-      return user;
+      return this.createPayload(user as unknown as UserInterface);
     }
     return null;
   }
@@ -111,8 +110,16 @@ export class AuthService {
     };
   }
 
-  refreshToken(user: UserInterface, response: Response) {
-    const accessToken = this.jwtService.sign(this.createPayload(user));
+  async refreshToken(response: Response) {
+    let refreshToken = response.getHeader('refresh_token') as string;
+    if (!refreshToken) {
+      refreshToken = response.req.cookies['refresh_token'];
+    }
+    const data = this.jwtService.decode(refreshToken) as UserPayload;
+    const user = await this.userModel.findOne({ email: data.email });
+    const accessToken = this.jwtService.sign(
+      this.createPayload(user as unknown as UserInterface),
+    );
     response.cookie('access_token', accessToken, {
       expires: new Date(
         Date.now() + Number(process.env.JWT_EXPIRES_IN) * 60 * 60 * 1000,
@@ -318,6 +325,23 @@ export class AuthService {
   }
 
   async updateUser(userPayload: UserPayload, body: UpdateUserDto) {
+    if (
+      !body.firstName &&
+      !body.lastName &&
+      !body.age &&
+      !body.email &&
+      !body.address &&
+      !body.phone &&
+      !body.zipcode &&
+      !body.avatar &&
+      !body.gender
+    ) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `Nothing to update, provide at least one property`,
+        AuthExpectionKeys.NothingToUpdate,
+      );
+    }
     const user = await this.userModel.findOneAndUpdate(
       { email: userPayload.email },
       {

@@ -13,7 +13,9 @@ import { API_CONFIG } from 'src/consts';
 import { AuthExpectionKeys, Gender } from 'src/enums';
 
 export class SignUpDto {
-  @IsString()
+  @IsString({
+    message: AuthExpectionKeys.FirstnameShouldBeString,
+  })
   @MinLength(API_CONFIG.MIN_FIRSTNAME_LENGTH, {
     message: AuthExpectionKeys.FirstnameTooShort,
   })
@@ -22,7 +24,9 @@ export class SignUpDto {
   })
   firstName: string;
 
-  @IsString()
+  @IsString({
+    message: AuthExpectionKeys.LastnameShouldBeString,
+  })
   @MinLength(API_CONFIG.MIN_LASTNAME_LENGTH, {
     message: AuthExpectionKeys.LastnameTooShort,
   })

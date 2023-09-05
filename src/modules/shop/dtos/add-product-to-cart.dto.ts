@@ -7,7 +7,7 @@ export class AddProductToCartDto {
   @MongooseId()
   id: string;
 
-  @IsNumber({}, { message: ProductExceptionKeys.InvalidQuantity })
+  @IsNumber({}, { message: ProductExceptionKeys.QuantityMustBeNumber })
   @Min(1, { message: ProductExceptionKeys.InvalidQuantity })
   quantity: number;
 }
