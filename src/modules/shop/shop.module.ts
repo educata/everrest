@@ -9,11 +9,10 @@ import {
   User,
   UserSchema,
 } from 'src/schemas';
-import { ExceptionService } from 'src/shared';
+import { ExceptionService, MongooseValidatorService } from 'src/shared';
 import { ProductsController, ProductsService } from './product';
 import { CartsController, CartsService } from './cart';
 import { ConfigModule } from '@nestjs/config';
-import { MongooseValidatorService } from 'src/shared/mongoose-validator.service';
 
 @Module({
   imports: [

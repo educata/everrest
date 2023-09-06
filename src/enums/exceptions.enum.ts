@@ -46,6 +46,8 @@ export enum ProductExceptionKeys {
   StockTooLow = 'errors.stock_too_low',
   DiscountTooHigh = 'errors.discount_too_high',
   DiscountTooLow = 'errors.discount_too_low',
+  WarrantyMustBeNumber = 'errors.warranty_must_be_number',
+  QuantityMustBeNumber = 'errors.quantity_must_be_number',
 }
 
 export enum GlobalExceptionKeys {
@@ -69,6 +71,8 @@ export enum AuthExpectionKeys {
   InvalidEmail = 'errors.invalid_email',
   InvalidAge = 'errors.invalid_age',
   InvalidPassword = 'errors.invalid_password',
+  InvalidOldPassword = 'errors.invalid_old_password',
+  InvalidChangePassword = 'errors.invalid_change_password',
   InvalidAddress = 'errors.invalid_address',
   InvalidPhoneNumber = 'errors.invalid_phone_number',
   InvalidZipcode = 'errors.invalid_zipcode',
@@ -76,8 +80,10 @@ export enum AuthExpectionKeys {
   InvalidGender = 'errors.invalid_gender',
   FirstnameTooLong = 'errors.firstname_too_long',
   FirstnameTooShort = 'errors.firstname_too_short',
+  FirstnameShouldBeString = 'errors.firstname_should_be_string',
   LastnameTooLong = 'errors.lastname_too_long',
   LastnameTooShort = 'errors.lastname_too_short',
+  LastnameShouldBeString = 'errors.lastname_should_be_string',
   PasswordTooShort = 'errors.password_too_short',
   PasswordTooLong = 'errors.password_too_long',
   TokenContainsIncorrectUser = 'errors.token_contain_incorrect_user',
@@ -87,6 +93,8 @@ export enum AuthExpectionKeys {
   ChangePasswordsMatch = 'errors.change_passwords_matchs',
   UserAlreadyDeleted = 'errors.user_already_deleted',
   UserEmailNotVerified = 'errors.user_email_not_verified',
+  UserPermissionNotGranted = 'errors.user_permission_not_granted',
+  NothingToUpdate = 'errors.nothing_to_update',
 }
 
 export enum CartExpectionKeys {

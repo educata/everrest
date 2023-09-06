@@ -1,4 +1,3 @@
-import { ExceptionService } from './exception.service';
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
@@ -7,6 +6,7 @@ import { Model } from 'mongoose';
 import { AuthExpectionKeys, ExceptionStatusKeys } from 'src/enums';
 import { UserPayload } from 'src/interfaces';
 import { User, UserDocument } from 'src/schemas';
+import { ExceptionService } from '../services';
 
 @Injectable()
 export class JwtGuard implements CanActivate {

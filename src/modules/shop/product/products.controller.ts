@@ -18,10 +18,17 @@ import {
   UpdateProductDto,
   UpdateProductRatingDto,
 } from '../dtos';
-import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
+import {
+  CurrentUser,
+  CurrentUserInterceptor,
+  JwtGuard,
+  Roles,
+  RolesGuard,
+  MongooseValidatorService,
+} from 'src/shared';
 import { UserPayload } from 'src/interfaces';
-import { MongooseValidatorService } from 'src/shared/mongoose-validator.service';
 import { ApiTags } from '@nestjs/swagger';
+import { UserRole } from 'src/enums';
 
 @ApiTags('products')
 @Controller('shop/products')
@@ -38,6 +45,8 @@ export class ProductsController {
   }
 
   @Patch('id/:id')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles(UserRole.Admin)
   updateProduct(
     @Param('id') id: string,
     @Body() updateProductDto: UpdateProductDto,
@@ -57,6 +66,8 @@ export class ProductsController {
   }
 
   @Post()
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles(UserRole.Admin)
   addProduct(@Body() createProductDto: CreateProductDto) {
     return this.productsService.addProduct(createProductDto);
   }
@@ -72,6 +83,8 @@ export class ProductsController {
   }
 
   @Delete('all')
+  @UseGuards(JwtGuard, RolesGuard)
+  @Roles(UserRole.Admin)
   deleteAllProduct() {
     return this.productsService.deleteAllProduct();
   }
