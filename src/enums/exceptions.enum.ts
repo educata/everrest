@@ -95,6 +95,7 @@ export enum AuthExpectionKeys {
   UserEmailNotVerified = 'errors.user_email_not_verified',
   UserPermissionNotGranted = 'errors.user_permission_not_granted',
   NothingToUpdate = 'errors.nothing_to_update',
+  UserNotFound = 'errors.user_not_found',
 }
 
 export enum CartExpectionKeys {

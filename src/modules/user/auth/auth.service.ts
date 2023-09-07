@@ -4,7 +4,11 @@ import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { Response } from 'express';
 import { User, UserDocument } from 'src/schemas';
-import { EncryptionService, ExceptionService } from 'src/shared';
+import {
+  EncryptionService,
+  ExceptionService,
+  MongooseValidatorService,
+} from 'src/shared';
 import { User as UserInterface, UserPayload } from 'src/interfaces';
 import {
   AuthExpectionKeys,
@@ -29,6 +33,7 @@ export class AuthService {
     private encryptionService: EncryptionService,
     private jwtService: JwtService,
     private mailService: MailService,
+    private mongooseValidator: MongooseValidatorService,
   ) {}
 
   async signUp(body: SignUpDto) {
@@ -407,5 +412,24 @@ export class AuthService {
     return {
       acknowledged: true,
     };
+  }
+
+  async getUserByID(userPayload: UserPayload, id: string) {
+    if (userPayload._id === id) {
+      return userPayload;
+    }
+
+    this.mongooseValidator.isValidObjectId(id);
+    const user = await this.userModel.findOne({ _id: id });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${id}' does not exists`,
+        AuthExpectionKeys.UserNotFound,
+      );
+    }
+
+    return this.createPayload(user as unknown as UserInterface);
   }
 }

@@ -76,8 +76,6 @@ export class ProductsService {
       });
     }
 
-    console.log(updatedProductRatings);
-
     const calculatedRating = (
       updatedProductRatings.reduce((prev, cur) => prev + cur.value, 0) /
       updatedProductRatings.length

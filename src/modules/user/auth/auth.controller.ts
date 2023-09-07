@@ -36,6 +36,13 @@ export class AuthController {
     return user;
   }
 
+  @Get('id/:id')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  getUserByID(@CurrentUser() user: UserPayload, @Param('id') id: string) {
+    return this.authService.getUserByID(user, id);
+  }
+
   @Post('sign_up')
   signUp(@Body() body: SignUpDto) {
     return this.authService.signUp(body);
@@ -48,6 +55,7 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
     @Body() dto: SignInDto,
   ) {
+    dto;
     return this.authService.signIn(user, response);
   }
 

@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
-import { EncryptionService, ExceptionService } from 'src/shared';
+import {
+  EncryptionService,
+  ExceptionService,
+  MongooseValidatorService,
+} from 'src/shared';
 import { AuthController, AuthService } from './auth';
 import { MongooseModule } from '@nestjs/mongoose';
 import { User, UserSchema } from 'src/schemas';
@@ -25,12 +29,13 @@ import { MailModule } from '../mail';
     MailModule,
   ],
   providers: [
+    RefreshJwtGuard,
     ExceptionService,
     EncryptionService,
+    MongooseValidatorService,
     AuthService,
     LocalStrategy,
     JwtStrategy,
-    RefreshJwtGuard,
     RefreshJwtStrategy,
   ],
   controllers: [AuthController],

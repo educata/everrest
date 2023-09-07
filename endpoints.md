@@ -11,7 +11,7 @@ prefix - /`lang`
 prefix - /`user`
 
 - `GET` user | jwt
-- `GET` user/:id | (minimal) | jwt
+- `GET` user/id/:id | (minimal) | jwt
 - `GET` user/all | (minimal) | jwt
 - `POST` user/sign_up | { ... }
 - `POST` user/sign_in | { email, password }
