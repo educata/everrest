@@ -85,10 +85,9 @@ export class AuthService {
     return null;
   }
 
-  async signIn(user: UserInterface, response: Response) {
-    const payload = this.createPayload(user);
-    const accessToken = this.jwtService.sign(payload);
-    const refreshToken = this.jwtService.sign(payload, { expiresIn: '7d' });
+  async signIn(user: UserPayload, response: Response) {
+    const accessToken = this.jwtService.sign(user);
+    const refreshToken = this.jwtService.sign(user, { expiresIn: '7d' });
     response.cookie('access_token', accessToken, {
       expires: new Date(
         Date.now() + Number(process.env.JWT_EXPIRES_IN) * 60 * 60 * 1000,

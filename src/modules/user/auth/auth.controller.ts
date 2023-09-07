@@ -13,6 +13,7 @@ import {
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
+  SignInDto,
   SignUpDto,
   UpdateUserDto,
   UpdateUserPasswordDto,
@@ -36,8 +37,12 @@ export class AuthController {
 
   @Post('sign_in')
   @UseGuards(LocalAuthGuard)
-  signIn(@Request() req, @Res({ passthrough: true }) response: Response) {
-    return this.authService.signIn(req.user, response);
+  signIn(
+    @CurrentUser() user: UserPayload,
+    @Res({ passthrough: true }) response: Response,
+    @Body() dto: SignInDto,
+  ) {
+    return this.authService.signIn(user, response);
   }
 
   @Get('test')
