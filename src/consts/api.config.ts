@@ -17,6 +17,3 @@ export const API_CONFIG = {
   MIN_PASSWORD_LENGTH: 8,
   MAX_PASSWORD_LENGTH: 30,
 };
-
-// ! TODO: Update at prod
-export const BASE_URL = 'http://localhost:3000';
