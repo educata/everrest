@@ -4,7 +4,11 @@ import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { Response } from 'express';
 import { User, UserDocument } from 'src/schemas';
-import { EncryptionService, ExceptionService } from 'src/shared';
+import {
+  EncryptionService,
+  ExceptionService,
+  MongooseValidatorService,
+} from 'src/shared';
 import { User as UserInterface, UserPayload } from 'src/interfaces';
 import {
   AuthExpectionKeys,
@@ -18,16 +22,19 @@ import {
   generateVerifyPageTemplate,
   generateResetPageTemplate,
 } from 'src/modules/mail/templates';
+import { API_CONFIG } from 'src/consts';
 
 @Injectable()
 export class AuthService {
   private readonly BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private exceptionService: ExceptionService,
     private encryptionService: EncryptionService,
     private jwtService: JwtService,
     private mailService: MailService,
+    private mongooseValidator: MongooseValidatorService,
   ) {}
 
   async signUp(body: SignUpDto) {
@@ -42,7 +49,6 @@ export class AuthService {
 
     const hashedPassword = await this.encryptionService.hash(body.password);
 
-    // ! TODO: Serialize user response object (to hide password)
     const user = await this.userModel.create({
       ...body,
       password: hashedPassword,
@@ -54,7 +60,7 @@ export class AuthService {
 
     this.verifyEmail(user.email, true);
 
-    return user;
+    return this.createPayload(user as unknown as UserInterface);
   }
 
   private createPayload(user: UserInterface) {
@@ -129,10 +135,6 @@ export class AuthService {
     return {
       access_token: accessToken,
     };
-  }
-
-  async test() {
-    return 'Safe route reached';
   }
 
   async verifyEmail(email: string, isFromSignUp = false) {
@@ -405,6 +407,46 @@ export class AuthService {
 
     return {
       acknowledged: true,
+    };
+  }
+
+  async getUserByID(userPayload: UserPayload, id: string) {
+    if (userPayload._id === id) {
+      return userPayload;
+    }
+
+    this.mongooseValidator.isValidObjectId(id);
+    const user = await this.userModel.findOne({ _id: id });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        `User with this '${id}' does not exists`,
+        AuthExpectionKeys.UserNotFound,
+      );
+    }
+
+    return this.createPayload(user as unknown as UserInterface);
+  }
+
+  async getAllUser(query: { page_index: number; page_size: number }) {
+    const currentPage = query.page_index || API_CONFIG.MINIMUM_PAGE_INDEX;
+    const responsePerPage = query.page_size || API_CONFIG.RESPONSE_PER_PAGE;
+    const skip = responsePerPage * (Math.floor(currentPage) - 1);
+    const users = await this.userModel
+      .find({})
+      .sort({ firstName: 1 })
+      .limit(responsePerPage)
+      .skip(skip);
+    const usersCount = await this.userModel.countDocuments({});
+    return {
+      total: usersCount,
+      limit: responsePerPage,
+      page: currentPage,
+      skip,
+      users: users.map((user) => {
+        return this.createPayload(user as unknown as UserInterface);
+      }),
     };
   }
 }

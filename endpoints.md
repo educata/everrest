@@ -10,10 +10,12 @@ prefix - /`lang`
 
 prefix - /`user`
 
-- `GET` user
-- `GET` user/:id | (minimal) | jwt
+- `GET` user | jwt
+- `GET` user/id/:id | (minimal) | jwt
+- `GET` user/all | (minimal) | jwt
 - `POST` user/sign_up | { ... }
 - `POST` user/sign_in | { email, password }
+- `POST` user/logout | jwt
 - `POST` user/verify_email | { email }
 - `POST` user/recovery | { email }
 - `PATCH` user/update | { ... } | jwt
@@ -26,7 +28,6 @@ prefix - /`shop`/`...`
 
 ### Products
 
-- `GET` products (endpoint list)
 - `GET` products/all
 - `GET` products/search?q (keyword/id/rate/category/brand/price_min/price_max)
 - `GET` products/categories

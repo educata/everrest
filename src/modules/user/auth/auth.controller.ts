@@ -3,13 +3,13 @@ import {
   Controller,
   Post,
   UseGuards,
-  Request,
   Get,
   Res,
   Param,
   Patch,
   UseInterceptors,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
@@ -21,7 +21,12 @@ import {
 } from '../dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
-import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
+import {
+  CurrentUser,
+  CurrentUserInterceptor,
+  JwtGuard,
+  PaginationQueryDto,
+} from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 
@@ -29,6 +34,26 @@ import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+
+  @Get()
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  getCurrentUser(@CurrentUser() user: UserPayload) {
+    return user;
+  }
+
+  @Get('id/:id')
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  getUserByID(@CurrentUser() user: UserPayload, @Param('id') id: string) {
+    return this.authService.getUserByID(user, id);
+  }
+
+  @Get('all')
+  @UseGuards(JwtGuard)
+  getAllUser(@Query() query: PaginationQueryDto) {
+    return this.authService.getAllUser(query);
+  }
 
   @Post('sign_up')
   signUp(@Body() body: SignUpDto) {
@@ -42,13 +67,14 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response,
     @Body() dto: SignInDto,
   ) {
+    dto;
     return this.authService.signIn(user, response);
   }
 
-  @Get('test')
-  @UseGuards(JwtGuard)
-  someSafeRoute() {
-    return this.authService.test();
+  @Post('logout')
+  logout() {
+    // TODO: handle logout after token block list is added
+    return "it's not implemented yet. will be added soon";
   }
 
   @Post('refresh')

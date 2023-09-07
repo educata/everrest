@@ -2,7 +2,7 @@ import { IsOptional, IsNumber, Min, Max } from 'class-validator';
 import { API_CONFIG } from 'src/consts';
 import { GlobalExceptionKeys } from 'src/enums';
 
-export class PaginationProductQueryDto {
+export class PaginationQueryDto {
   @IsOptional()
   @IsNumber({}, { message: GlobalExceptionKeys.PageIndexNotNumber })
   @Min(API_CONFIG.MINIMUM_PAGE_INDEX, {
