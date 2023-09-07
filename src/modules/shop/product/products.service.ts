@@ -6,11 +6,10 @@ import {
   CreateProductDto,
   SearchProductsQueryDto,
   UpdateProductDto,
-  PaginationProductQueryDto,
   UpdateProductRatingDto,
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
-import { ExceptionService } from 'src/shared';
+import { ExceptionService, PaginationQueryDto } from 'src/shared';
 import { ExceptionStatusKeys, SortDirection, SortProductsBy } from 'src/enums';
 import { ProductCategory, ProductRating, UserPayload } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
@@ -105,7 +104,7 @@ export class ProductsService {
     return { currentPage, responsePerPage, skip };
   }
 
-  async getAllProductsDetailed(query: PaginationProductQueryDto) {
+  async getAllProductsDetailed(query: PaginationQueryDto) {
     const { currentPage, responsePerPage, skip } =
       this.getPaginationData(query);
     const products = await this.productModel
@@ -213,7 +212,7 @@ export class ProductsService {
     return category;
   }
 
-  async getByCategoryId(categoryId: string, query: PaginationProductQueryDto) {
+  async getByCategoryId(categoryId: string, query: PaginationQueryDto) {
     const { currentPage, responsePerPage, skip } =
       this.getPaginationData(query);
     const products = await this.productModel
@@ -244,7 +243,7 @@ export class ProductsService {
     return brands;
   }
 
-  async getBrandProducts(brandName: string, query: PaginationProductQueryDto) {
+  async getBrandProducts(brandName: string, query: PaginationQueryDto) {
     const { currentPage, responsePerPage, skip } =
       this.getPaginationData(query);
     const products = await this.productModel

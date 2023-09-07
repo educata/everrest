@@ -22,6 +22,7 @@ import {
   generateVerifyPageTemplate,
   generateResetPageTemplate,
 } from 'src/modules/mail/templates';
+import { API_CONFIG } from 'src/consts';
 
 @Injectable()
 export class AuthService {
@@ -48,7 +49,6 @@ export class AuthService {
 
     const hashedPassword = await this.encryptionService.hash(body.password);
 
-    // ! TODO: Serialize user response object (to hide password)
     const user = await this.userModel.create({
       ...body,
       password: hashedPassword,
@@ -60,7 +60,7 @@ export class AuthService {
 
     this.verifyEmail(user.email, true);
 
-    return user;
+    return this.createPayload(user as unknown as UserInterface);
   }
 
   private createPayload(user: UserInterface) {
@@ -135,10 +135,6 @@ export class AuthService {
     return {
       access_token: accessToken,
     };
-  }
-
-  async test() {
-    return 'Safe route reached';
   }
 
   async verifyEmail(email: string, isFromSignUp = false) {
@@ -431,5 +427,26 @@ export class AuthService {
     }
 
     return this.createPayload(user as unknown as UserInterface);
+  }
+
+  async getAllUser(query: { page_index: number; page_size: number }) {
+    const currentPage = query.page_index || API_CONFIG.MINIMUM_PAGE_INDEX;
+    const responsePerPage = query.page_size || API_CONFIG.RESPONSE_PER_PAGE;
+    const skip = responsePerPage * (Math.floor(currentPage) - 1);
+    const users = await this.userModel
+      .find({})
+      .sort({ firstName: 1 })
+      .limit(responsePerPage)
+      .skip(skip);
+    const usersCount = await this.userModel.countDocuments({});
+    return {
+      total: usersCount,
+      limit: responsePerPage,
+      page: currentPage,
+      skip,
+      users: users.map((user) => {
+        return this.createPayload(user as unknown as UserInterface);
+      }),
+    };
   }
 }

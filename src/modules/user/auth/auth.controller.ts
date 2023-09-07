@@ -9,6 +9,7 @@ import {
   Patch,
   UseInterceptors,
   Delete,
+  Query,
 } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import {
@@ -20,7 +21,12 @@ import {
 } from '../dtos';
 import { LocalAuthGuard, RefreshJwtGuard } from './guards';
 import { Response } from 'express';
-import { CurrentUser, CurrentUserInterceptor, JwtGuard } from 'src/shared';
+import {
+  CurrentUser,
+  CurrentUserInterceptor,
+  JwtGuard,
+  PaginationQueryDto,
+} from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 
@@ -43,6 +49,12 @@ export class AuthController {
     return this.authService.getUserByID(user, id);
   }
 
+  @Get('all')
+  @UseGuards(JwtGuard)
+  getAllUser(@Query() query: PaginationQueryDto) {
+    return this.authService.getAllUser(query);
+  }
+
   @Post('sign_up')
   signUp(@Body() body: SignUpDto) {
     return this.authService.signUp(body);
@@ -59,10 +71,10 @@ export class AuthController {
     return this.authService.signIn(user, response);
   }
 
-  @Get('test')
-  @UseGuards(JwtGuard)
-  someSafeRoute() {
-    return this.authService.test();
+  @Post('logout')
+  logout() {
+    // TODO: handle logout after token block list is added
+    return "it's not implemented yet. will be added soon";
   }
 
   @Post('refresh')

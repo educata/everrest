@@ -1,8 +1,72 @@
 _type: export
 __export_format: 4
-__export_date: 2023-09-05T13:05:11.849Z
-__export_source: insomnia.desktop.app:v2023.5.7
+__export_date: 2023-09-07T19:03:46.227Z
+__export_source: insomnia.desktop.app:v2023.5.8
 resources:
+  - _id: req_f503108e57d848f692d0b89a321b7064
+    parentId: fld_203fe6a1cd5e4274bc641ea44cee03b6
+    modified: 1694109977169
+    created: 1694104757818
+    url: http://localhost:3000
+    name: Base
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: Insomnia/2023.5.7
+    authentication: {}
+    metaSortKey: -1694104757818
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: fld_203fe6a1cd5e4274bc641ea44cee03b6
+    parentId: wrk_4ef933ea915748d5897746f14b654671
+    modified: 1694104747369
+    created: 1694104741476
+    name: root
+    description: ""
+    environment: {}
+    environmentPropertyOrder: null
+    metaSortKey: -1694104741476
+    _type: request_group
+  - _id: wrk_4ef933ea915748d5897746f14b654671
+    parentId: null
+    modified: 1692100035449
+    created: 1692100035449
+    name: Everest
+    description: ""
+    scope: collection
+    _type: workspace
+  - _id: req_d6543bdd53f446a89a010f9544ac9582
+    parentId: fld_203fe6a1cd5e4274bc641ea44cee03b6
+    modified: 1694109973086
+    created: 1694104795324
+    url: http://localhost:3000/lang/errors
+    name: Errors
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication: {}
+    metaSortKey: -1694104757718
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_b17d5cbd6caf4dbcb2e0ee562600eb23
     parentId: fld_65c3b123e07542fba2c48d82d1566011
     modified: 1693918319125
@@ -46,14 +110,6 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1693908839779
     _type: request_group
-  - _id: wrk_4ef933ea915748d5897746f14b654671
-    parentId: null
-    modified: 1692100035449
-    created: 1692100035449
-    name: Everest
-    description: ""
-    scope: collection
-    _type: workspace
   - _id: req_cf783a77f1754dbe8fa4645af1de82c9
     parentId: fld_65c3b123e07542fba2c48d82d1566011
     modified: 1693919005385
@@ -460,21 +516,21 @@ resources:
     settingRebuildPath: true
     settingFollowRedirects: global
     _type: request
-  - _id: req_52b57f7c33c343ddace5e8af5e2d2d60
+  - _id: req_260aacb485ef4990bd8f08e58c71ec61
     parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
-    modified: 1693909600991
-    created: 1693902697354
-    url: http://localhost:3000/auth/test
-    name: Test
+    modified: 1694110863418
+    created: 1694110844080
+    url: http://localhost:3000/auth
+    name: User
     description: ""
     method: GET
     body: {}
     parameters: []
     headers:
       - name: User-Agent
-        value: Insomnia/2023.5.7
+        value: insomnia/2023.5.8
     authentication: {}
-    metaSortKey: -1693909251150
+    metaSortKey: -1693909251137.5
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -493,6 +549,52 @@ resources:
     environmentPropertyOrder: null
     metaSortKey: -1693902097619
     _type: request_group
+  - _id: req_14752877265c4a77a8fd76a80687ede8
+    parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
+    modified: 1694112971558
+    created: 1694112676180
+    url: http://localhost:3000/auth/all
+    name: All User
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication: {}
+    metaSortKey: -1693909251134.375
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_8a8f9e383e53460ab26c752a8f00e136
+    parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
+    modified: 1694112682156
+    created: 1694112030613
+    url: http://localhost:3000/auth/id/64eccb55fe7b573c1ec5aaae
+    name: User by id
+    description: ""
+    method: GET
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication: {}
+    metaSortKey: -1693909251131.25
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
   - _id: req_afc930dd75d84f81b0987a21908967f8
     parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
     modified: 1693919050169
@@ -522,7 +624,7 @@ resources:
     _type: request
   - _id: req_62f91e6a1c834b76b89d8c0b74c399a0
     parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
-    modified: 1693919054760
+    modified: 1694113322234
     created: 1693902632304
     url: http://localhost:3000/auth/sign_in
     name: Sign in
@@ -539,6 +641,29 @@ resources:
         value: Insomnia/2023.5.7
     authentication: {}
     metaSortKey: -1693909251100
+    isPrivate: false
+    settingStoreCookies: true
+    settingSendCookies: true
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingFollowRedirects: global
+    _type: request
+  - _id: req_e74f13361635473892668587443eec66
+    parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
+    modified: 1694113234872
+    created: 1694113127974
+    url: http://localhost:3000/auth/logout
+    name: Logout
+    description: ""
+    method: POST
+    body: {}
+    parameters: []
+    headers:
+      - name: User-Agent
+        value: insomnia/2023.5.8
+    authentication: {}
+    metaSortKey: -1693909251093.75
     isPrivate: false
     settingStoreCookies: true
     settingSendCookies: true
@@ -603,7 +728,7 @@ resources:
     _type: request
   - _id: req_9384ca725b9246159bb1fd179b42586e
     parentId: fld_f2c783d75dfc4221af51c7cf20194a0d
-    modified: 1693919064664
+    modified: 1694113334002
     created: 1693908748910
     url: http://localhost:3000/auth/recovery
     name: Reset password
@@ -707,19 +832,41 @@ resources:
     _type: request
   - _id: env_28f2258bffa6f7493658e64d84b2d4646d8cc2a4
     parentId: wrk_4ef933ea915748d5897746f14b654671
-    modified: 1692100035451
+    modified: 1694104754476
     created: 1692100035451
     name: Base Environment
     data: {}
-    dataPropertyOrder: null
+    dataPropertyOrder: {}
     color: null
     isPrivate: false
     metaSortKey: 1692100035451
     _type: environment
   - _id: jar_28f2258bffa6f7493658e64d84b2d4646d8cc2a4
     parentId: wrk_4ef933ea915748d5897746f14b654671
-    modified: 1693916949239
+    modified: 1694110836275
     created: 1692100035452
     name: Default Jar
-    cookies: []
+    cookies:
+      - key: access_token
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQxMTA4MzYsImV4cCI6MTY5NDExNDQzNn0.RLtPP5uFJvcFFkdm1OqDuUSX187g2A33GfzEQaI0qUM
+        expires: 2023-09-07T19:20:36.000Z
+        domain: localhost
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: true
+        creation: 2023-09-07T18:20:36.274Z
+        lastAccessed: 2023-09-07T18:20:36.274Z
+        id: "5133907119479373"
+      - key: refresh_token
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQxMTA4MzYsImV4cCI6MTY5NDcxNTYzNn0.3T3r1_jpTIpDsRZdmnG0Vt1udEHzjPZNF45Gv5Ed6oc
+        expires: 2023-09-14T18:20:36.000Z
+        domain: localhost
+        path: /
+        secure: true
+        httpOnly: true
+        hostOnly: true
+        creation: 2023-09-07T18:20:36.275Z
+        lastAccessed: 2023-09-07T18:20:36.275Z
+        id: "4113064954182799"
     _type: cookie_jar

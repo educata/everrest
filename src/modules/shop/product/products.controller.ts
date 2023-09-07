@@ -12,7 +12,6 @@ import {
 } from '@nestjs/common';
 import { ProductsService } from './products.service';
 import {
-  PaginationProductQueryDto,
   CreateProductDto,
   SearchProductsQueryDto,
   UpdateProductDto,
@@ -25,6 +24,7 @@ import {
   Roles,
   RolesGuard,
   MongooseValidatorService,
+  PaginationQueryDto,
 } from 'src/shared';
 import { UserPayload } from 'src/interfaces';
 import { ApiTags } from '@nestjs/swagger';
@@ -73,7 +73,7 @@ export class ProductsController {
   }
 
   @Get('all')
-  getAllProduct(@Query() query: PaginationProductQueryDto) {
+  getAllProduct(@Query() query: PaginationQueryDto) {
     return this.productsService.getAllProductsDetailed(query);
   }
 
@@ -97,7 +97,7 @@ export class ProductsController {
   @Get('category/:category_id')
   getProductsByCategoryId(
     @Param('category_id') id: string,
-    @Query() query: PaginationProductQueryDto,
+    @Query() query: PaginationQueryDto,
   ) {
     return this.productsService.getByCategoryId(id, query);
   }
@@ -110,7 +110,7 @@ export class ProductsController {
   @Get('brand/:brand_name')
   getBrandProducts(
     @Param('brand_name') brandName: string,
-    @Query() query: PaginationProductQueryDto,
+    @Query() query: PaginationQueryDto,
   ) {
     return this.productsService.getBrandProducts(brandName, query);
   }
