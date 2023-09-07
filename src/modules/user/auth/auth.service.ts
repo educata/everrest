@@ -22,6 +22,7 @@ import {
 @Injectable()
 export class AuthService {
   private readonly BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private exceptionService: ExceptionService,

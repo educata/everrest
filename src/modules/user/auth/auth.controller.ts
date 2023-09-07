@@ -3,7 +3,6 @@ import {
   Controller,
   Post,
   UseGuards,
-  Request,
   Get,
   Res,
   Param,
@@ -29,6 +28,13 @@ import { ApiExcludeEndpoint, ApiTags } from '@nestjs/swagger';
 @Controller('auth')
 export class AuthController {
   constructor(private authService: AuthService) {}
+
+  @Get()
+  @UseGuards(JwtGuard)
+  @UseInterceptors(CurrentUserInterceptor)
+  getCurrentUser(@CurrentUser() user: UserPayload) {
+    return user;
+  }
 
   @Post('sign_up')
   signUp(@Body() body: SignUpDto) {
