@@ -5,7 +5,6 @@ import { Model } from 'mongoose';
 import { Response } from 'express';
 import { User, UserDocument } from 'src/schemas';
 import { EncryptionService, ExceptionService } from 'src/shared';
-import { BASE_URL } from 'src/consts';
 import { User as UserInterface, UserPayload } from 'src/interfaces';
 import {
   AuthExpectionKeys,
@@ -22,6 +21,7 @@ import {
 
 @Injectable()
 export class AuthService {
+  private readonly BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
     private exceptionService: ExceptionService,
@@ -153,7 +153,7 @@ export class AuthService {
           context: {
             showExpireTime: !isFromSignUp,
             name: user.firstName,
-            link: `${BASE_URL}/auth/verify/${this.jwtService.sign(
+            link: `${this.BASE_URL}/auth/verify/${this.jwtService.sign(
               {
                 email,
                 action: AuthActions.Verify,
@@ -191,7 +191,7 @@ export class AuthService {
         firstName: user.firstName,
         lastName: user.lastName,
       },
-      `${BASE_URL}/auth/submit/${this.jwtService.sign({
+      `${this.BASE_URL}/auth/submit/${this.jwtService.sign({
         email: user.email,
         action: AuthActions.Submit,
       })}`,
@@ -264,7 +264,7 @@ export class AuthService {
           context: {
             name: user.firstName,
             email: user.email,
-            link: `${BASE_URL}/auth/recovery/${this.jwtService.sign(
+            link: `${this.BASE_URL}/auth/recovery/${this.jwtService.sign(
               {
                 email,
                 action: AuthActions.Recovery,
