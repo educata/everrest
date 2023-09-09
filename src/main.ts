@@ -14,6 +14,13 @@ async function bootstrap() {
     }),
   );
   app.use(cookieParser());
+  app.enableCors({
+    origin: '*',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    preflightContinue: false,
+    optionsSuccessStatus: 204,
+    credentials: true,
+  });
   app.useGlobalFilters(new HttpExceptionsFilter());
 
   const config = new DocumentBuilder()
