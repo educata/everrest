@@ -40,6 +40,7 @@ export class HttpExceptionsFilter implements ExceptionFilter {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
+      help: `if you think this error should not happen, please create new issue at: https://github.com/educata/everrest/issues`,
     });
   }
 }
