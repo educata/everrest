@@ -37,6 +37,7 @@ productForm.addEventListener('submit', function (event) {
       images.push(image.value);
     }
   });
+  localStorage.setItem('data', JSON.stringify(data));
   const data = {
     title: formData.get('title'),
     description: formData.get('title'),
@@ -60,7 +61,7 @@ productForm.addEventListener('submit', function (event) {
     },
     images,
   };
-  console.log(data);
+  sendRequest('POST', `${baseURL}/shop/products`, data);
 });
 
 imageAddBtn.addEventListener('click', () => {

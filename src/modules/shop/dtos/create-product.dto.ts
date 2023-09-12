@@ -35,7 +35,7 @@ export class CreateProductDto {
   @Type(() => ProductCategoryDto)
   category: ProductCategory;
 
-  @IsNumber(null, { message: ProductExceptionKeys.WarrantyMustBeNumber })
+  @IsNumber({}, { message: ProductExceptionKeys.WarrantyMustBeNumber })
   @IsPositive({ message: ProductExceptionKeys.InvalidWarranty })
   warranty: number;
 
