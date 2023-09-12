@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/educata/everrest/compare/v0.0.6...v0.0.7) (2023-09-12)
+
+
+### Bug Fixes
+
+* **products:** isNumber validator causing error ([fa9f2aa](https://github.com/educata/everrest/commit/fa9f2aa0bb9ac5f045f1c097df8d85d9ed99cf83))
+
 ### 0.0.6 (2023-09-12)
 
 
