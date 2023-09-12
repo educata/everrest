@@ -14,13 +14,15 @@ async function bootstrap() {
     }),
   );
   app.use(cookieParser());
+
   app.enableCors({
-    origin: '*',
+    origin: true,
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     preflightContinue: false,
     optionsSuccessStatus: 204,
     credentials: true,
   });
+
   app.useGlobalFilters(new HttpExceptionsFilter());
 
   const config = new DocumentBuilder()
@@ -28,6 +30,7 @@ async function bootstrap() {
     .setDescription('EverREST API description')
     .setVersion('0.0.0')
     .build();
+
   const document = SwaggerModule.createDocument(app, config);
   // TODO: Add swagger 'ApiProperty' to DTOs
   SwaggerModule.setup('docs/swagger', app, document);
