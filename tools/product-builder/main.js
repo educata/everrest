@@ -12,6 +12,26 @@ if (localStorage.getItem('creds')) {
   document.querySelector('#password').value = data.password;
 }
 
+if (localStorage.getItem('data')) {
+  const data = JSON.parse(localStorage.getItem('data'));
+  document.querySelector('#title').value = data.title;
+  document.querySelector('#description').value = data.description;
+  document.querySelector('#brand').value = data.brand;
+  document.querySelector('#issueDate').value = data.issueDate;
+  document.querySelector('#stock').value = data.stock;
+  document.querySelector('#warranty').value = data.warranty;
+  document.querySelector('#thumbnail').value = data.thumbnail;
+  document.querySelector('#priceCurrent').value = data.price.current;
+  document.querySelector('#priceCurrency').value = data.price.currency;
+  document.querySelector('#priceBeforeDiscount').value =
+    data.price.beforeDiscount;
+  document.querySelector('#priceDiscountPercentage').value =
+    data.price.discountPercentage;
+  document.querySelector('#categoryId').value = data.category.id;
+  document.querySelector('#categoryName').value = data.category.name;
+  document.querySelector('#categoryImage').value = data.category.image;
+}
+
 signInForm.addEventListener('submit', function (event) {
   event.preventDefault();
   const formData = new FormData(this);
@@ -37,15 +57,14 @@ productForm.addEventListener('submit', function (event) {
       images.push(image.value);
     }
   });
-  localStorage.setItem('data', JSON.stringify(data));
   const data = {
     title: formData.get('title'),
-    description: formData.get('title'),
+    description: formData.get('description'),
     brand: formData.get('brand'),
     issueDate: new Date(
       formData.get('issueDate') || '2023-09-08',
     ).toISOString(),
-    stock: Number(formData.get('stock')),
+    stock: "Number(formData.get('stock'))",
     warranty: Number(formData.get('warranty')),
     thumbnail: formData.get('thumbnail'),
     price: {
@@ -61,7 +80,15 @@ productForm.addEventListener('submit', function (event) {
     },
     images,
   };
-  sendRequest('POST', `${baseURL}/shop/products`, data);
+  sendRequest('POST', `${baseURL}/shop/products`, data)
+    .then(() => {
+      localStorage.removeItem('data');
+      location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+      localStorage.setItem('data', JSON.stringify(data));
+    });
 });
 
 imageAddBtn.addEventListener('click', () => {
