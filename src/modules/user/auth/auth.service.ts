@@ -100,7 +100,7 @@ export class AuthService {
       ),
       httpOnly: true,
       secure: true,
-      sameSite: 'none',
+      sameSite: 'lax',
     });
     response.cookie('refresh_token', refreshToken, {
       expires: new Date(
@@ -109,7 +109,7 @@ export class AuthService {
       ),
       httpOnly: true,
       secure: true,
-      sameSite: 'none',
+      sameSite: 'lax',
     });
     return {
       access_token: accessToken,
@@ -133,7 +133,7 @@ export class AuthService {
       ),
       httpOnly: true,
       secure: true,
-      sameSite: 'none',
+      sameSite: 'lax',
     });
     return {
       access_token: accessToken,
