@@ -104,3 +104,7 @@ export enum CartExpectionKeys {
   CartDontHaveThisItem = 'errors.cart_do_not_have_this_item',
   CartAlreadyDeleted = 'errors.cart_already_deleted',
 }
+
+export enum QRCodeExpectionKeys {
+  TextShouldNotBeEmpty = 'errors.text_should_not_be_empty',
+}
