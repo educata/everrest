@@ -75,6 +75,7 @@ imageAddBtn.addEventListener('click', () => {
 
 function sendRequest(METHOD, url, body = {}) {
   const xhr = new XMLHttpRequest();
+  xhr.withCredentials = true;
   xhr.open(METHOD, url);
   xhr.setRequestHeader('Content-Type', 'application/json');
   xhr.send(JSON.stringify(body));
