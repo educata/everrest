@@ -1,12 +1,12 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-09-07T19:03:34.958Z",
+  "__export_date": "2023-09-12T13:47:58.976Z",
   "__export_source": "insomnia.desktop.app:v2023.5.8",
   "resources": [
     {
-      "_id": "req_f503108e57d848f692d0b89a321b7064",
-      "parentId": "fld_203fe6a1cd5e4274bc641ea44cee03b6",
+      "_id": "req_4a83524bc8f8464f910b4b8121875f29",
+      "parentId": "fld_c44fd0258a0543379ca3c9d6981bd45a",
       "modified": 1694109977169,
       "created": 1694104757818,
       "url": "http://localhost:3000",
@@ -28,8 +28,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_203fe6a1cd5e4274bc641ea44cee03b6",
-      "parentId": "wrk_4ef933ea915748d5897746f14b654671",
+      "_id": "fld_c44fd0258a0543379ca3c9d6981bd45a",
+      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
       "modified": 1694104747369,
       "created": 1694104741476,
       "name": "root",
@@ -40,19 +40,19 @@
       "_type": "request_group"
     },
     {
-      "_id": "wrk_4ef933ea915748d5897746f14b654671",
+      "_id": "wrk_cddddeca853e4720a57929758bac0eb7",
       "parentId": null,
-      "modified": 1692100035449,
-      "created": 1692100035449,
+      "modified": 1694113474968,
+      "created": 1694113474968,
       "name": "Everest",
       "description": "",
       "scope": "collection",
       "_type": "workspace"
     },
     {
-      "_id": "req_d6543bdd53f446a89a010f9544ac9582",
-      "parentId": "fld_203fe6a1cd5e4274bc641ea44cee03b6",
-      "modified": 1694109973086,
+      "_id": "req_cd91052f7dfc44aa9aa798894d5c9d14",
+      "parentId": "fld_c44fd0258a0543379ca3c9d6981bd45a",
+      "modified": 1694264487911,
       "created": 1694104795324,
       "url": "http://localhost:3000/lang/errors",
       "name": "Errors",
@@ -73,8 +73,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_b17d5cbd6caf4dbcb2e0ee562600eb23",
-      "parentId": "fld_65c3b123e07542fba2c48d82d1566011",
+      "_id": "req_2e11fa0e6cb543e5b69ce28733c9973c",
+      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
       "modified": 1693918319125,
       "created": 1693918297856,
       "url": "http://localhost:3000/shop/cart",
@@ -96,8 +96,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_65c3b123e07542fba2c48d82d1566011",
-      "parentId": "fld_6c3081c4b7a14864a3e68de8f0c0fd09",
+      "_id": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "parentId": "fld_ce89bf973c7049df95949e65662e24e0",
       "modified": 1693916555938,
       "created": 1693908862581,
       "name": "cart",
@@ -108,8 +108,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "fld_6c3081c4b7a14864a3e68de8f0c0fd09",
-      "parentId": "wrk_4ef933ea915748d5897746f14b654671",
+      "_id": "fld_ce89bf973c7049df95949e65662e24e0",
+      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
       "modified": 1693908839779,
       "created": 1693908839779,
       "name": "shop",
@@ -120,8 +120,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "req_cf783a77f1754dbe8fa4645af1de82c9",
-      "parentId": "fld_65c3b123e07542fba2c48d82d1566011",
+      "_id": "req_73287d6cd71a41d1824389c717cf3c43",
+      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
       "modified": 1693919005385,
       "created": 1693918293668,
       "url": "http://localhost:3000/shop/cart/product",
@@ -146,8 +146,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_ce8bf261e61442f39c163a7c79ccc223",
-      "parentId": "fld_65c3b123e07542fba2c48d82d1566011",
+      "_id": "req_8ba7281b071e4aa9b97a8076c1302bb5",
+      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
       "modified": 1693918605591,
       "created": 1693918592075,
       "url": "http://localhost:3000/shop/cart/checkout",
@@ -172,8 +172,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_fd71e2fc98bc41e18755c8bf9529da3b",
-      "parentId": "fld_65c3b123e07542fba2c48d82d1566011",
+      "_id": "req_eb42dcbf9f7a4b5aa907265aefa75ede",
+      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
       "modified": 1693919009738,
       "created": 1693918494445,
       "url": "http://localhost:3000/shop/cart/product",
@@ -198,8 +198,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_e001d3a61fce49938e5f73ace9e6bc46",
-      "parentId": "fld_65c3b123e07542fba2c48d82d1566011",
+      "_id": "req_1e9640498f784a89807a05a8d0eb43aa",
+      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
       "modified": 1693919012384,
       "created": 1693918569988,
       "url": "http://localhost:3000/shop/cart/product",
@@ -224,8 +224,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_23a40ef7a1fe4e0fb318329fc45994bb",
-      "parentId": "fld_65c3b123e07542fba2c48d82d1566011",
+      "_id": "req_821dc0d67da5499793d3b94056edc4fb",
+      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
       "modified": 1693918655016,
       "created": 1693918647735,
       "url": "http://localhost:3000/shop/cart",
@@ -250,8 +250,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_500fa5c538bb438e8cde6b31a4be3ca1",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_2929c98febf54e4eab263a7ca4440149",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693916681936,
       "created": 1693916564393,
       "url": "http://localhost:3000/shop/products/all",
@@ -273,8 +273,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
-      "parentId": "fld_6c3081c4b7a14864a3e68de8f0c0fd09",
+      "_id": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "parentId": "fld_ce89bf973c7049df95949e65662e24e0",
       "modified": 1693916554582,
       "created": 1693908857002,
       "name": "products",
@@ -285,8 +285,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "req_c3d9da746066412f9405cf98aab1457b",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_7506d5fbf8114be68fe2d743e5849cd4",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693917409614,
       "created": 1693917344514,
       "url": "http://localhost:3000/shop/products/id/64edc5b96ad1cbae75d30260",
@@ -308,8 +308,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_52593de30ebf412f8df0789718dd8019",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_3f8a9b2ff0e14e1eb609bf21b9de602a",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693916684919,
       "created": 1693916659552,
       "url": "http://localhost:3000/shop/products/categories",
@@ -331,8 +331,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_f92fd40b9a2b4cc5adc6bc2214975955",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_cc38765b67eb42cbba4b47186850ae58",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693916714272,
       "created": 1693916710925,
       "url": "http://localhost:3000/shop/products/category/1",
@@ -354,8 +354,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_09ac22c2f2474be48b41480b938c3725",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_68ea4263b0c8469da85712276cd12b22",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693916696386,
       "created": 1693916693438,
       "url": "http://localhost:3000/shop/products/brands",
@@ -377,8 +377,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_c78e1497b0e74b4dae3698c037c1bd40",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_82c97ac1dee1405993863057764e1236",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693916738478,
       "created": 1693916726612,
       "url": "http://localhost:3000/shop/products/brand/apple",
@@ -400,8 +400,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_0e1f92cf487c4f67b315507fff9347eb",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_b0fcc13d78a649038a1c5a665b9b06db",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693916793547,
       "created": 1693916631453,
       "url": "http://localhost:3000/shop/products/search?keywords=black",
@@ -423,17 +423,20 @@
       "_type": "request"
     },
     {
-      "_id": "req_6b2c93235ad84b47b254f6029b8ba0a0",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
-      "modified": 1693916848333,
+      "_id": "req_026ecafb94c14a1182f92c577468eb7c",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "modified": 1694519020765,
       "created": 1693916800785,
       "url": "http://localhost:3000/shop/products",
       "name": "Create product",
       "description": "",
       "method": "POST",
-      "body": {},
+      "body": { "mimeType": "application/json", "text": "" },
       "parameters": [],
-      "headers": [{ "name": "User-Agent", "value": "Insomnia/2023.5.7" }],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "Insomnia/2023.5.7" }
+      ],
       "authentication": {},
       "metaSortKey": -1693916631353,
       "isPrivate": false,
@@ -446,8 +449,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_4ecb9f1cb0bb42fab64d551c6238d679",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_77ca664feb014ab6a6a2ef47166442c4",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693919082609,
       "created": 1693917220539,
       "url": "http://localhost:3000/shop/products/rate",
@@ -472,8 +475,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_7d0376b16505482b9f404f1ffa612808",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_31884a6232e240e0a620bea14b4c3570",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693919085922,
       "created": 1693918026891,
       "url": "http://localhost:3000/shop/products/id/64edc5b96ad1cbae75d30260",
@@ -498,8 +501,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_c4405577661f4790812da96b66b96c62",
-      "parentId": "fld_2a99708adfcd4776b298ab2d0ba39b2a",
+      "_id": "req_1485f544fbe64c77bc42a94e20fedb57",
+      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
       "modified": 1693918172675,
       "created": 1693918133911,
       "url": "http://localhost:3000/shop/products/all",
@@ -521,8 +524,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_260aacb485ef4990bd8f08e58c71ec61",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_69de4f6120fa4c57930cf90f60ec9da7",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1694110863418,
       "created": 1694110844080,
       "url": "http://localhost:3000/auth",
@@ -544,20 +547,20 @@
       "_type": "request"
     },
     {
-      "_id": "fld_f2c783d75dfc4221af51c7cf20194a0d",
-      "parentId": "wrk_4ef933ea915748d5897746f14b654671",
-      "modified": 1693908848425,
+      "_id": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "modified": 1694519054447,
       "created": 1693902097619,
       "name": "auth",
       "description": "",
       "environment": {},
       "environmentPropertyOrder": null,
-      "metaSortKey": -1693902097619,
+      "metaSortKey": -1693907154239,
       "_type": "request_group"
     },
     {
-      "_id": "req_14752877265c4a77a8fd76a80687ede8",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_59a01316973744e28eb22457d5d5f21d",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1694112971558,
       "created": 1694112676180,
       "url": "http://localhost:3000/auth/all",
@@ -579,8 +582,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_8a8f9e383e53460ab26c752a8f00e136",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_038c9a88d14f4a4fbf0bffc695938838",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1694112682156,
       "created": 1694112030613,
       "url": "http://localhost:3000/auth/id/64eccb55fe7b573c1ec5aaae",
@@ -602,8 +605,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_afc930dd75d84f81b0987a21908967f8",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_ae5188830fa9444798adac44abf30e0f",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1693919050169,
       "created": 1693902140340,
       "url": "http://localhost:3000/auth/sign_up",
@@ -628,9 +631,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_62f91e6a1c834b76b89d8c0b74c399a0",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
-      "modified": 1694113322234,
+      "_id": "req_b46715ede6564a6abcff1279ec27cd35",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "modified": 1694526382230,
       "created": 1693902632304,
       "url": "http://localhost:3000/auth/sign_in",
       "name": "Sign in",
@@ -654,8 +657,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_e74f13361635473892668587443eec66",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_27ed77ca0690403a8e9965cef031b138",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1694113234872,
       "created": 1694113127974,
       "url": "http://localhost:3000/auth/logout",
@@ -677,8 +680,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_1a00c93bc972469faf49ea0ca57320be",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_0f9cc4a65df844ec92ab03806cd2a0c5",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1693919058744,
       "created": 1693907088975,
       "url": "http://localhost:3000/auth/verify_email",
@@ -703,8 +706,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_57daa0dce4f547acb497ce23567f0db9",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_f0b895cbe291453e89fb2422744d5654",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1693909612531,
       "created": 1693902735328,
       "url": "http://localhost:3000/auth/refresh",
@@ -729,9 +732,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_9384ca725b9246159bb1fd179b42586e",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
-      "modified": 1694113334002,
+      "_id": "req_17d8eca8e26d4f4ab4647da88e8addab",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "modified": 1694267399035,
       "created": 1693908748910,
       "url": "http://localhost:3000/auth/recovery",
       "name": "Reset password",
@@ -755,8 +758,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_b6eb70b43f92455497c48b4a85e69316",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_baceb3788dc64b058663c8ca11e4267f",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1693909607505,
       "created": 1693908814193,
       "url": "http://localhost:3000/auth/update",
@@ -781,8 +784,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_70eda4705daf43e69b5247dfde9e6aba",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_59a4462113734804bcca8b2773c5436a",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1693919069232,
       "created": 1693909251050,
       "url": "http://localhost:3000/auth/change_password",
@@ -807,8 +810,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_6cdec9c383e144aaa1e0d01b3365907c",
-      "parentId": "fld_f2c783d75dfc4221af51c7cf20194a0d",
+      "_id": "req_047706c9a5774d899b9d3a6afb84d507",
+      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
       "modified": 1693909599282,
       "created": 1693909567503,
       "url": "http://localhost:3000/auth/delete",
@@ -830,8 +833,95 @@
       "_type": "request"
     },
     {
-      "_id": "env_28f2258bffa6f7493658e64d84b2d4646d8cc2a4",
-      "parentId": "wrk_4ef933ea915748d5897746f14b654671",
+      "_id": "req_9125e9b68cb94b56829697cbb56831ed",
+      "parentId": "fld_e840d8e2358f430bb4502f131024b985",
+      "modified": 1694519092775,
+      "created": 1694519059173,
+      "url": "http://localhost:3000/qrcode",
+      "name": "Default qrcode",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/2023.5.8" }],
+      "authentication": {},
+      "metaSortKey": -1694519065597,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_e840d8e2358f430bb4502f131024b985",
+      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "modified": 1694519052587,
+      "created": 1694519034267,
+      "name": "qrcode",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1693905468699,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_929fcc495f8b4351a2b7c212d50ba230",
+      "parentId": "fld_e840d8e2358f430bb4502f131024b985",
+      "modified": 1694526371787,
+      "created": 1694524067494,
+      "url": "http://localhost:3000/qrcode/generate",
+      "name": "Generate",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/2023.5.8" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694519065497,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_67b7a53736b749eba07cc245eeba245f",
+      "parentId": "fld_e840d8e2358f430bb4502f131024b985",
+      "modified": 1694526373478,
+      "created": 1694524409029,
+      "url": "http://localhost:3000/qrcode/generate_with_image",
+      "name": "Generate with image",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/2023.5.8" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694519065397,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_d70e108a1bfe41ca8ff251cef1c1e9a5",
+      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
       "modified": 1694104754476,
       "created": 1692100035451,
       "name": "Base Environment",
@@ -843,37 +933,65 @@
       "_type": "environment"
     },
     {
-      "_id": "jar_28f2258bffa6f7493658e64d84b2d4646d8cc2a4",
-      "parentId": "wrk_4ef933ea915748d5897746f14b654671",
-      "modified": 1694110836275,
+      "_id": "jar_c4342b88e8714f248bb999416a49cd31",
+      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "modified": 1694509539570,
       "created": 1692100035452,
       "name": "Default Jar",
       "cookies": [
         {
           "key": "access_token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQxMTA4MzYsImV4cCI6MTY5NDExNDQzNn0.RLtPP5uFJvcFFkdm1OqDuUSX187g2A33GfzEQaI0qUM",
-          "expires": "2023-09-07T19:20:36.000Z",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQ1MDk1MzksImV4cCI6MTY5NDUxMzEzOX0.cIaNnI48Lk7IKxWzoGhhg5jG2FbguOEfaJJwVmzU4dc",
+          "expires": "2023-09-12T10:05:39.000Z",
           "domain": "localhost",
           "path": "/",
           "secure": true,
           "httpOnly": true,
           "hostOnly": true,
           "creation": "2023-09-07T18:20:36.274Z",
-          "lastAccessed": "2023-09-07T18:20:36.274Z",
-          "id": "5133907119479373"
+          "lastAccessed": "2023-09-12T09:05:39.569Z",
+          "sameSite": "none",
+          "id": "4593084215682077"
         },
         {
           "key": "refresh_token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQxMTA4MzYsImV4cCI6MTY5NDcxNTYzNn0.3T3r1_jpTIpDsRZdmnG0Vt1udEHzjPZNF45Gv5Ed6oc",
-          "expires": "2023-09-14T18:20:36.000Z",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQ1MDk1MzksImV4cCI6MTY5NTExNDMzOX0.9pJqeWCPQWT6wU5KCH_CaDnU1_hMQxf4yftNS8FsVvg",
+          "expires": "2023-09-19T09:05:39.000Z",
           "domain": "localhost",
           "path": "/",
           "secure": true,
           "httpOnly": true,
           "hostOnly": true,
           "creation": "2023-09-07T18:20:36.275Z",
-          "lastAccessed": "2023-09-07T18:20:36.275Z",
-          "id": "4113064954182799"
+          "lastAccessed": "2023-09-12T09:05:39.569Z",
+          "sameSite": "none",
+          "id": "5622771899700447"
+        },
+        {
+          "key": "access_token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQ1MDczMjcsImV4cCI6MTY5NDUxMDkyN30.iR63xf4QdoSNlYD6qE80y5hnQrgIXANVQxebEQ8I4f0",
+          "expires": "2023-09-12T09:28:47.000Z",
+          "domain": "everrest.educata.dev",
+          "path": "/",
+          "secure": true,
+          "httpOnly": true,
+          "hostOnly": true,
+          "creation": "2023-09-09T13:50:08.036Z",
+          "lastAccessed": "2023-09-12T08:28:48.272Z",
+          "id": "35108049377650064"
+        },
+        {
+          "key": "refresh_token",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQ1MDczMjcsImV4cCI6MTY5NTExMjEyN30.ELrOkR8SRYd818_jl8m7xzG3MhhVNac-AhuG5_xOCig",
+          "expires": "2023-09-19T08:28:47.000Z",
+          "domain": "everrest.educata.dev",
+          "path": "/",
+          "secure": true,
+          "httpOnly": true,
+          "hostOnly": true,
+          "creation": "2023-09-09T13:50:08.037Z",
+          "lastAccessed": "2023-09-12T08:28:48.272Z",
+          "id": "1657699330217104"
         }
       ],
       "_type": "cookie_jar"

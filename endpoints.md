@@ -45,3 +45,11 @@ prefix - /`shop`/`...`
 - `PATCH` cart/product | { id, quantity } | jwt
 - `DELETE` cart/product | { id } | jwt
 - `DELETE` cart | (clear current cart) | jwt
+
+## QrCode
+
+prefix - /`qrcode`
+
+- `GET` qrcode
+- `POST` qrcode/generate
+- `POST` qrcode/generate_with_image

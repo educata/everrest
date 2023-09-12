@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ShopModule, UserModule, MailModule } from './modules';
+import { ShopModule, UserModule, MailModule, QrCodeModule } from './modules';
 import { ExceptionService, EncryptionService } from './shared';
 @Module({
   imports: [
@@ -13,6 +13,7 @@ import { ExceptionService, EncryptionService } from './shared';
     ShopModule,
     UserModule,
     MailModule,
+    QrCodeModule,
   ],
   controllers: [AppController],
   providers: [AppService, ExceptionService, EncryptionService],

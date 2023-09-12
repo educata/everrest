@@ -28,7 +28,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('EverREST')
     .setDescription('EverREST API description')
-    .setVersion('0.0.0')
+    .setVersion('0.0.9')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

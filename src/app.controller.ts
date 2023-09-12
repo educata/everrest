@@ -8,6 +8,7 @@ import {
   GlobalExceptionKeys,
   ProductExceptionKeys,
   ExceptionStatusKeys,
+  QRCodeExpectionKeys,
 } from 'src/enums';
 
 @ApiTags('root')
@@ -31,6 +32,7 @@ export class AppController {
       ...ProductExceptionKeys,
       ...AuthExpectionKeys,
       ...CartExpectionKeys,
+      ...QRCodeExpectionKeys,
     });
   }
 }
