@@ -43,11 +43,14 @@ export class QrCodeService {
     ctx.strokeStyle = '#fff';
     ctx.lineWidth = 10;
     ctx.stroke();
+    ctx.closePath();
+    ctx.clip();
 
     ctx.fillStyle = '#fff';
     ctx.fill();
 
     const image = await loadImage(imageSrc);
+
     ctx.drawImage(
       image,
       center - imageWidth / 2,
@@ -55,6 +58,7 @@ export class QrCodeService {
       imageWidth,
       imageHeight,
     );
+
     return canvas.toDataURL();
   }
 }

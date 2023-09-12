@@ -107,4 +107,5 @@ export enum CartExpectionKeys {
 
 export enum QRCodeExpectionKeys {
   TextShouldNotBeEmpty = 'errors.text_should_not_be_empty',
+  ImageUrlShouldNotBeEmpty = 'errors.image_url_should_not_be_empty',
 }
