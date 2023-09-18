@@ -6,9 +6,10 @@ dest_dir="../../dist/docs"
 input_dir="./docs/api"
 
 # If mdbook is installed in the system
-mdbook build $input_dir --dest-dir=$dest_dir
 
-# Curl the binary if mdbook doesn't exist
-if [ $? -eq 1 ]; then
-    curl -L  $mdbook_url | tar xvz && ./mdbook build $input_dir --dest-dir=$dest_dir
+if command -v "mdbook" &> /dev/null; then
+  mdbook build $input_dir --dest-dir=$dest_dir
+else
+  # Curl the binary if mdbook doesn't exist
+  curl -L  $mdbook_url | tar xvz && ./mdbook build $input_dir --dest-dir=$dest_dir
 fi
