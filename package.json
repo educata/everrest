@@ -22,7 +22,8 @@
   ],
   "scripts": {
     "build": "nest build",
-    "build:doc": "build-doc.sh",
+    "build:doc": "./build-doc.sh",
+    "build:doc:windows": "build-doc.sh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main",
     "start:dev": "nest start --watch",
