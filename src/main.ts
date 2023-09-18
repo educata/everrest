@@ -5,6 +5,7 @@ import { HttpExceptionsFilter } from './http-exceptions.filter';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
 import * as cp from 'child_process';
+import * as fs from 'fs';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -26,10 +27,12 @@ async function bootstrap() {
 
   app.useGlobalFilters(new HttpExceptionsFilter());
 
+  const packageJSON = fs.readFileSync('./package.json', 'utf-8');
+
   const config = new DocumentBuilder()
     .setTitle('EverREST')
     .setDescription('EverREST API description')
-    .setVersion('0.0.9')
+    .setVersion(JSON.parse(packageJSON).version || '0.0.0')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
