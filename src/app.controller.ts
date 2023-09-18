@@ -1,6 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
-import { ExceptionService } from './shared';
+import { Controller, Get, Redirect } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import {
   AuthExpectionKeys,
@@ -14,14 +12,10 @@ import {
 @ApiTags('root')
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly exceptionService: ExceptionService,
-  ) {}
-
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  @Redirect('/docs')
+  getDocs() {
+    return { url: '/docs' };
   }
 
   @Get('lang/errors')

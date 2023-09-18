@@ -4,6 +4,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionsFilter } from './http-exceptions.filter';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
+import * as cp from 'child_process';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -34,6 +35,9 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   // TODO: Add swagger 'ApiProperty' to DTOs
   SwaggerModule.setup('docs/swagger', app, document);
+
+  // Builds mdbook documentation in dist/docs
+  cp.exec('npm run build:doc');
 
   await app.listen(process.env.PORT || 3000);
 }
