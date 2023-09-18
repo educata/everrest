@@ -1,0 +1,11 @@
+[book]
+authors = ["Pridon Tetradze", "Konstantine Datunishvili"]
+language = "en"
+multilingual = false
+src = "src"
+
+[build]
+build-dir = "../../dist/docs"
+
+[output.html]
+default-theme = "navy"

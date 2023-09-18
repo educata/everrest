@@ -1,12 +1,28 @@
 {
   "name": "everrest",
   "version": "0.0.9",
-  "description": "",
-  "author": "",
+  "description": "EverREST backend service for educational purposes",
+  "author": "Educata Authors",
   "private": true,
-  "license": "UNLICENSED",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/educata/everrest/issues"
+  },
+  "contributors": [
+    {
+      "name" : "Konstantine Datunishvili",
+      "email" : "konstantine@educata.dev",
+      "url" : "https://konstantinedatunishvili.com"
+    },
+    {
+      "name" : "Pridon Tetradze",
+      "email" : "pridon@educata.dev",
+      "url" : "https://pridontetradze.com"
+    }
+  ],
   "scripts": {
     "build": "nest build",
+    "build:doc": "build-doc.sh",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "node dist/main",
     "start:dev": "nest start --watch",
@@ -33,6 +49,7 @@
     "@nestjs/mongoose": "^10.0.1",
     "@nestjs/passport": "^10.0.0",
     "@nestjs/platform-express": "^10.0.0",
+    "@nestjs/serve-static": "^4.0.0",
     "@nestjs/swagger": "^7.1.10",
     "bcrypt": "^5.1.1",
     "canvas": "^2.11.2",
