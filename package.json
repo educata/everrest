@@ -1,6 +1,6 @@
 {
   "name": "everrest",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "description": "EverREST backend service for educational purposes",
   "author": "Educata Authors",
   "private": true,
@@ -10,14 +10,14 @@
   },
   "contributors": [
     {
-      "name" : "Konstantine Datunishvili",
-      "email" : "konstantine@educata.dev",
-      "url" : "https://konstantinedatunishvili.com"
+      "name": "Konstantine Datunishvili",
+      "email": "konstantine@educata.dev",
+      "url": "https://konstantinedatunishvili.com"
     },
     {
-      "name" : "Pridon Tetradze",
-      "email" : "pridon@educata.dev",
-      "url" : "https://pridontetradze.com"
+      "name": "Pridon Tetradze",
+      "email": "pridon@educata.dev",
+      "url": "https://pridontetradze.com"
     }
   ],
   "scripts": {
