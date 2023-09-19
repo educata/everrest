@@ -40,7 +40,7 @@ async function bootstrap() {
   SwaggerModule.setup('docs/swagger', app, document);
 
   // Builds mdbook documentation in dist/docs
-  cp.exec(`npm run build:doc${process.platform === 'win32' ? ':windows' : ''}`);
+  cp.exec('npm run docs:build');
 
   await app.listen(process.env.PORT || 3000);
 }

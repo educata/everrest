@@ -1,6 +1,8 @@
 # compiled output
 /dist
 /node_modules
+/docs/api/.vitepress/cache
+/docs/api/.vitepress/dist
 
 # Logs
 logs
@@ -35,5 +37,3 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 .env
-
-mdbook
