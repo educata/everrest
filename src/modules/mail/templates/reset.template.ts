@@ -1,4 +1,4 @@
-// TODO: update if it's necessary for style
+// TODO: update style and add token blocklist
 export function generateResetPageTemplate(email: string) {
   return `
     <!DOCTYPE html>

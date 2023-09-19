@@ -10,7 +10,12 @@ import {
 } from '../dtos';
 import { Product, ProductDocument } from 'src/schemas';
 import { ExceptionService, PaginationQueryDto } from 'src/shared';
-import { ExceptionStatusKeys, SortDirection, SortProductsBy } from 'src/enums';
+import {
+  ExceptionStatusKeys,
+  ProductExceptionKeys,
+  SortDirection,
+  SortProductsBy,
+} from 'src/enums';
 import { ProductCategory, ProductRating, UserPayload } from 'src/interfaces';
 import { API_CONFIG } from 'src/consts';
 
@@ -21,7 +26,19 @@ export class ProductsService {
     private exceptionService: ExceptionService,
   ) {}
 
-  addProduct(product: CreateProductDto): Promise<Product> {
+  async addProduct(product: CreateProductDto): Promise<Product> {
+    const sameProduct = await this.productModel.findOne({
+      title: product.title,
+    });
+
+    if (sameProduct) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.Conflict,
+        'Product already exists with this name',
+        ProductExceptionKeys.ProductAlreadyExists,
+      );
+    }
+
     return this.productModel.create({
       ...product,
       rating: 0,

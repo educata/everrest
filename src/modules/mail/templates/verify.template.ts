@@ -2,7 +2,7 @@ export function generateVerifyPageTemplate(
   user: { email: string; firstName: string; lastName: string },
   link: string,
 ) {
-  // TODO: update if it's necessary for style
+  // TODO: update style and add token blocklist
   return `
       <!DOCTYPE html>
       <html lang="en">
