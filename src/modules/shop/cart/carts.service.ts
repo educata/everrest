@@ -243,7 +243,6 @@ export class CartsService {
   }
 
   async checkout(userPayload: UserPayload) {
-    // TODO: do we need to verify payment ? like adding card and it's validation
     const user = await this.userModel.findOne({ _id: userPayload._id });
 
     if (user && !user.cartID) {

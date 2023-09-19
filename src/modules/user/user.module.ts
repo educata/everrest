@@ -22,7 +22,6 @@ import { MailModule } from '../mail';
     ConfigModule.forRoot(),
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
     JwtModule.register({
-      // TODO: implement way to register once
       secret: `${process.env.JWT_SECRET}`,
       signOptions: { expiresIn: `${process.env.JWT_EXPIRES_IN || '1'}h` },
     }),
