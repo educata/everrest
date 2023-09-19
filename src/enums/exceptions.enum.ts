@@ -12,6 +12,7 @@ export enum ExceptionStatusKeys {
 }
 
 export enum ProductExceptionKeys {
+  ProductAlreadyExists = 'errors.product_already_exists',
   ProductNotFound = 'errors.product_not_found',
   ProductStockOutnumbered = 'errors.product_stock_outnumbered',
   ProductStockSoldBeforeCheckout = 'errors.product_stock_sold_before_checkout',
