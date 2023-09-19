@@ -1,1 +1,2 @@
+doc: npm run docs:build
 web: npm run start:prod

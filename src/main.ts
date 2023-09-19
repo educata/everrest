@@ -39,9 +39,6 @@ async function bootstrap() {
   // TODO: Add swagger 'ApiProperty' to DTOs
   SwaggerModule.setup('docs/swagger', app, document);
 
-  // Builds mdbook documentation in dist/docs
-  cp.exec('npm run docs:build');
-
   await app.listen(process.env.PORT || 3000);
 }
 bootstrap();
