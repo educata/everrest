@@ -35,8 +35,8 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  // TODO: Add swagger 'ApiProperty' to DTOs
-  SwaggerModule.setup('docs/swagger', app, document);
+
+  SwaggerModule.setup('swagger', app, document);
 
   await app.listen(process.env.PORT || 3000);
 }

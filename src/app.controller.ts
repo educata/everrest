@@ -13,9 +13,9 @@ import {
 @Controller()
 export class AppController {
   @Get()
-  @Redirect('/docs')
+  @Redirect('https://everrest.educata.dev')
   getDocs() {
-    return { url: '/docs' };
+    return { url: 'https://everrest.educata.dev' };
   }
 
   @Get('lang/errors')
