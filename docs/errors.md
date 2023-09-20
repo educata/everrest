@@ -1,0 +1,3 @@
+# Errors
+
+This describes errors.

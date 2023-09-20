@@ -18,6 +18,7 @@ export default defineConfig({
           { text: 'Getting Started', link: '/getting-started' },
           { text: 'Authentication', link: '/authentication' },
           { text: 'Shop', link: '/shop' },
+          { text: 'Errors', link: '/errors' },
         ],
       },
     ],
