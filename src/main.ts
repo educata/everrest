@@ -4,7 +4,6 @@ import { ValidationPipe } from '@nestjs/common';
 import { HttpExceptionsFilter } from './http-exceptions.filter';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
-import * as cp from 'child_process';
 import * as fs from 'fs';
 
 async function bootstrap() {
