@@ -6,6 +6,9 @@ hero:
   name: 'EverREST'
   text: 'Everything you need for REST API'
   tagline: Practice building CRUD apps
+  image:
+    src: ./logo.png
+    alt: EverREST logo
   actions:
     - theme: brand
       text: Get Started
@@ -23,6 +26,10 @@ features:
     details: Use shop endpoints to build a CRUD shopping app
     icon: 🛒
     link: /shop
+  - title: QR
+    details: Generate a QR code with or without image
+    icon: 📱
+    link: /qr
   - title: Chat
     details: Coming soon...
     icon: 🗨️
