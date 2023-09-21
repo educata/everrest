@@ -2,48 +2,35 @@
 outline: deep
 ---
 
-# Runtime API Examples
+# Getting Started
 
-This page demonstrates usage of some of the runtime APIs provided by VitePress.
+EverREST is comprised of multiple endpoints (or modules), which you can access
+via HTTP requests by specifying the very first parameter of the URL:
 
-The main `useData()` API can be used to access site, theme, and page data for the current page. It works in both `.md` and `.vue` files:
-
-```md
-<script setup>
-import { useData } from 'vitepress'
-
-const { theme, page, frontmatter } = useData()
-</script>
-
-## Results
-
-### Theme Data
-<pre>{{ theme }}</pre>
-
-### Page Data
-<pre>{{ page }}</pre>
-
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
+```
+https://api.everrest.educata.dev/<endpoint_name>/<other_parameters>
 ```
 
-<script setup>
-import { useData } from 'vitepress'
+For example:
 
-const { site, theme, page, frontmatter } = useData()
-</script>
+```
+# Shop endpoint
+https://api.everrest.educata.dev/shop/products/all
 
-## Results
+# Auth endpoint
+https://api.everrest.educata.dev/auth/sign_in
+```
 
-### Theme Data
-<pre>{{ theme }}</pre>
+You can read documentation for each endpoint by following the corresponding
+link in the sidebar.
 
-### Page Data
-<pre>{{ page }}</pre>
+Each endpoint usage example is documented with `curl` command:
+[a shell commandline tool](https://curl.se/docs/manpage.html)
+used for transferring data from or to a server using URLs.
+Of course, you can utilze any tools, programming languages and frameworks for this
+API. The `curl` is universally accepted and allows us to keep the documentation
+platform-agnostic.
 
-### Page Frontmatter
-<pre>{{ frontmatter }}</pre>
-
-## More
-
-Check out the documentation for the [full list of runtime APIs](https://vitepress.dev/reference/runtime-api#usedata).
+::: tip SWAGGER
+The [swagger documentation](https://api.everrest.educata.dev/swagger) is also available for EverREST.
+:::
