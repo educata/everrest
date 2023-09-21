@@ -26,11 +26,11 @@ link in the sidebar.
 
 Each endpoint usage example is documented with `curl` command:
 [a shell commandline tool](https://curl.se/docs/manpage.html)
-in POSIX systems used for transferring data from or to a server using URLs.
+used for transferring data from or to a server using URLs.
 Of course, you can utilze any tools, programming languages and frameworks for this
 API. The `curl` is universally accepted and allows us to keep the documentation
 platform-agnostic.
 
 ::: tip SWAGGER
-The [swagger documentation](https://api.everrest.educata.dev/swagger#/auth/AuthController_signUp) is also available for EverREST.
+The [swagger documentation](https://api.everrest.educata.dev/swagger) is also available for EverREST.
 :::
