@@ -71,7 +71,7 @@ export class AuthController {
     return this.authService.signIn(user, response);
   }
 
-  @Post('logout')
+  @Post('sign_out')
   logout() {
     // TODO: handle logout after token block list is added
     return "it's not implemented yet. will be added soon";

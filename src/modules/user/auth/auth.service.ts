@@ -415,7 +415,7 @@ export class AuthService {
 
   async getUserByID(userPayload: UserPayload, id: string) {
     if (userPayload._id === id) {
-      return userPayload;
+      return this.createPayload(userPayload as unknown as UserInterface);
     }
 
     this.mongooseValidator.isValidObjectId(id);
@@ -424,7 +424,7 @@ export class AuthService {
     if (!user) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
-        `User with this '${id}' does not exists`,
+        `User with this '${id}' does not exist`,
         AuthExpectionKeys.UserNotFound,
       );
     }
