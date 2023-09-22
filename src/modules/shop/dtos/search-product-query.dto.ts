@@ -13,9 +13,13 @@ import {
   SortDirection,
   SortProductsBy,
 } from 'src/enums';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class SearchProductsQueryDto {
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsNumber({}, { message: GlobalExceptionKeys.PageIndexNotNumber })
   @Min(API_CONFIG.MINIMUM_PAGE_INDEX, {
     message: GlobalExceptionKeys.PageIndexTooLow,
@@ -23,6 +27,9 @@ export class SearchProductsQueryDto {
   page_index: number;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsNumber({}, { message: GlobalExceptionKeys.PageSizeNotNumber })
   @Min(API_CONFIG.MINIMUM_PAGE_SIZE, {
     message: GlobalExceptionKeys.PageSizeTooLow,
@@ -33,18 +40,30 @@ export class SearchProductsQueryDto {
   page_size: number;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString()
   keywords: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString()
   category_id: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString()
   brand: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsNumber({}, { message: ProductExceptionKeys.RatingNotNumber })
   @Min(API_CONFIG.MINIMUM_RATING, {
     message: ProductExceptionKeys.RatingTooLow,
@@ -55,6 +74,9 @@ export class SearchProductsQueryDto {
   rating: number;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsNumber({}, { message: ProductExceptionKeys.PriceMinNotNumber })
   @Min(API_CONFIG.MINIMUM_PRICE, {
     message: ProductExceptionKeys.PriceMinTooLow,
@@ -65,6 +87,9 @@ export class SearchProductsQueryDto {
   price_min: number;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsNumber({}, { message: ProductExceptionKeys.PriceMaxNotNumber })
   @Min(API_CONFIG.MINIMUM_PRICE, {
     message: ProductExceptionKeys.PriceMaxTooLow,
@@ -76,12 +101,18 @@ export class SearchProductsQueryDto {
 
   // TODO: Implement property interdependance validation
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsEnum(SortProductsBy, {
     message: ProductExceptionKeys.IncorrectSortBy,
   })
   sort_by: SortProductsBy;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsEnum(SortDirection, {
     message: ProductExceptionKeys.IncorrectSortDirection,
   })
