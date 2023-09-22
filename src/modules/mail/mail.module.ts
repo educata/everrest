@@ -20,7 +20,7 @@ import { MailService } from './mail.service';
         },
       },
       defaults: {
-        from: `"Everrest" <${process.env.TRANSPORT_EMAIL}>`,
+        from: `"EverREST" <${process.env.TRANSPORT_EMAIL}>`,
       },
       template: {
         dir: join(__dirname, 'templates'),
