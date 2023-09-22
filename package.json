@@ -1,6 +1,6 @@
 {
   "name": "everrest",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "description": "EverREST backend service for educational purposes",
   "author": "Educata Authors",
   "private": true,
