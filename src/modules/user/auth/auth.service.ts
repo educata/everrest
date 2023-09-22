@@ -369,6 +369,7 @@ export class AuthService {
   async updateUserPassword(
     userPayload: UserPayload,
     body: UpdateUserPasswordDto,
+    response: Response,
   ) {
     if (body.newPassword === body.oldPassword) {
       this.exceptionService.throwError(
@@ -395,7 +396,10 @@ export class AuthService {
     user.password = body.newPassword;
     await user.save();
 
-    return this.createPayload(user as unknown as UserInterface);
+    return this.signIn(
+      this.createPayload(user as unknown as UserInterface),
+      response,
+    );
   }
 
   async deleteCurrentUser(userPayload: UserPayload) {
