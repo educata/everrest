@@ -124,8 +124,9 @@ export class AuthController {
   updateUserPassword(
     @CurrentUser() user: UserPayload,
     @Body() body: UpdateUserPasswordDto,
+    @Res({ passthrough: true }) response: Response,
   ) {
-    return this.authService.updateUserPassword(user, body);
+    return this.authService.updateUserPassword(user, body, response);
   }
 
   @Delete('delete')
