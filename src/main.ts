@@ -28,10 +28,15 @@ async function bootstrap() {
 
   const packageJSON = fs.readFileSync('./package.json', 'utf-8');
 
+  // ! TODO: update setContact second value when educata.dev is finished
+
   const config = new DocumentBuilder()
     .setTitle('EverREST')
     .setDescription('EverREST API description')
     .setVersion(JSON.parse(packageJSON).version || '0.0.0')
+    .setLicense('MIT', 'https://github.com/educata/everrest/blob/main/LICENSE')
+    .setContact('educata team', '', 'contact@educata.dev')
+    .setExternalDoc('Documentation', 'https://everrest.educata.dev')
     .build();
 
   const document = SwaggerModule.createDocument(app, config);

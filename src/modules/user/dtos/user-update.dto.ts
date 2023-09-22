@@ -12,9 +12,13 @@ import {
 } from 'class-validator';
 import { API_CONFIG } from 'src/consts';
 import { AuthExpectionKeys, Gender } from 'src/enums';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateUserDto {
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString({
     message: AuthExpectionKeys.FirstnameShouldBeString,
   })
@@ -27,6 +31,9 @@ export class UpdateUserDto {
   firstName: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString({
     message: AuthExpectionKeys.LastnameShouldBeString,
   })
@@ -39,31 +46,52 @@ export class UpdateUserDto {
   lastName: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsNumber({}, { message: AuthExpectionKeys.InvalidAge })
   @IsPositive({ message: AuthExpectionKeys.InvalidAge })
   age: number;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsEmail({}, { message: AuthExpectionKeys.InvalidEmail })
   email: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString({ message: AuthExpectionKeys.InvalidAddress })
   address: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsPhoneNumber(null, { message: AuthExpectionKeys.InvalidPhoneNumber })
   phone: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsString({ message: AuthExpectionKeys.InvalidZipcode })
   zipcode: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsUrl({}, { message: AuthExpectionKeys.InvalidAvatar })
   avatar: string;
 
   @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
   @IsEnum(Gender, { message: AuthExpectionKeys.InvalidGender })
   gender: Gender;
 }
