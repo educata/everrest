@@ -360,7 +360,10 @@ export class AuthService {
         gender: body.gender,
       },
     );
-    return this.userModel.findOne({ _id: user.id });
+
+    const updatedUser = await this.userModel.findOne({ _id: user.id });
+
+    return this.createPayload(updatedUser as unknown as UserInterface);
   }
 
   async updateUserPassword(
