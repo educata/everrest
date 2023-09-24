@@ -30,6 +30,7 @@ export default defineConfig({
           },
           { text: 'QR', link: '/qr' },
           { text: 'Errors', link: '/errors' },
+          { text: 'Team Members', link: '/team' }
         ],
       },
     ],
@@ -40,5 +41,9 @@ export default defineConfig({
     search: {
       provider: 'local',
     },
+    footer: {
+      message: 'Released under the <a href="https://github.com/educata/everrest/blob/main/LICENSE">MIT License</a>.',
+      copyright: 'Copyright © 2023-present <a href="https://github.com/educata">Educata</a>'
+    }
   },
 });
