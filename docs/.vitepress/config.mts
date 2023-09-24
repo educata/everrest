@@ -20,7 +20,15 @@ export default defineConfig({
         items: [
           { text: 'Getting Started', link: '/getting-started' },
           { text: 'Authentication', link: '/authentication' },
-          { text: 'Shop', link: '/shop' },
+          {
+            text: 'Shop',
+            link: '/shop',
+            items: [
+              { text: 'Product', link: '/product'},
+              { text: 'Cart', link: '/cart'},
+            ]
+          },
+          { text: 'QR', link: '/qr' },
           { text: 'Errors', link: '/errors' },
         ],
       },
