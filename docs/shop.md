@@ -4,3 +4,9 @@ EverREST provides simple CRUD operations for a shop website. This means that wit
 
 - [Product](./product.md)
 - [Cart](./cart.md)
+
+Base URL:
+
+```
+https://api.everrest.educata.dev/shop
+```
