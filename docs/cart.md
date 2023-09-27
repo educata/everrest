@@ -2,6 +2,12 @@
 
 In the cart module, users can create a cart, add products to it, proceed to checkout, delete items, and clear the cart. This operates in a simple manner, similar to how it is handled on shopping websites.
 
+Base URL:
+
+```
+https://api.everrest.educata.dev/shop/cart
+```
+
 ## Workflow
 
 <img src="./public/flowchart.svg" alt="flowchart of cart module">
@@ -12,7 +18,7 @@ To use the cart module, we must follow a workflow similar to the provided flowch
 All endpoints for the cart module require the user to be `authorized`. This means that an access token must be attached either to cookies or the `Authorization` header.
 :::
 
-## Create Cart
+## Create cart
 
 To create cart, user has to choose one time for first time.
 
@@ -67,3 +73,43 @@ curl -X 'POST' \
 ::: info NOTE
 This endpoint works if the user does not have a cart attached.
 :::
+
+## Get cart
+
+- Method: `GET`
+- URL: `https://api.everrest.dev/shop/cart`
+
+### Example
+
+```sh
+curl -X 'GET' \
+  'https://api.everrest.educata.dev/shop/cart' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer <your_token_here>'
+```
+
+### Response
+
+```json
+{
+  "total": {
+    "price": {
+      "current": 1899,
+      "beforeDiscount": 1899
+    },
+    "quantity": 1,
+    "products": 1
+  },
+  "_id": "6513b1d325316704e705e10f",
+  "userId": "64eccb55fe7b573c1ec5aaae",
+  "createdAt": "2023-09-27T04:38:43.442Z",
+  "products": [
+    {
+      "quantity": 1,
+      "pricePerQuantity": 1899,
+      "beforeDiscountPrice": 1899,
+      "productId": "64edc5b96ad1cbae75d3025a"
+    }
+  ]
+}
+```

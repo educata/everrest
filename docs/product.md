@@ -298,8 +298,7 @@ curl -X 'GET' \
         "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_7_2631-4q.jpg.jpg",
         "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_8_nctr-27.jpg.jpg",
         "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_9_58ds-69.jpg.jpg"
-      ],
-      "__v": 0
+      ]
     }
   ]
 }
@@ -388,8 +387,7 @@ curl -X 'GET' \
         "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_7_2631-4q.jpg.jpg",
         "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_8_nctr-27.jpg.jpg",
         "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_9_58ds-69.jpg.jpg"
-      ],
-      "__v": 0
+      ]
     }
   ]
 }
