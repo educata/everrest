@@ -173,3 +173,9 @@ curl -X 'PATCH' \
 ::: info NOTE
 This endpoint works if the user already have a cart attached.
 :::
+
+## Clear cart
+
+## Delete cart
+
+## Checkout

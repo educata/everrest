@@ -6,7 +6,7 @@ export default defineConfig({
   title: 'EverREST',
   description: 'Build real CRUD applications with EverREST API',
   lang: 'en-US',
-  head: [...Metadata],
+  head: [...Metadata, ['style', {}, 'html { scroll-behavior: smooth; }']],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -24,13 +24,13 @@ export default defineConfig({
             text: 'Shop',
             link: '/shop',
             items: [
-              { text: 'Product', link: '/product'},
-              { text: 'Cart', link: '/cart'},
-            ]
+              { text: 'Product', link: '/product' },
+              { text: 'Cart', link: '/cart' },
+            ],
           },
           { text: 'QR', link: '/qr' },
           { text: 'Errors', link: '/errors' },
-          { text: 'Team Members', link: '/team' }
+          { text: 'Team Members', link: '/team' },
         ],
       },
     ],
@@ -42,8 +42,10 @@ export default defineConfig({
       provider: 'local',
     },
     footer: {
-      message: 'Released under the <a href="https://github.com/educata/everrest/blob/main/LICENSE">MIT License</a>.',
-      copyright: 'Copyright © 2023-present <a href="https://github.com/educata">Educata</a>'
-    }
+      message:
+        'Released under the <a href="https://github.com/educata/everrest/blob/main/LICENSE">MIT License</a>.',
+      copyright:
+        'Copyright © 2023-present <a href="https://github.com/educata">Educata</a>',
+    },
   },
 });
