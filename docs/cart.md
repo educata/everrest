@@ -12,7 +12,7 @@ https://api.everrest.educata.dev/shop/cart
 
 <img src="./public/flowchart.svg" alt="flowchart of cart module">
 
-To use the cart module, we must follow a workflow similar to the provided flowchart. First of all, a user needs to create a cart by <a href="#create-cart">Create cart</a>. Then, the user is allowed to check the cart at any time by <a href="#get-cart">Get cart</a>. After that, if the user wants to add a new product to the cart, they should use the <a href="#update-cart">Update cart</a> option. There may be moments when the user wants to clear the cart, for this action, we will use the <a href="#clear-cart">Clear cart</a> option. If the user wants to remove an item from the cart, we should use the <a href="#delete-cart">Delete cart</a> option. Finally, if the user wants to proceed to checkout, we should use the <a href="#checkout">Checkout</a> option.
+To use the cart module, we must follow a workflow similar to the provided flowchart. First of all, a user needs to create a cart by <a href="#create-cart">Create cart</a>. Then, the user is allowed to check the cart at any time by <a href="#get-cart">Get cart</a>. After that, if the user wants to add a new product to the cart, they should use the <a href="#update-cart">Update cart</a> option. There may be moments when the user wants to clear the cart, for this action, we will use the <a href="#clear-cart">Clear cart</a> option. If the user wants to remove an item from the cart, we should use the <a href="#delete-item">Delete item</a> option. Finally, if the user wants to proceed to checkout, we should use the <a href="#checkout">Checkout</a> option.
 
 ::: info NOTE
 All endpoints for the cart module require the user to be `authorized`. This means that an access token must be attached either to cookies or the `Authorization` header.
@@ -176,6 +176,88 @@ This endpoint works if the user already have a cart attached.
 
 ## Clear cart
 
-## Delete cart
+- Method: `DELETE`
+- URL: `https://api.everrest.dev/shop/cart`
+
+### Example
+
+```sh
+curl -X 'DELETE' \
+  'https://api.everrest.educata.dev/shop/cart' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer <your_token_here>'
+```
+
+### Response
+
+```json
+{
+  "success": true
+}
+```
+
+## Delete item
+
+- Method: `DELETE`
+- URL: `https://api.everrest.dev/shop/cart/product`
+
+### Body
+
+- `id`: string
+
+### Example
+
+```sh
+curl -X 'DELETE' \
+  'https://api.everrest.educata.dev/shop/cart/product' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer <your_token_here>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": "64edc5b96ad1cbae75d30262"
+}'
+```
+
+### Response
+
+```json
+{
+  "total": {
+    "price": {
+      "current": 0,
+      "beforeDiscount": 0
+    },
+    "quantity": 0,
+    "products": 0
+  },
+  "_id": "6513c4c325316704e705e134",
+  "userId": "64eccb55fe7b573c1ec5aaae",
+  "createdAt": "2023-09-27T05:59:31.014Z",
+  "products": [],
+  "__v": 1
+}
+```
 
 ## Checkout
+
+- Method: `POST`
+- URL: `https://api.everrest.dev/shop/cart/checkout`
+
+### Example
+
+```sh
+curl -X 'POST' \
+  'https://api.everrest.educata.dev/shop/cart/checkout' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer <your_token_here>' \
+  -d ''
+```
+
+### Response
+
+```json
+{
+  "success": true,
+  "message": "Stocks were updated, currently 1 items were sold. The cart will be cleared, user has to create a new cart with POST request"
+}
+```
