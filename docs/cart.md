@@ -11,3 +11,59 @@ To use the cart module, we must follow a workflow similar to the provided flowch
 ::: info NOTE
 All endpoints for the cart module require the user to be `authorized`. This means that an access token must be attached either to cookies or the `Authorization` header.
 :::
+
+## Create Cart
+
+To create cart, user has to choose one time for first time.
+
+- Method: `POST`
+- URL: `https://api.everrest.dev/shop/cart/product`
+
+### Body
+
+- `id`: string
+- `quantity`: number
+
+### Example
+
+```sh
+curl -X 'POST' \
+  'https://api.everrest.educata.dev/shop/cart/product' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer <your_token_here>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": "64edc5b96ad1cbae75d3025a",
+  "quantity": 1
+}'
+```
+
+### Response
+
+```json
+{
+  "userId": "64eccb55fe7b573c1ec5aaae",
+  "createdAt": "2023-09-27T04:38:43.442Z",
+  "total": {
+    "price": {
+      "current": 1899,
+      "beforeDiscount": 1899
+    },
+    "quantity": 1,
+    "products": 1
+  },
+  "products": [
+    {
+      "quantity": 1,
+      "pricePerQuantity": 1899,
+      "beforeDiscountPrice": 1899,
+      "productId": "64edc5b96ad1cbae75d3025a"
+    }
+  ],
+  "_id": "6513b1d325316704e705e10f"
+}
+```
+
+::: info NOTE
+This endpoint works if the user does not have a cart attached.
+:::
