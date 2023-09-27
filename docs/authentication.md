@@ -231,8 +231,8 @@ curl -X 'GET' \
 
 ### Query Params
 
-- `page_size` : number
-- `page_index` : number
+- `page_size`: number
+- `page_index`: number
 
 ### Example
 
