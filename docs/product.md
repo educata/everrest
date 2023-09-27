@@ -189,7 +189,7 @@ curl -X 'GET' \
 ## Category by ID
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/categories/{id}`
+- URL: `https://api.everrest.dev/shop/product/categories/{category_id}`
 
 ### Query Params
 
@@ -274,4 +274,67 @@ curl -X 'GET' \
   "oneplus",
   "lenovo"
 ]
+```
+
+## Brand by Name
+
+- Method: `GET`
+- URL: `https://api.everrest.dev/shop/product/brand/{brand_name}`
+
+### Query Params
+
+- `page_size`: number
+- `page_index`: number
+
+### Example
+
+```sh
+curl -X 'GET' \
+  'https://api.everrest.educata.dev/shop/products/brand/asus?page_size=1' \
+  -H 'accept: */*'
+```
+
+### Response
+
+```json
+{
+  "total": 3,
+  "limit": 1,
+  "page": 1,
+  "skip": 0,
+  "products": [
+    {
+      "price": {
+        "current": 1899,
+        "currency": "GEL",
+        "beforeDiscount": 1899,
+        "discountPercentage": 0
+      },
+      "category": {
+        "id": "1",
+        "name": "laptops",
+        "image": "https://png.pngtree.com/png-vector/20220705/ourmid/pngtree-laptop-icon-png-image_5683130.png"
+      },
+      "_id": "64edc5b96ad1cbae75d3025a",
+      "title": "Asus TUF Gaming F15 (FX506LHB-HN323) - Black",
+      "description": "Geared for serious gaming and real-world durability, the TUF Gaming F15 is a fully-loaded Windows 10 Pro gaming laptop that can carry you to victory. Powered by the latest 10th Gen Intel® Core™ i7 CPU and GeForce® GTX 1660 Ti GPU, action-packed gameplay is fast, fluid, and fully saturates speedy IPS-level displays up to 144Hz.",
+      "issueDate": "2022-01-31T20:00:00.000Z",
+      "thumbnail": "https://alta.ge/images/thumbnails/900/650/detailed/254/120150_1.jpg.jpg",
+      "stock": 10,
+      "rating": 0,
+      "brand": "asus",
+      "warranty": 16,
+      "images": [
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_2_m7yx-ml.jpg.jpg",
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_3_823p-ed.jpg.jpg",
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_4_56ny-vf.jpg.jpg",
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_5_7qso-zp.jpg.jpg",
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_7_2631-4q.jpg.jpg",
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_8_nctr-27.jpg.jpg",
+        "https://alta.ge/images/thumbnails/900/650/detailed/254/119469_9_58ds-69.jpg.jpg"
+      ],
+      "__v": 0
+    }
+  ]
+}
 ```
