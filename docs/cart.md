@@ -113,3 +113,63 @@ curl -X 'GET' \
   ]
 }
 ```
+
+## Update cart
+
+- Method: `PATCH`
+- URL: `https://api.everrest.dev/shop/cart/product`
+
+### Body
+
+- `id`: string
+- `quantity`: number
+
+### Example
+
+```sh
+curl -X 'PATCH' \
+  'https://api.everrest.educata.dev/shop/cart/product' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer <your_token_here>' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "id": "64edc5b96ad1cbae75d30262",
+  "quantity": 1
+}'
+```
+
+### Response
+
+```json
+{
+  "total": {
+    "price": {
+      "current": 2998,
+      "beforeDiscount": 2998
+    },
+    "quantity": 2,
+    "products": 2
+  },
+  "_id": "6513b1d325316704e705e10f",
+  "userId": "64eccb55fe7b573c1ec5aaae",
+  "createdAt": "2023-09-27T04:38:43.442Z",
+  "products": [
+    {
+      "quantity": 1,
+      "pricePerQuantity": 1899,
+      "beforeDiscountPrice": 1899,
+      "productId": "64edc5b96ad1cbae75d3025a"
+    },
+    {
+      "quantity": 1,
+      "pricePerQuantity": 1099,
+      "beforeDiscountPrice": 1099,
+      "productId": "64edc5b96ad1cbae75d30262"
+    }
+  ]
+}
+```
+
+::: info NOTE
+This endpoint works if the user already have a cart attached.
+:::
