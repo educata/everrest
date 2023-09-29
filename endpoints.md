@@ -53,3 +53,10 @@ prefix - /`qrcode`
 - `GET` qrcode
 - `POST` qrcode/generate
 - `POST` qrcode/generate_with_image
+
+## Quote
+
+prefix - /`quote`
+
+- `GET` quote?q (author/keyword)
+- `GET` quote/random (1)
