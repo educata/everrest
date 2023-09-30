@@ -110,3 +110,9 @@ export enum QRCodeExpectionKeys {
   TextShouldNotBeEmpty = 'errors.text_should_not_be_empty',
   ImageUrlShouldNotBeEmpty = 'errors.image_url_should_not_be_empty',
 }
+
+export enum QuoteExpectionKeys {
+  AuthorNameShouldBeString = 'errors.author_name_should_be_string',
+  QuoteShouldBeString = 'errors.quote_should_be_string',
+  DuplicatedQuote = 'errors.duplicated_quote',
+}

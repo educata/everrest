@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShopModule, UserModule, MailModule, QrCodeModule } from './modules';
 import { ExceptionService, EncryptionService } from './shared';
+import { QuoteModule } from './modules/quote';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -14,6 +15,7 @@ import { ExceptionService, EncryptionService } from './shared';
     UserModule,
     MailModule,
     QrCodeModule,
+    QuoteModule,
   ],
   controllers: [AppController],
   providers: [AppService, ExceptionService, EncryptionService],
