@@ -60,3 +60,4 @@ prefix - /`quote`
 
 - `GET` quote?q (author/keyword)
 - `GET` quote/random (1)
+- `POST` quote { quote, author }
