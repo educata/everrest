@@ -1,13 +1,13 @@
 {
   "_type": "export",
   "__export_format": 4,
-  "__export_date": "2023-09-12T13:47:58.976Z",
+  "__export_date": "2023-09-30T15:06:11.025Z",
   "__export_source": "insomnia.desktop.app:v2023.5.8",
   "resources": [
     {
-      "_id": "req_4a83524bc8f8464f910b4b8121875f29",
-      "parentId": "fld_c44fd0258a0543379ca3c9d6981bd45a",
-      "modified": 1694109977169,
+      "_id": "req_049c1a14396442eb8e72baf158aa7c5a",
+      "parentId": "fld_838eb9f5da194025be37c25ffba58b33",
+      "modified": 1694619527763,
       "created": 1694104757818,
       "url": "http://localhost:3000",
       "name": "Base",
@@ -28,8 +28,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_c44fd0258a0543379ca3c9d6981bd45a",
-      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "_id": "fld_838eb9f5da194025be37c25ffba58b33",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
       "modified": 1694104747369,
       "created": 1694104741476,
       "name": "root",
@@ -40,18 +40,18 @@
       "_type": "request_group"
     },
     {
-      "_id": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "_id": "wrk_ece68cec0bc84cf8875451b86942519a",
       "parentId": null,
-      "modified": 1694113474968,
-      "created": 1694113474968,
+      "modified": 1694618609917,
+      "created": 1694618609917,
       "name": "Everest",
       "description": "",
       "scope": "collection",
       "_type": "workspace"
     },
     {
-      "_id": "req_cd91052f7dfc44aa9aa798894d5c9d14",
-      "parentId": "fld_c44fd0258a0543379ca3c9d6981bd45a",
+      "_id": "req_84731147c45d42c1a89dcf0382516218",
+      "parentId": "fld_838eb9f5da194025be37c25ffba58b33",
       "modified": 1694264487911,
       "created": 1694104795324,
       "url": "http://localhost:3000/lang/errors",
@@ -73,8 +73,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_2e11fa0e6cb543e5b69ce28733c9973c",
-      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "_id": "req_8e03eaeed735455c84ef653893dc0d6f",
+      "parentId": "fld_814488d63a0640048d64c20d320b5400",
       "modified": 1693918319125,
       "created": 1693918297856,
       "url": "http://localhost:3000/shop/cart",
@@ -96,8 +96,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_c5bba1b12a0f4675aab19c87c59951f1",
-      "parentId": "fld_ce89bf973c7049df95949e65662e24e0",
+      "_id": "fld_814488d63a0640048d64c20d320b5400",
+      "parentId": "fld_0926b542999e4dba9d2e3ad88820be48",
       "modified": 1693916555938,
       "created": 1693908862581,
       "name": "cart",
@@ -108,8 +108,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "fld_ce89bf973c7049df95949e65662e24e0",
-      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "_id": "fld_0926b542999e4dba9d2e3ad88820be48",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
       "modified": 1693908839779,
       "created": 1693908839779,
       "name": "shop",
@@ -120,8 +120,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "req_73287d6cd71a41d1824389c717cf3c43",
-      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "_id": "req_33da3474b9c8408da831762ca0ef704f",
+      "parentId": "fld_814488d63a0640048d64c20d320b5400",
       "modified": 1693919005385,
       "created": 1693918293668,
       "url": "http://localhost:3000/shop/cart/product",
@@ -146,8 +146,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_8ba7281b071e4aa9b97a8076c1302bb5",
-      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "_id": "req_1604dbb869534bf295e2b8564e51e07a",
+      "parentId": "fld_814488d63a0640048d64c20d320b5400",
       "modified": 1693918605591,
       "created": 1693918592075,
       "url": "http://localhost:3000/shop/cart/checkout",
@@ -172,8 +172,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_eb42dcbf9f7a4b5aa907265aefa75ede",
-      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "_id": "req_f85445f8b7fb4cd6801d938f12ad7552",
+      "parentId": "fld_814488d63a0640048d64c20d320b5400",
       "modified": 1693919009738,
       "created": 1693918494445,
       "url": "http://localhost:3000/shop/cart/product",
@@ -198,8 +198,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_1e9640498f784a89807a05a8d0eb43aa",
-      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "_id": "req_648bbb88eb92412c807b5a1d1527a42a",
+      "parentId": "fld_814488d63a0640048d64c20d320b5400",
       "modified": 1693919012384,
       "created": 1693918569988,
       "url": "http://localhost:3000/shop/cart/product",
@@ -224,8 +224,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_821dc0d67da5499793d3b94056edc4fb",
-      "parentId": "fld_c5bba1b12a0f4675aab19c87c59951f1",
+      "_id": "req_a8d2660b9b0344458e5a7489900e7a43",
+      "parentId": "fld_814488d63a0640048d64c20d320b5400",
       "modified": 1693918655016,
       "created": 1693918647735,
       "url": "http://localhost:3000/shop/cart",
@@ -250,8 +250,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_2929c98febf54e4eab263a7ca4440149",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_fb3abf4c30f549f79223993c9527b3dd",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693916681936,
       "created": 1693916564393,
       "url": "http://localhost:3000/shop/products/all",
@@ -273,8 +273,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
-      "parentId": "fld_ce89bf973c7049df95949e65662e24e0",
+      "_id": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
+      "parentId": "fld_0926b542999e4dba9d2e3ad88820be48",
       "modified": 1693916554582,
       "created": 1693908857002,
       "name": "products",
@@ -285,8 +285,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "req_7506d5fbf8114be68fe2d743e5849cd4",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_86f0c7171e414569a5de48695dbfa01a",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693917409614,
       "created": 1693917344514,
       "url": "http://localhost:3000/shop/products/id/64edc5b96ad1cbae75d30260",
@@ -308,8 +308,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_3f8a9b2ff0e14e1eb609bf21b9de602a",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_ddf2cff132884196a062f3decf2c4832",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693916684919,
       "created": 1693916659552,
       "url": "http://localhost:3000/shop/products/categories",
@@ -331,8 +331,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_cc38765b67eb42cbba4b47186850ae58",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_aab9511805b145c3bc11cb578a69a038",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693916714272,
       "created": 1693916710925,
       "url": "http://localhost:3000/shop/products/category/1",
@@ -354,8 +354,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_68ea4263b0c8469da85712276cd12b22",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_7bc7fbc93cf8488a9560ef0b9aeedc0b",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693916696386,
       "created": 1693916693438,
       "url": "http://localhost:3000/shop/products/brands",
@@ -377,8 +377,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_82c97ac1dee1405993863057764e1236",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_66d43012acd441bfb195735659873d6c",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693916738478,
       "created": 1693916726612,
       "url": "http://localhost:3000/shop/products/brand/apple",
@@ -400,8 +400,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_b0fcc13d78a649038a1c5a665b9b06db",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_2582b25069124d51b8e7b340436aab65",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693916793547,
       "created": 1693916631453,
       "url": "http://localhost:3000/shop/products/search?keywords=black",
@@ -423,8 +423,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_026ecafb94c14a1182f92c577468eb7c",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_78113bda23044c65ba6d297762cb8626",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1694519020765,
       "created": 1693916800785,
       "url": "http://localhost:3000/shop/products",
@@ -449,8 +449,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_77ca664feb014ab6a6a2ef47166442c4",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_2f5bfe7877664f2caae8154428620833",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693919082609,
       "created": 1693917220539,
       "url": "http://localhost:3000/shop/products/rate",
@@ -475,8 +475,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_31884a6232e240e0a620bea14b4c3570",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_8b4cd9cfebd84473b9bbe2fabe121e14",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693919085922,
       "created": 1693918026891,
       "url": "http://localhost:3000/shop/products/id/64edc5b96ad1cbae75d30260",
@@ -501,8 +501,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_1485f544fbe64c77bc42a94e20fedb57",
-      "parentId": "fld_cb4d1dbcafb64d61b5bae6a11982232e",
+      "_id": "req_5bc9f877d89f40de9b52ea64691e6881",
+      "parentId": "fld_929df3967ba34a3ca4a9fc8584e31fe3",
       "modified": 1693918172675,
       "created": 1693918133911,
       "url": "http://localhost:3000/shop/products/all",
@@ -524,11 +524,11 @@
       "_type": "request"
     },
     {
-      "_id": "req_69de4f6120fa4c57930cf90f60ec9da7",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
-      "modified": 1694110863418,
+      "_id": "req_ccfd794187e84d718330ddaa83eb6cde",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
+      "modified": 1695373306777,
       "created": 1694110844080,
-      "url": "http://localhost:3000/auth",
+      "url": "http://localhost:3000/auth/id/64eccb55fe7b573c1ec5aaae",
       "name": "User",
       "description": "",
       "method": "GET",
@@ -547,8 +547,8 @@
       "_type": "request"
     },
     {
-      "_id": "fld_bd44438b98614c7bb2a3fadc48379eeb",
-      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "_id": "fld_7488ac74441c411b85b16627cd396ea0",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
       "modified": 1694519054447,
       "created": 1693902097619,
       "name": "auth",
@@ -559,8 +559,8 @@
       "_type": "request_group"
     },
     {
-      "_id": "req_59a01316973744e28eb22457d5d5f21d",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_d45fb2b855a1461b973a599d662e012f",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1694112971558,
       "created": 1694112676180,
       "url": "http://localhost:3000/auth/all",
@@ -582,8 +582,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_038c9a88d14f4a4fbf0bffc695938838",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_2fdbd304fc59479da8d15103db45d045",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1694112682156,
       "created": 1694112030613,
       "url": "http://localhost:3000/auth/id/64eccb55fe7b573c1ec5aaae",
@@ -605,8 +605,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_ae5188830fa9444798adac44abf30e0f",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_ee2159b8430c4d869c0628b7dd5eb5c1",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1693919050169,
       "created": 1693902140340,
       "url": "http://localhost:3000/auth/sign_up",
@@ -631,9 +631,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_b46715ede6564a6abcff1279ec27cd35",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
-      "modified": 1694526382230,
+      "_id": "req_e7ce599a076b4c0c910f45cd8c1dcb03",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
+      "modified": 1696086200329,
       "created": 1693902632304,
       "url": "http://localhost:3000/auth/sign_in",
       "name": "Sign in",
@@ -657,8 +657,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_27ed77ca0690403a8e9965cef031b138",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_e4adc3b7d95a4072b0d203a2bafd6973",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1694113234872,
       "created": 1694113127974,
       "url": "http://localhost:3000/auth/logout",
@@ -680,8 +680,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_0f9cc4a65df844ec92ab03806cd2a0c5",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_3da462b3b6cf4ef88328ac755a7f9518",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1693919058744,
       "created": 1693907088975,
       "url": "http://localhost:3000/auth/verify_email",
@@ -706,8 +706,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_f0b895cbe291453e89fb2422744d5654",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_9c8cee150caf4f149eb1249110cfff9e",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1693909612531,
       "created": 1693902735328,
       "url": "http://localhost:3000/auth/refresh",
@@ -732,9 +732,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_17d8eca8e26d4f4ab4647da88e8addab",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
-      "modified": 1694267399035,
+      "_id": "req_9130bc2817374a609b4fe2220e330615",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
+      "modified": 1696086194654,
       "created": 1693908748910,
       "url": "http://localhost:3000/auth/recovery",
       "name": "Reset password",
@@ -758,9 +758,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_baceb3788dc64b058663c8ca11e4267f",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
-      "modified": 1693909607505,
+      "_id": "req_a9e630b4fc404735a072d4a29ad88fae",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
+      "modified": 1696086192669,
       "created": 1693908814193,
       "url": "http://localhost:3000/auth/update",
       "name": "Update",
@@ -784,9 +784,9 @@
       "_type": "request"
     },
     {
-      "_id": "req_59a4462113734804bcca8b2773c5436a",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
-      "modified": 1693919069232,
+      "_id": "req_5ff664deed824233a6a4479419980462",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
+      "modified": 1696086188214,
       "created": 1693909251050,
       "url": "http://localhost:3000/auth/change_password",
       "name": "Change password",
@@ -810,8 +810,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_047706c9a5774d899b9d3a6afb84d507",
-      "parentId": "fld_bd44438b98614c7bb2a3fadc48379eeb",
+      "_id": "req_8e5ce69f39ae44c3a91adf48c0b7318e",
+      "parentId": "fld_7488ac74441c411b85b16627cd396ea0",
       "modified": 1693909599282,
       "created": 1693909567503,
       "url": "http://localhost:3000/auth/delete",
@@ -833,8 +833,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_9125e9b68cb94b56829697cbb56831ed",
-      "parentId": "fld_e840d8e2358f430bb4502f131024b985",
+      "_id": "req_a232d7ab005d4c2d8e9feee321cb8a78",
+      "parentId": "fld_3b8ca2a77b97480a89daf466b7a9b323",
       "modified": 1694519092775,
       "created": 1694519059173,
       "url": "http://localhost:3000/qrcode",
@@ -856,20 +856,20 @@
       "_type": "request"
     },
     {
-      "_id": "fld_e840d8e2358f430bb4502f131024b985",
-      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
-      "modified": 1694519052587,
+      "_id": "fld_3b8ca2a77b97480a89daf466b7a9b323",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
+      "modified": 1696073256445,
       "created": 1694519034267,
       "name": "qrcode",
       "description": "",
       "environment": {},
       "environmentPropertyOrder": null,
-      "metaSortKey": -1693905468699,
+      "metaSortKey": -1693906732854,
       "_type": "request_group"
     },
     {
-      "_id": "req_929fcc495f8b4351a2b7c212d50ba230",
-      "parentId": "fld_e840d8e2358f430bb4502f131024b985",
+      "_id": "req_86589de4d1924859b1dcb14f0afba6e0",
+      "parentId": "fld_3b8ca2a77b97480a89daf466b7a9b323",
       "modified": 1694526371787,
       "created": 1694524067494,
       "url": "http://localhost:3000/qrcode/generate",
@@ -894,8 +894,8 @@
       "_type": "request"
     },
     {
-      "_id": "req_67b7a53736b749eba07cc245eeba245f",
-      "parentId": "fld_e840d8e2358f430bb4502f131024b985",
+      "_id": "req_a2480d9e6299405f92a8d7b41de1933d",
+      "parentId": "fld_3b8ca2a77b97480a89daf466b7a9b323",
       "modified": 1694526373478,
       "created": 1694524409029,
       "url": "http://localhost:3000/qrcode/generate_with_image",
@@ -920,8 +920,138 @@
       "_type": "request"
     },
     {
-      "_id": "env_d70e108a1bfe41ca8ff251cef1c1e9a5",
-      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
+      "_id": "req_798cebdcc6894780b53d3aed803d6b69",
+      "parentId": "fld_4a96623a2d714f899d689ae010d7573c",
+      "modified": 1696086129352,
+      "created": 1696076496546,
+      "url": "http://localhost:3000/quote?keywords=life",
+      "name": "All quote",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/2023.5.8" }],
+      "authentication": {},
+      "metaSortKey": -1696073262529,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "fld_4a96623a2d714f899d689ae010d7573c",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
+      "modified": 1696073255054,
+      "created": 1696073242179,
+      "name": "quote",
+      "description": "",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1693906311469,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_58fa459d5f5f466185f557e09aa3f47f",
+      "parentId": "fld_4a96623a2d714f899d689ae010d7573c",
+      "modified": 1696076004326,
+      "created": 1696073260618,
+      "url": "http://localhost:3000/quote/random",
+      "name": "Random quote",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/2023.5.8" }],
+      "authentication": {},
+      "metaSortKey": -1696073262429,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_0783f55b3b4b4936b21006aeff0629dc",
+      "parentId": "fld_4a96623a2d714f899d689ae010d7573c",
+      "modified": 1696086176812,
+      "created": 1696074393623,
+      "url": "http://localhost:3000/quote",
+      "name": "Create quote",
+      "description": "",
+      "method": "POST",
+      "body": { "mimeType": "application/json", "text": "" },
+      "parameters": [],
+      "headers": [
+        { "name": "Content-Type", "value": "application/json" },
+        { "name": "User-Agent", "value": "insomnia/2023.5.8" }
+      ],
+      "authentication": {},
+      "metaSortKey": -1696073262329,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_35535f9de4bd47289ffa8ec8be04c027",
+      "parentId": "fld_4a96623a2d714f899d689ae010d7573c",
+      "modified": 1696079647349,
+      "created": 1696079608157,
+      "url": "http://localhost:3000/quote/id/65180f268d204f0129adcdb3",
+      "name": "Update by Id",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/2023.5.8" }],
+      "authentication": {},
+      "metaSortKey": -1696073262279,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "req_d5dfd678bd4142e2906726231485b4fa",
+      "parentId": "fld_4a96623a2d714f899d689ae010d7573c",
+      "modified": 1696081654855,
+      "created": 1696079392908,
+      "url": "http://localhost:3000/quote/id/651826dc2824a3cf87e153af",
+      "name": "Delete by Id",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [{ "name": "User-Agent", "value": "insomnia/2023.5.8" }],
+      "authentication": {},
+      "metaSortKey": -1696073262229,
+      "isPrivate": false,
+      "settingStoreCookies": true,
+      "settingSendCookies": true,
+      "settingDisableRenderRequestBody": false,
+      "settingEncodeUrl": true,
+      "settingRebuildPath": true,
+      "settingFollowRedirects": "global",
+      "_type": "request"
+    },
+    {
+      "_id": "env_93b56583b6fe45c9ab7f5526b689bb6d",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
       "modified": 1694104754476,
       "created": 1692100035451,
       "name": "Base Environment",
@@ -933,39 +1063,39 @@
       "_type": "environment"
     },
     {
-      "_id": "jar_c4342b88e8714f248bb999416a49cd31",
-      "parentId": "wrk_cddddeca853e4720a57929758bac0eb7",
-      "modified": 1694509539570,
+      "_id": "jar_37c08f22f4e44dda8fd755899a8a7eed",
+      "parentId": "wrk_ece68cec0bc84cf8875451b86942519a",
+      "modified": 1696083319553,
       "created": 1692100035452,
       "name": "Default Jar",
       "cookies": [
         {
           "key": "access_token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQ1MDk1MzksImV4cCI6MTY5NDUxMzEzOX0.cIaNnI48Lk7IKxWzoGhhg5jG2FbguOEfaJJwVmzU4dc",
-          "expires": "2023-09-12T10:05:39.000Z",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMSwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTYwODMzMTksImV4cCI6MTY5NjA4NjkxOX0._c_7cNWB7Su-evpTh2WQ_JPV6X3zMofdxE08_Ex0JpM",
+          "expires": "2023-09-30T15:15:19.000Z",
           "domain": "localhost",
           "path": "/",
           "secure": true,
           "httpOnly": true,
           "hostOnly": true,
           "creation": "2023-09-07T18:20:36.274Z",
-          "lastAccessed": "2023-09-12T09:05:39.569Z",
-          "sameSite": "none",
-          "id": "4593084215682077"
+          "lastAccessed": "2023-09-30T14:15:19.551Z",
+          "sameSite": "lax",
+          "id": "27659898728757226"
         },
         {
           "key": "refresh_token",
-          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMiwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTQ1MDk1MzksImV4cCI6MTY5NTExNDMzOX0.9pJqeWCPQWT6wU5KCH_CaDnU1_hMQxf4yftNS8FsVvg",
-          "expires": "2023-09-19T09:05:39.000Z",
+          "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGVjY2I1NWZlN2I1NzNjMWVjNWFhYWUiLCJmaXJzdE5hbWUiOiJrb25zdGFudGluZSIsImxhc3ROYW1lIjoiZGF0dW5pc2h2aWxpIiwiYWdlIjoyMSwiZW1haWwiOiJrZGF1dGluaXNodmlsaUBnbWFpbC5jb20iLCJhZGRyZXNzIjoiYmF0dW1pIiwicm9sZSI6ImFkbWluIiwiemlwY29kZSI6IjYwMDAiLCJhdmF0YXIiOiJodHRwczovL2F2YXRhcnMuZ2l0aHVidXNlcmNvbnRlbnQuY29tL3UvNjg3ODI3ODY_dj00IiwiZ2VuZGVyIjoiTUFMRSIsInBob25lIjoiKzk5NTU1NTU1NTU1NSIsInZlcmlmaWVkIjp0cnVlLCJpYXQiOjE2OTYwODMzMTksImV4cCI6MTY5NjY4ODExOX0.svbevo1x-Owv1Uaq0krCmAcMwnr0W9ivTUB30yAWRC8",
+          "expires": "2023-10-07T14:15:19.000Z",
           "domain": "localhost",
           "path": "/",
           "secure": true,
           "httpOnly": true,
           "hostOnly": true,
           "creation": "2023-09-07T18:20:36.275Z",
-          "lastAccessed": "2023-09-12T09:05:39.569Z",
-          "sameSite": "none",
-          "id": "5622771899700447"
+          "lastAccessed": "2023-09-30T14:15:19.552Z",
+          "sameSite": "lax",
+          "id": "4291863071365083"
         },
         {
           "key": "access_token",
@@ -978,7 +1108,7 @@
           "hostOnly": true,
           "creation": "2023-09-09T13:50:08.036Z",
           "lastAccessed": "2023-09-12T08:28:48.272Z",
-          "id": "35108049377650064"
+          "id": "8355473275122447"
         },
         {
           "key": "refresh_token",
@@ -991,7 +1121,7 @@
           "hostOnly": true,
           "creation": "2023-09-09T13:50:08.037Z",
           "lastAccessed": "2023-09-12T08:28:48.272Z",
-          "id": "1657699330217104"
+          "id": "16450423847326734"
         }
       ],
       "_type": "cookie_jar"
