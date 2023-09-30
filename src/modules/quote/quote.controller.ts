@@ -3,6 +3,7 @@ import {
   Controller,
   Delete,
   Get,
+  Param,
   Patch,
   Post,
   Query,
@@ -17,7 +18,7 @@ import {
   RolesGuard,
 } from 'src/shared';
 import { QuoteService } from './quote.service';
-import { QuoteDto, AllQuoteDto } from './dtos';
+import { QuoteDto, AllQuoteDto, UpdateQuoteDto } from './dtos';
 
 @ApiTags('quote')
 @Controller('quote')
@@ -47,14 +48,16 @@ export class QuoteController {
   @Patch('id/:id')
   @UseGuards(JwtGuard, RolesGuard)
   @Roles(UserRole.Admin)
-  updateQuote() {
-    //
+  updateQuote(@Param('id') id: string, @Body() body: UpdateQuoteDto) {
+    this.mongooseValidator.isValidObjectId(id);
+    return this.quoteService.updateQuoteById(id, body);
   }
 
   @Delete('id/:id')
   @UseGuards(JwtGuard, RolesGuard)
   @Roles(UserRole.Admin)
-  deleteQuote() {
-    //
+  deleteQuote(@Param('id') id: string) {
+    this.mongooseValidator.isValidObjectId(id);
+    return this.quoteService.deleteQuoteById(id);
   }
 }

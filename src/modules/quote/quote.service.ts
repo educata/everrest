@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Quote, QuoteDocument } from 'src/schemas';
-import { AllQuoteDto, QuoteDto } from './dtos';
+import { AllQuoteDto, QuoteDto, UpdateQuoteDto } from './dtos';
 import { ExceptionService } from 'src/shared';
 import { ExceptionStatusKeys, QuoteExpectionKeys } from 'src/enums';
 import { API_CONFIG } from 'src/consts';
@@ -31,7 +31,12 @@ export class QuoteService {
   async getRandomQuote() {
     const allQuote = await this.quoteModel.find({});
     const randomIndex = Math.floor(Math.random() * allQuote.length);
-    return allQuote[randomIndex];
+    return (
+      allQuote[randomIndex] ?? {
+        author: 'educata',
+        quote: 'Sorry we are out of quotes',
+      }
+    );
   }
 
   async getAllQuote(query: AllQuoteDto) {
@@ -66,5 +71,41 @@ export class QuoteService {
       skip,
       quotes,
     };
+  }
+
+  async updateQuoteById(id: string, body: UpdateQuoteDto) {
+    const quote = await this.quoteModel.findOne({ _id: id });
+
+    if (!quote) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        'Quote not found',
+        QuoteExpectionKeys.QuoteNotFound,
+      );
+    }
+
+    if (!body.author && !body.quote) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        'Quote should have at least one following data: author, quote',
+        QuoteExpectionKeys.QuoteShouldHaveNewData,
+      );
+    }
+
+    return this.quoteModel.findOneAndUpdate({ _id: id }, body);
+  }
+
+  async deleteQuoteById(id: string) {
+    const quote = await this.quoteModel.findOne({ _id: id });
+
+    if (!quote) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        'Quote not found',
+        QuoteExpectionKeys.QuoteNotFound,
+      );
+    }
+
+    return this.quoteModel.findOneAndDelete({ _id: id });
   }
 }
