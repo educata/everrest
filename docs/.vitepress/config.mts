@@ -29,6 +29,7 @@ export default defineConfig({
             ],
           },
           { text: 'QR', link: '/qr' },
+          { text: 'Quote', link: '/quote'},
           { text: 'Errors', link: '/errors' },
           { text: 'Team Members', link: '/team' },
         ],
