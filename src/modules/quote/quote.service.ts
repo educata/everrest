@@ -26,4 +26,10 @@ export class QuoteService {
 
     return this.quoteModel.create(quoteDto);
   }
+
+  async getRandomQuote() {
+    const allQuote = await this.quoteModel.find({});
+    const randomIndex = Math.floor(Math.random() * allQuote.length);
+    return allQuote[randomIndex];
+  }
 }

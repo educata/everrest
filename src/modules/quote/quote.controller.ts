@@ -33,7 +33,7 @@ export class QuoteController {
 
   @Get('random')
   getRandomQuote() {
-    // quote/random (1)
+    return this.quoteService.getRandomQuote();
   }
 
   @Post()
