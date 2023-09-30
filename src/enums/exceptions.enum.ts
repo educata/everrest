@@ -115,4 +115,5 @@ export enum QuoteExpectionKeys {
   AuthorNameShouldBeString = 'errors.author_name_should_be_string',
   QuoteShouldBeString = 'errors.quote_should_be_string',
   DuplicatedQuote = 'errors.duplicated_quote',
+  QuoteKeywordShouldBeString = 'errors.quote_keyword_should_be_string',
 }

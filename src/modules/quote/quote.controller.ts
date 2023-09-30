@@ -5,6 +5,7 @@ import {
   Get,
   Patch,
   Post,
+  Query,
   UseGuards,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
@@ -16,7 +17,7 @@ import {
   RolesGuard,
 } from 'src/shared';
 import { QuoteService } from './quote.service';
-import { QuoteDto } from './dtos';
+import { QuoteDto, AllQuoteDto } from './dtos';
 
 @ApiTags('quote')
 @Controller('quote')
@@ -27,8 +28,8 @@ export class QuoteController {
   ) {}
 
   @Get()
-  getAllQuote() {
-    // quote?q (author/keyword)
+  getAllQuote(@Query() query: AllQuoteDto) {
+    return this.quoteService.getAllQuote(query);
   }
 
   @Get('random')
