@@ -4,7 +4,7 @@ import { CartProduct, CartTotal } from 'src/interfaces';
 
 export type CartDocument = HydratedDocument<Cart>;
 
-@Schema()
+@Schema({ versionKey: false })
 export class Cart {
   @Prop() userId: string;
   @Prop() createdAt: string;

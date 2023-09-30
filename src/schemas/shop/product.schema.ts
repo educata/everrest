@@ -4,7 +4,7 @@ import { ProductPrice, ProductCategory, ProductRating } from 'src/interfaces';
 
 export type ProductDocument = HydratedDocument<Product>;
 
-@Schema()
+@Schema({ versionKey: false })
 export class Product {
   @Prop() title: string;
   @Prop() description: string;
