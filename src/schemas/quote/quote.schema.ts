@@ -7,6 +7,7 @@ export type QuoteDocument = HydratedDocument<Quote>;
 export class Quote {
   @Prop() author: string;
   @Prop() quote: string;
+  @Prop() type: string;
 }
 
 export const QuoteSchema = SchemaFactory.createForClass(Quote);

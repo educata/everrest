@@ -7,4 +7,7 @@ export class QuoteDto {
 
   @IsString({ message: QuoteExpectionKeys.QuoteShouldBeString })
   quote: string;
+
+  @IsString({ message: QuoteExpectionKeys.QuoteTypeShouldBeString })
+  type: string;
 }

@@ -118,4 +118,5 @@ export enum QuoteExpectionKeys {
   QuoteKeywordShouldBeString = 'errors.quote_keyword_should_be_string',
   QuoteNotFound = 'errors.quote_not_found',
   QuoteShouldHaveNewData = 'errors.quote_should_have_new_data',
+  QuoteTypeShouldBeString = 'errors.quote_type_should_be_string',
 }

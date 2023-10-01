@@ -17,4 +17,11 @@ export class AllQuoteDto extends PaginationQueryDto {
   })
   @IsString({ message: QuoteExpectionKeys.QuoteKeywordShouldBeString })
   keywords: string;
+
+  @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
+  @IsString({ message: QuoteExpectionKeys.QuoteTypeShouldBeString })
+  type: string;
 }

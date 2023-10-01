@@ -16,4 +16,11 @@ export class UpdateQuoteDto {
   })
   @IsString({ message: QuoteExpectionKeys.QuoteShouldBeString })
   quote: string;
+
+  @IsOptional()
+  @ApiProperty({
+    required: false,
+  })
+  @IsString({ message: QuoteExpectionKeys.QuoteTypeShouldBeString })
+  type: string;
 }

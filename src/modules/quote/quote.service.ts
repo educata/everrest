@@ -25,6 +25,14 @@ export class QuoteService {
       );
     }
 
+    quoteDto.type = quoteDto.type
+      .trim()
+      .split('')
+      .map((char, index) => {
+        return index === 0 ? char.toUpperCase() : char.toLowerCase();
+      })
+      .join('');
+
     return this.quoteModel.create(quoteDto);
   }
 
@@ -44,7 +52,7 @@ export class QuoteService {
     const responsePerPage = query.page_size || API_CONFIG.RESPONSE_PER_PAGE;
     const skip = responsePerPage * (Math.floor(currentPage) - 1);
 
-    const queryObject: { author?: object; quote?: object } = {};
+    const queryObject: { author?: object; quote?: object; type?: object } = {};
 
     if (query.keywords) {
       queryObject.quote = { $regex: query.keywords, $options: 'i' };
@@ -52,6 +60,10 @@ export class QuoteService {
 
     if (query.author) {
       queryObject.author = { $regex: query.author, $options: 'i' };
+    }
+
+    if (query.type) {
+      queryObject.type = { $regex: query.type, $options: 'i' };
     }
 
     const quotes = await this.quoteModel
@@ -107,5 +119,11 @@ export class QuoteService {
     }
 
     return this.quoteModel.findOneAndDelete({ _id: id });
+  }
+
+  async getQuoteTypes() {
+    const allQuote = await this.quoteModel.find({});
+    const types = allQuote.map((quote) => quote.type).filter((type) => type);
+    return [...new Set(types)];
   }
 }

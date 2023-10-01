@@ -58,7 +58,8 @@ prefix - /`qrcode`
 
 prefix - /`quote`
 
-- `GET` quote?q (author/keyword)
+- `GET` quote?q (author/keyword/type)
+- `GET` quote/types
 - `GET` quote/random (1)
 - `POST` quote { quote, author }
 - `PATCH` quote/id { quote, author }
