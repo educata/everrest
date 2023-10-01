@@ -38,6 +38,11 @@ export class QuoteController {
     return this.quoteService.getRandomQuote();
   }
 
+  @Get('types')
+  getQuoteTypes() {
+    return this.quoteService.getQuoteTypes();
+  }
+
   @Post()
   @UseGuards(JwtGuard, RolesGuard)
   @Roles(UserRole.Admin)
