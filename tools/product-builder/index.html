@@ -1,136 +1,340 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Product builder</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <main>
-    <div class="container-xl mt-5">
-      <form class="row g-2" id="signInForm">
-        <div class="form-group col-12">
-          <label for="email" class="form-label">email</label>
-          <input type="email" required placeholder="Enter email" name="email" id="email" class="form-control">
-        </div>
-        <div class="form-group col-12">
-          <label for="password" class="form-label">password</label>
-          <input type="password" required placeholder="Enter password" name="password" id="password" class="form-control">
-        </div>
-        <div>
-          <button class="btn btn-primary mt-3">Sign in</button>
-        </div>
-      </form>
-    </div>
-    <div class="container-xl mt-5">
-      <form class="row g-2" id="productForm">
-        <h3>Create product</h3>
-        <div class="form-group col-12">
-          <label for="title" class="form-label">title</label>
-          <input type="text" placeholder="Enter title" name="title" id="title" class="form-control">
-        </div>
-        <div class="form-group col-12">
-          <label for="description" class="form-label">description</label>
-          <input type="text" placeholder="Enter description" name="description" id="description" class="form-control">
-        </div>
-        <div class="form-group col-3">
-          <label for="brand" class="form-label">brand</label>
-          <input type="text" placeholder="Enter brand" name="brand" id="brand" class="form-control">
-        </div>
-        <div class="form-group col-3">
-          <label for="issueDate" class="form-label">issueDate</label>
-          <input type="date" placeholder="Enter issueDate" name="issueDate" id="issueDate" class="form-control">
-        </div>
-        <div class="form-group col-3">
-          <label for="stock" class="form-label">stock</label>
-          <input type="text" placeholder="Enter stock" name="stock" id="stock" class="form-control">
-        </div>
-        <div class="form-group col-3">
-          <label for="warranty" class="form-label">warranty</label>
-          <input type="text" placeholder="Enter warranty" name="warranty" id="warranty" class="form-control">
-        </div>
-        <div class="form-group col-12">
-          <label for="thumbnail" class="form-label">thumbnail</label>
-          <input type="text" placeholder="Enter thumbnail" name="thumbnail" id="thumbnail" class="form-control">
-        </div>
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                Price
-              </button>
-            </h2>
-            <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body row g-2">
-                <div class="form-group col-12">
-                  <label for="priceCurrent" class="form-label">priceCurrent</label>
-                  <input type="text" placeholder="Enter priceCurrent" name="priceCurrent" id="priceCurrent" class="form-control">
-                </div>
-                <div class="form-group col-12">
-                  <label for="priceCurrency" class="form-label">priceCurrency</label>
-                  <select name="priceCurrency" id="priceCurrency" class="form-select">
-                    <option value="GEL">GEL</option>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                  </select>
-                </div>
-                <div class="form-group col-12">
-                  <label for="priceBeforeDiscount" class="form-label">priceBeforeDiscount</label>
-                  <input type="text" placeholder="Enter priceBeforeDiscount" name="priceBeforeDiscount" id="priceBeforeDiscount" class="form-control">
-                </div>
-                <div class="form-group col-12">
-                  <label for="priceDiscountPercentage" class="form-label">priceDiscountPercentage</label>
-                  <input type="text" placeholder="Enter priceDiscountPercentage" name="priceDiscountPercentage" id="priceDiscountPercentage" class="form-control">
-                </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product builder</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <main class="container-fluid p-4">
+      <div class="row">
+        <div class="col-12 col-md-6">
+          <div class="accordion" id="accordionAuthParent">
+            <div class="accordion-item p-4">
+              <h2 class="accordion-header">
+                <button
+                  class="accordion-button collapsed"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseAuth"
+                  aria-expanded="false"
+                  aria-controls="collapseAuth"
+                >
+                  Authorization
+                </button>
+              </h2>
+              <div
+                id="collapseAuth"
+                class="accordion-collapse collapse"
+                data-bs-parent="#accordionAuthParent"
+              >
+                <form class="row g-2" id="signInForm">
+                  <div class="form-group col-12">
+                    <label for="email" class="form-label">email</label>
+                    <input
+                      type="email"
+                      required
+                      placeholder="Enter email"
+                      name="email"
+                      id="email"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="form-group col-12">
+                    <label for="password" class="form-label">password</label>
+                    <input
+                      type="password"
+                      required
+                      placeholder="Enter password"
+                      name="password"
+                      id="password"
+                      class="form-control"
+                    />
+                  </div>
+                  <div>
+                    <button class="btn btn-primary mt-3">Sign in</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                Category
-              </button>
-            </h2>
-            <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body row g-2">
-                <div class="form-group col-12">
-                  <label for="categoryId" class="form-label">categoryId</label>
-                  <input type="text" placeholder="Enter categoryId" name="categoryId" id="categoryId" class="form-control">
+          <div class="card p-4 mt-2 overflow-y-scroll" style="max-height: 80vh">
+            <form class="row g-2" id="productForm">
+              <h3>Create product</h3>
+              <div class="form-group col-12">
+                <label for="title" class="form-label">title</label>
+                <input
+                  type="text"
+                  placeholder="Enter title"
+                  name="title"
+                  id="title"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group col-12">
+                <label for="description" class="form-label">description</label>
+                <input
+                  type="text"
+                  placeholder="Enter description"
+                  name="description"
+                  id="description"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group col-12 col-md-3">
+                <label for="brand" class="form-label">brand</label>
+                <input
+                  type="text"
+                  placeholder="Enter brand"
+                  name="brand"
+                  id="brand"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group col-12 col-md-3">
+                <label for="issueDate" class="form-label">issueDate</label>
+                <input
+                  type="date"
+                  placeholder="Enter issueDate"
+                  name="issueDate"
+                  id="issueDate"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group col-12 col-md-3">
+                <label for="stock" class="form-label">stock</label>
+                <input
+                  type="number"
+                  placeholder="Enter stock"
+                  name="stock"
+                  id="stock"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group col-12 col-md-3">
+                <label for="warranty" class="form-label">warranty</label>
+                <input
+                  type="number"
+                  placeholder="Enter warranty"
+                  name="warranty"
+                  id="warranty"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group col-12">
+                <label for="category" class="form-label">category</label>
+                <select name="category" id="category" class="form-select">
+                  <option value="laptops">Laptops</option>
+                  <option value="phones">Phones</option>
+                </select>
+              </div>
+              <div class="form-group col-12">
+                <label for="thumbnail" class="form-label">thumbnail</label>
+                <input
+                  type="text"
+                  placeholder="Enter thumbnail"
+                  name="thumbnail"
+                  id="thumbnail"
+                  class="form-control"
+                />
+              </div>
+              <div class="accordion accordion-flush" id="accordionFlushExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseOne"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseOne"
+                    >
+                      Price
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseOne"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample"
+                  >
+                    <div class="accordion-body row g-2">
+                      <div class="form-group col-12">
+                        <label for="priceCurrent" class="form-label"
+                          >priceCurrent</label
+                        >
+                        <input
+                          type="number"
+                          placeholder="Enter priceCurrent"
+                          name="priceCurrent"
+                          id="priceCurrent"
+                          class="form-control"
+                        />
+                      </div>
+                      <div class="form-group col-12">
+                        <label for="priceCurrency" class="form-label"
+                          >priceCurrency</label
+                        >
+                        <select
+                          name="priceCurrency"
+                          id="priceCurrency"
+                          class="form-select"
+                        >
+                          <option value="GEL">GEL</option>
+                          <option value="USD">USD</option>
+                          <option value="EUR">EUR</option>
+                        </select>
+                      </div>
+                      <div class="form-group col-12">
+                        <label for="priceBeforeDiscount" class="form-label"
+                          >priceBeforeDiscount</label
+                        >
+                        <input
+                          type="number"
+                          placeholder="Enter priceBeforeDiscount"
+                          name="priceBeforeDiscount"
+                          id="priceBeforeDiscount"
+                          class="form-control"
+                        />
+                      </div>
+                      <div class="form-group col-12">
+                        <label for="priceDiscountPercentage" class="form-label"
+                          >priceDiscountPercentage</label
+                        >
+                        <input
+                          type="number"
+                          placeholder="Enter priceDiscountPercentage"
+                          name="priceDiscountPercentage"
+                          id="priceDiscountPercentage"
+                          class="form-control"
+                        />
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="form-group col-12">
-                  <label for="categoryName" class="form-label">categoryName</label>
-                  <input type="text" placeholder="Enter categoryName" name="categoryName" id="categoryName" class="form-control">
-                </div>
-                <div class="form-group col-12">
-                  <label for="categoryImage" class="form-label">categoryImage</label>
-                  <input type="text" placeholder="Enter categoryImage" name="categoryImage" id="categoryImage" class="form-control">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button
+                      class="accordion-button collapsed"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree"
+                      aria-expanded="false"
+                      aria-controls="flush-collapseThree"
+                    >
+                      Images
+                    </button>
+                  </h2>
+                  <div
+                    id="flush-collapseThree"
+                    class="accordion-collapse collapse"
+                    data-bs-parent="#accordionFlushExample"
+                  >
+                    <div class="accordion-body row g-2">
+                      <div class="form-group col-12">
+                        <div id="imageInputs" class="row g-2"></div>
+                        <button
+                          type="button"
+                          class="btn btn-secondary my-4"
+                          id="imageAddBtn"
+                        >
+                          Add image
+                        </button>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                id="add-product-btn"
+              >
+                Create product
+              </button>
+            </form>
           </div>
-          <div class="accordion-item">
-            <h2 class="accordion-header">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                Images
-              </button>
-            </h2>
-            <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-              <div class="accordion-body row g-2">
-                <div class="form-group col-12">
-                  <button type="button" class="btn btn-primary" id="imageAddBtn">Add image</button>
-                </div>
-                <div id="imageInputs" class="row g-2"></div>
-              </div>
+        </div>
+        <div class="col-12 col-md-6">
+          <div class="card" id="preview">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+              class="card-img-top"
+              alt="product image"
+              id="prev-thumbnail"
+              height="398"
+              onerror="this.src='https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg'"
+            />
+            <div class="card-body">
+              <h5 class="card-title" id="prev-title">This Is A Title</h5>
+              <p class="card-text" id="prev-description">
+                The description will show here
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                <span class="d-inline-block me-3" id="prev-brand">Brand</span>
+                <span class="d-inline-block me-3" id="prev-issue-date"
+                  >MM.DD.YYYY</span
+                >
+                <span class="d-inline-block me-3" id="prev-stock">Stock</span>
+                <span class="d-inline-block me-3" id="prev-warranty"
+                  >Warranty</span
+                >
+              </li>
+              <li class="list-group-item">
+                <span class="d-inline-block me-3">
+                  <span id="prev-price-current">400 </span
+                  ><b id="prev-currency">GEL</b></span
+                >
+                <span class="d-inline-block me-3"
+                  ><s id="prev-before-discount">800</s></span
+                >
+                <span class="d-inline-block mr-2"
+                  ><span id="prev-discount-percentage">50</span
+                  ><span>%</span></span
+                >
+              </li>
+              <li class="list-group-item">
+                <span class="d-inline-block me-3" id="prev-category-name"
+                  >CAT_NAME</span
+                >
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+                  alt="category image"
+                  class="d-inline-block me-3"
+                  height="40"
+                  width="40"
+                  id="prev-category-image"
+                />
+              </li>
+            </ul>
+            <div class="card-body overflow-x-scroll" id="prev-images">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+                width="80"
+                height="80"
+              />
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Placeholder_view_vector.svg"
+                width="80"
+                height="80"
+              />
             </div>
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Create product</button>
-      </form>
-    </div>
-  </main>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-  <script src="./main.js"></script>
-</body>
+      </div>
+    </main>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./main.js"></script>
+  </body>
 </html>
