@@ -58,7 +58,11 @@ if (localStorage.getItem('data')) {
     data.price.beforeDiscount;
   document.querySelector('#priceDiscountPercentage').value =
     data.price.discountPercentage;
-  document.querySelector('#category').value = data.category;
+  document.querySelector('#category').value = data.category.name;
+
+  data.images.forEach((image, index) => {
+    appendImageInput(image, index);
+  });
 
   renderPreview();
 }
@@ -98,7 +102,7 @@ productForm.addEventListener('submit', function (event) {
     issueDate: new Date(
       formData.get('issueDate') || '2023-09-08',
     ).toISOString(),
-    stock: "Number(formData.get('stock'))",
+    stock: Number(formData.get('stock')),
     warranty: Number(formData.get('warranty')),
     thumbnail: formData.get('thumbnail'),
     price: {
@@ -117,23 +121,28 @@ productForm.addEventListener('submit', function (event) {
       localStorage.setItem('data', JSON.stringify(data));
       displayError(productForm, res.errorKeys);
     } else {
-      // location.reload();
+      localStorage.removeItem('data');
+      location.reload();
     }
   });
 });
 
 imageAddBtn.addEventListener('click', () => {
   imageCount++;
+  appendImageInput('', imageCount);
+});
+
+function appendImageInput(image, id) {
   const control = document.createElement('div');
   control.classList.add('form-group', 'col-12');
 
   control.innerHTML = `
-    <label for="images-${imageCount}" class="form-label">image ${imageCount}</label>
-    <input type="text" placeholder="Enter images" name="images-${imageCount}" id="images-${imageCount}" class="form-control images">
+    <label for="images-${id}" class="form-label">image ${id}</label>
+    <input type="text" placeholder="Enter images" value="${image}" name="images-${id}" id="images-${id}" class="form-control images">
   `;
 
   imageInputs.appendChild(control);
-});
+}
 
 async function sendRequest(method, url, body = {}) {
   const errorMsg = document.getElementById('error-message');
@@ -170,7 +179,7 @@ function renderPreview() {
   prevCurrency.textContent = formData.get('priceCurrency');
   prevBeforeDiscount.textContent = formData.get('priceBeforeDiscount');
   prevDiscountPercentage.textContent = formData.get('priceDiscountPercentage');
-  // prevCategoryId.textContent = formData.get('categoryId');
+
   const category = CATEGORIES[formData.get('category')];
   if (category) {
     prevCategoryName.textContent = category.name;
