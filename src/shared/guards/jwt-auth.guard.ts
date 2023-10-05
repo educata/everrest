@@ -21,7 +21,7 @@ export class JwtGuard implements CanActivate {
     const token = this.extractTokenFromHeader(request);
     if (!token) {
       this.exceptionService.throwError(
-        ExceptionStatusKeys.BadRequest,
+        ExceptionStatusKeys.Unauthorized,
         'Token not found',
         AuthExpectionKeys.TokenNotFound,
       );
