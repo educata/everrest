@@ -37,6 +37,3 @@ lerna-debug.log*
 !.vscode/extensions.json
 
 .env
-
-# Ignore copied changelog
-/docs/changelog.md
