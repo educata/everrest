@@ -40,7 +40,7 @@
     "docs:dev": "npm run docs:copy-changelog && vitepress dev docs",
     "docs:build": "npm run docs:copy-changelog && vitepress build docs",
     "docs:preview": "npm run docs:copy-changelog && vitepress preview docs",
-    "docs:copy-changelog": "copy changelog.md docs",
+    "docs:copy-changelog": "sh scripts/copy-changelog.sh",
     "product-builder": "node tools/scripts/static-server.js --port 3001 --dir tools/product-builder"
   },
   "dependencies": {
