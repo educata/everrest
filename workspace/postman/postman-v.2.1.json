@@ -1,0 +1,779 @@
+{
+	"info": {
+		"_postman_id": "30831df4-378b-4357-a6df-b259589e7758",
+		"name": "EverREST",
+		"description": "## Build real CRUD applications with EverREST API\n\n- Github: [https://github.com/educata/everrest](https://github.com/educata/everrest)\n    \n- Doc: [https://everrest.educata.dev/](https://everrest.educata.dev/)\n    \n- Swagger: [https://api.everrest.educata.dev/swagger](https://api.everrest.educata.dev/swagger#/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15236555"
+	},
+	"item": [
+		{
+			"name": "Base",
+			"item": [
+				{
+					"name": "Base",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}",
+							"host": [
+								"{{base_path}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Errors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/lang/errors",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"lang",
+								"errors"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Shop",
+			"item": [
+				{
+					"name": "Cart",
+					"item": [
+						{
+							"name": "Get cart",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/cart",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"cart"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Init cart with product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/cart/product",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"cart",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Checkout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/cart/checkout",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"cart",
+										"checkout"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update cart with product",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/cart/product",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"cart",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete product from cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/cart/product",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"cart",
+										"product"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete cart",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/cart",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"cart"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Products",
+					"item": [
+						{
+							"name": "All product",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/all",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"all"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Product by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/id/64edc5b96ad1cbae75d30260",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"id",
+										"64edc5b96ad1cbae75d30260"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Categories",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/categories",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Category by id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/category/1",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"category",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Brands",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/brands",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Brands by name",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/brand/apple",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"brand",
+										"apple"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Search products",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/search",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"search"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create product",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update rating",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/rate",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"rate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update product",
+							"request": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/id/1",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"id",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete all product",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{base_path}}/shop/products/all",
+									"host": [
+										"{{base_path}}"
+									],
+									"path": [
+										"shop",
+										"products",
+										"all"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All User",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/all",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/id/1",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/sign_up",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"sign_up"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Sign in",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/sign_in",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"sign_in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/logout",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Verify email",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/verify_email",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"verify_email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/refresh",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/recovery",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"recovery"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/update",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change password",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/change_password",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"change_password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/auth/delete",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"auth",
+								"delete"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "QrCode",
+			"item": [
+				{
+					"name": "Default QR code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/qrcode",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"qrcode"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genearte",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/qrcode/generate",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"qrcode",
+								"generate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate with image",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/qrcode/generate_with_image",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"qrcode",
+								"generate_with_image"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Quote",
+			"item": [
+				{
+					"name": "All quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/quote",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"quote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All types",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/quote/types",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"quote",
+								"types"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Random quote",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/quote/random",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"quote",
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create quote",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/quote",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"quote"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update by id",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/quote/id/1",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"quote",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete by id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_path}}/quote/id/1",
+							"host": [
+								"{{base_path}}"
+							],
+							"path": [
+								"quote",
+								"id",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
