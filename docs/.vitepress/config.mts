@@ -32,6 +32,7 @@ export default defineConfig({
           { text: 'Quote', link: '/quote'},
           { text: 'Errors', link: '/errors' },
           { text: 'Team Members', link: '/team' },
+          { text: 'Changelog', link: '/changelog' }
         ],
       },
     ],
