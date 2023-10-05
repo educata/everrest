@@ -10,7 +10,7 @@ import {
 
 const members = [
   {
-    avatar: 'https://media.licdn.com/dms/image/C4E03AQEkaFS3Ii4zQA/profile-displayphoto-shrink_800_800/0/1646330223635?e=1701302400&v=beta&t=G2xLu0dp673zAkKTWCu2201_m12N7T9tXBezJnipQPg',
+    avatar: 'kd.png',
     name: 'Konstantine Datunishvili',
     title: 'Creator',
     links: [
@@ -24,7 +24,7 @@ const members = [
     ]
   },
   {
-    avatar: 'https://media.licdn.com/dms/image/C4E03AQFA3irzsJZu4g/profile-displayphoto-shrink_800_800/0/1651393044726?e=1701302400&v=beta&t=8k7mS-avlj7QfAhMsi7N8dgc18l004lrRlaX6q-QdTs',
+    avatar: 'pt.png',
     name: 'Pridon Tetradze',
     title: 'Creator',
      links: [

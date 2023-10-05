@@ -2,6 +2,13 @@ import { HeadConfig } from 'vitepress';
 
 export const Metadata: HeadConfig[] = [
   ['link', { rel: 'icon', href: '/favicon.ico' }],
+  [
+    'meta',
+    {
+      name: "author",
+      content: "Educata"
+    }
+  ],
   ['meta', { property: 'og:type', content: 'website' }],
   ['meta', { property: 'og:url', content: 'https://everrest.educata.dev/' }],
   [
@@ -54,5 +61,5 @@ export const Metadata: HeadConfig[] = [
       property: 'twitter:image',
       content: 'https://everrest.educata.dev/logo.png',
     },
-  ],
+  ]
 ]
