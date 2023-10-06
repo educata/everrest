@@ -1,6 +1,6 @@
 # Product
 
-In the product module, users can obtain different types of products with paginated data, which means that almost all the returned data will be paginated.
+In the product module users can obtain product data. Almost all endpoints support pagination.
 
 Base URL:
 
@@ -21,8 +21,9 @@ https://api.everrest.educata.dev/shop/product
   "products": [...]
 }
 ```
+
 ::: tip Tip
-Every paginated dataset can be modified using `queries` for `page` and `limit`.    For example: `https://api.everrest.dev/shop/product/all?page_index=1&page_size=2`
+Every paginated dataset can be modified using `queries` for `page` and `limit`. For example: `https://api.everrest.dev/shop/product/all?page_index=1&page_size=2`
 :::
 
 ## All product
@@ -159,7 +160,7 @@ curl -X 'GET' \
 
 ::: info NOTE
 if you want to use `sort_by` or `sort_direction`, you should use
-both, they are interdependance params.
+both, they are interdependant params.
 :::
 
 ### Example
@@ -206,7 +207,7 @@ curl -X 'GET' \
         "https://alta.ge/images/thumbnails/900/650/detailed/279/11_s2p2-m2.png.jpg",
         "https://alta.ge/images/thumbnails/900/650/detailed/279/1_34al-1v.png.jpg",
         "https://alta.ge/images/thumbnails/900/650/detailed/279/download_%281%29.png.jpg"
-      ],
+      ]
     }
   ]
 }
@@ -320,15 +321,7 @@ curl -X 'GET' \
 ### Response
 
 ```json
-[
-  "asus",
-  "samsung",
-  "xiaomi",
-  "apple",
-  "honor",
-  "oneplus",
-  "lenovo"
-]
+["asus", "samsung", "xiaomi", "apple", "honor", "oneplus", "lenovo"]
 ```
 
 ## Brand by Name
@@ -463,4 +456,3 @@ Requires access token attatched either to cookies or `Authorization` header.
   ]
 }
 ```
-

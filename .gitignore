@@ -39,4 +39,4 @@ lerna-debug.log*
 .env
 
 # Ignore copied changelog
-/docs/changelog.md
+/docs/CHANGELOG.md
