@@ -5,7 +5,7 @@ This means that, for example, if there is a user-related logic in shop
 or chat module that you want to integrate in your app, you will also
 need to use authentication endpoints.
 
-Authentication uses access tokens through both `Authorization` header and
+Authentication uses JSON Web Tokens ([JWT](https://jwt.io/)) through both `Authorization` header and
 cookies, allowing you to use whichever option you see fit.
 
 Base URL:
@@ -13,6 +13,13 @@ Base URL:
 ```
 https://api.everrest.educata.dev/auth
 ```
+
+:::info NOTE
+After new major release of chrome, cookies will not be supported for different-oirigin front-end apps.
+This means that your front-end apps which will not be hosted on the same origin as API (edicata.dev)
+will ignore cookies. It is therefore recommended to store tokens in `localStorage` or `sessionStorage`
+and attatch them directly to `Authorization` request headers.
+:::
 
 ## Sign Up
 
@@ -399,7 +406,7 @@ curl -X 'POST' \
 }
 ```
 
-::: warning NOTE
+::: warning WARNING
 This changes user's password into an automatically generated one which will be sent to their email.
 The user then can access his account with it and optionally [change it](#change-password).
 :::

@@ -1,6 +1,6 @@
 # QR
 
-With this QR module, users can generate QR codes with or without an image. Response will be always in base64 format.
+With the QR module, users can generate QR codes with or without an image. Response will be always in base64 format.
 
 Base URL:
 

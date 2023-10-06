@@ -1,6 +1,6 @@
 # Cart
 
-In the cart module, users can create a cart, add products to it, proceed to checkout, delete items, and clear the cart. This operates in a simple manner, similar to how it is handled on shopping websites.
+In the cart module users can create a cart, add products to it, proceed to checkout, delete items, and clear the cart. This operates in a simple manner, similar to how it is handled on shopping websites.
 
 Base URL:
 
@@ -12,15 +12,16 @@ https://api.everrest.educata.dev/shop/cart
 
 <img src="./public/flowchart.svg" alt="flowchart of cart module">
 
-To use the cart module, we must follow a workflow similar to the provided flowchart. First of all, a user needs to create a cart by <a href="#create-cart">Create cart</a>. Then, the user is allowed to check the cart at any time by <a href="#get-cart">Get cart</a>. After that, if the user wants to add a new product to the cart, they should use the <a href="#update-cart">Update cart</a> option. There may be moments when the user wants to clear the cart, for this action, we will use the <a href="#clear-cart">Clear cart</a> option. If the user wants to remove an item from the cart, we should use the <a href="#delete-item">Delete item</a> option. Finally, if the user wants to proceed to checkout, we should use the <a href="#checkout">Checkout</a> option.
+In this cart system, the cart for the user only exists when there's a need for it. A new user therefore has no cart and it should be created first.
+After checkout the cart is emptied and therefore it is deleted. Adding product to the cart afterwards required creating a new cart.
+
+To use the cart module, we must follow a workflow similar to the provided flowchart. First of all, a user needs to create a cart by <a href="#create-cart">Create cart</a>. Then, the user is allowed to check the cart at any time by <a href="#get-cart">Get cart</a>. After that, if the user wants to add a new product to the cart, they should use the <a href="#update-cart">Update cart</a> endpoint. There may be moments when the user wants to clear the cart, for this, the <a href="#clear-cart">Clear cart</a> endpoint can be used. If the user wants to remove an item from the cart, <a href="#delete-item">Delete item</a> endpint should be used. Finally, if the user wants to proceed to checkout, <a href="#checkout">Checkout</a> enpoint can be used.
 
 ::: info NOTE
-All endpoints for the cart module require the user to be `authorized`. This means that an access token must be attached either to cookies or the `Authorization` header.
+All endpoints for the cart module require the user to be authorized. This means that an access token must be attached either to cookies or the `Authorization` header.
 :::
 
 ## Create cart
-
-To create cart, user has to choose one time for first time.
 
 - Method: `POST`
 - URL: `https://api.everrest.dev/shop/cart/product`
@@ -71,7 +72,7 @@ curl -X 'POST' \
 ```
 
 ::: info NOTE
-This endpoint works if the user does not have a cart attached.
+This endpoint works if the user does not already have a cart.
 :::
 
 ## Get cart
@@ -171,7 +172,7 @@ curl -X 'PATCH' \
 ```
 
 ::: info NOTE
-This endpoint works if the user already have a cart attached.
+This endpoint works if the user already has a cart.
 :::
 
 ## Clear cart

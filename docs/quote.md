@@ -1,6 +1,6 @@
 # Quote
 
-In the quote module, users can retrieve quotes from games, series, general sources, and many other types. For fun, users can get a random quote or view all quotes through paginated data.
+In the quote module, users can retrieve quotes from games, series, books, and other sources. For fun, users can get a random quote or view all quotes through paginated data.
 
 Base URL:
 
@@ -21,8 +21,9 @@ https://api.everrest.educata.dev/quote
   "quotes": [...]
 }
 ```
+
 ::: tip Tip
-Every paginated dataset can be modified using `queries` for `page` and `limit`.    For example: `https://api.everrest.dev/quotes?page_index=1&page_size=2`
+Every paginated dataset can be modified using `queries` for `page` and `limit`. For example: `https://api.everrest.dev/quotes?page_index=1&page_size=2`
 :::
 
 ## All Quote
