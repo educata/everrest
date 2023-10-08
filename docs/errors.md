@@ -157,7 +157,7 @@ export const ERRORS = {
   },
 };
 
-function displayError(errorKey) {
+export function displayError(errorKey) {
   /* arbitrary error display logic here */
 }
 ```
@@ -165,7 +165,7 @@ function displayError(errorKey) {
 Depending on the preferred language selected by the user, apropriate message can be displayed.
 
 ```js
-import { ERRORS } from 'errors.js';
+import { ERRORS, displayError } from 'errors.js';
 // example file where prefered language could be managed
 import { preferredLang } from 'lang.js';
 
