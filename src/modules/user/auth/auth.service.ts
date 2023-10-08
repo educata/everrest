@@ -375,7 +375,7 @@ export class AuthService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         `Old and new passwords can not be same`,
-        AuthExpectionKeys.ChangePasswordsMatch,
+        AuthExpectionKeys.NewPasswordMatchesOld,
       );
     }
 
