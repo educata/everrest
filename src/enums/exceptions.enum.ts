@@ -14,8 +14,8 @@ export enum ExceptionStatusKeys {
 export enum ProductExceptionKeys {
   ProductAlreadyExists = 'errors.product_already_exists',
   ProductNotFound = 'errors.product_not_found',
-  ProductStockOutnumbered = 'errors.product_stock_outnumbered',
-  ProductStockSoldBeforeCheckout = 'errors.product_stock_sold_before_checkout',
+  NotEnughStockToPurchase = 'errors.not_enough_stock_to_purchase',
+  ProductOutOfStockBeforeCheckout = 'errors.product_out_of_stock_before_checkout',
   RatingNotNumber = 'errors.rating_not_number',
   RatingTooLow = 'errors.rating_too_low',
   RatingTooHigh = 'errors.rating_too_high',
@@ -87,11 +87,11 @@ export enum AuthExpectionKeys {
   LastnameShouldBeString = 'errors.lastname_should_be_string',
   PasswordTooShort = 'errors.password_too_short',
   PasswordTooLong = 'errors.password_too_long',
-  TokenContainsIncorrectUser = 'errors.token_contain_incorrect_user',
-  TokenContainsIncorrectAction = 'errors.token_contain_incorrect_action',
+  TokenContainsIncorrectUser = 'errors.token_contains_incorrect_user',
+  TokenContainsIncorrectAction = 'errors.token_contains_incorrect_action',
   AlreadyVerified = 'errors.already_verified',
   OldPasswordIncorrect = 'errors.old_password_incorrect',
-  ChangePasswordsMatch = 'errors.change_passwords_matchs',
+  NewPasswordMatchesOld = 'errors.new_password_matches_old',
   UserAlreadyDeleted = 'errors.user_already_deleted',
   UserEmailNotVerified = 'errors.user_email_not_verified',
   UserPermissionNotGranted = 'errors.user_permission_not_granted',
@@ -102,9 +102,9 @@ export enum AuthExpectionKeys {
 }
 
 export enum CartExpectionKeys {
-  UserDontHaveCart = 'errors.user_cart_not_exists',
-  UserCartAlreadyExists = 'errors.user_cart_already_exists',
-  CartDontHaveThisItem = 'errors.cart_do_not_have_this_item',
+  UserHasNoCart = 'errors.user_has_no_cart',
+  UserAlreadyHasCart = 'errors.user_already_has_cart',
+  ItemNotFoundInCart = 'errors.item_not_found_in_cart',
   CartAlreadyDeleted = 'errors.cart_already_deleted',
 }
 

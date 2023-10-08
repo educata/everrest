@@ -34,7 +34,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'User has to create cart first',
-        CartExpectionKeys.UserDontHaveCart,
+        CartExpectionKeys.UserHasNoCart,
       );
     }
 
@@ -52,7 +52,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'User already created cart, use patch endpoint',
-        CartExpectionKeys.UserCartAlreadyExists,
+        CartExpectionKeys.UserAlreadyHasCart,
       );
     }
 
@@ -69,8 +69,8 @@ export class CartsService {
     if (product.stock < body.quantity) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
-        `Product stock is outnumbered, product have only ${product.stock} item in stock`,
-        ProductExceptionKeys.ProductStockOutnumbered,
+        `Requested to add ${body.quantity} to cart but the product has only ${product.stock} in stock`,
+        ProductExceptionKeys.NotEnughStockToPurchase,
       );
     }
 
@@ -108,7 +108,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'User has to create cart first',
-        CartExpectionKeys.UserDontHaveCart,
+        CartExpectionKeys.UserHasNoCart,
       );
     }
 
@@ -125,8 +125,8 @@ export class CartsService {
     if (product.stock < body.quantity) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
-        `Product stock is outnumbered, product have only ${product.stock} item in stock`,
-        ProductExceptionKeys.ProductStockOutnumbered,
+        `Requested to add ${body.quantity} to cart but the product has only ${product.stock} in stock`,
+        ProductExceptionKeys.NotEnughStockToPurchase,
       );
     }
 
@@ -163,7 +163,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'User has to create cart first',
-        CartExpectionKeys.UserDontHaveCart,
+        CartExpectionKeys.UserHasNoCart,
       );
     }
 
@@ -187,7 +187,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         `Cart doesn't have item with this ${body.id} id`,
-        CartExpectionKeys.CartDontHaveThisItem,
+        CartExpectionKeys.ItemNotFoundInCart,
       );
     }
 
@@ -222,7 +222,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.Conflict,
         'User has to create cart first',
-        CartExpectionKeys.UserDontHaveCart,
+        CartExpectionKeys.UserHasNoCart,
       );
     }
 
@@ -249,7 +249,7 @@ export class CartsService {
       this.exceptionService.throwError(
         ExceptionStatusKeys.NotFound,
         "User doesn't have cart",
-        CartExpectionKeys.UserDontHaveCart,
+        CartExpectionKeys.UserHasNoCart,
       );
     }
 
