@@ -4,7 +4,7 @@ layout: home
 title: Home
 hero:
   name: 'EverREST'
-  text: 'Everything you need for REST API'
+  text: 'Everything you need from REST API'
   tagline: Practice building CRUD apps
   image:
     src: ./logo.png
