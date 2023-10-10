@@ -6,13 +6,13 @@ import * as QRCode from 'qrcode';
 export class QrCodeService {
   readonly basePath = 'assets/images/educata-bg-white.png';
 
-  generateQrCode(text: string): Promise<string> {
+  generateQrCode(text: string) {
     return new Promise((resolve, reject) => {
       QRCode.toDataURL(text, (err, url) => {
         if (err) {
           reject(err);
         }
-        resolve(url);
+        resolve({ result: url });
       });
     });
   }
