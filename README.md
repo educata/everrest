@@ -1,7 +1,7 @@
 <h1 align="center"><b>EverREST</b> - Everything you need from REST API</h1>
 
 <p align="center">
-  <img src="./docs/public/logo.png" alt="everrest-logo" width="120px" height="120px"/>
+  <img src="./docs/public/logo.png" alt="everrest-logo" width="240px" height="240px"/>
   <br>
   <em><b>EverREST</b> is all-in-one <b>Backend API</b> service.
     <br> Practice building CRUD apps</em>
