@@ -12,7 +12,7 @@ export class QrCodeController {
   generateDefaultQrCode() {
     return this.qrCodeService.generateQRCodeWithImage(
       'https://everrest.educata.dev',
-      this.qrCodeService.basePath,
+      'https://github.com/educata/everrest/blob/main/docs/public/logo.png?raw=true',
     );
   }
 

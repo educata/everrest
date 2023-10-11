@@ -1,27 +1,43 @@
+import { ExceptionService } from 'src/shared';
 import { Injectable } from '@nestjs/common';
 import { createCanvas, loadImage } from 'canvas';
 import * as QRCode from 'qrcode';
+import { ExceptionStatusKeys, QRCodeExpectionKeys } from 'src/enums';
 
 @Injectable()
 export class QrCodeService {
-  readonly basePath = 'assets/images/educata-bg-white.png';
+  constructor(private exceptionService: ExceptionService) {}
 
   generateQrCode(text: string) {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       QRCode.toDataURL(text, (err, url) => {
         if (err) {
-          reject(err);
+          this.exceptionService.throwError(
+            ExceptionStatusKeys.BadRequest,
+            err.message,
+            QRCodeExpectionKeys.NotConvertable,
+          );
         }
-        resolve({ result: url });
+        resolve({
+          text,
+          type: 'png',
+          format: 'base64',
+          errorCorrectionLevel: 'M',
+          result: url,
+        });
       });
     });
   }
 
-  async generateQRCodeWithImage(
-    value: string,
-    imageSrc: string,
-  ): Promise<string> {
-    const qrCode = QRCode.create(value, { errorCorrectionLevel: 'H' });
+  async generateQRCodeWithImage(value: string, imageSrc: string) {
+    await this.checkIfImageIsValid(imageSrc).catch(() => {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        'Invalid image',
+        QRCodeExpectionKeys.InvalidImage,
+      );
+    });
+    const qrCode = QRCode.create(value, { errorCorrectionLevel: 'M' });
     const canvas = createCanvas(
       qrCode.modules.size * 8,
       qrCode.modules.size * 8,
@@ -30,7 +46,7 @@ export class QrCodeService {
     QRCode.toCanvas(
       canvas,
       value,
-      { errorCorrectionLevel: 'H', margin: 0 },
+      { errorCorrectionLevel: 'M', margin: 0 },
       (error) => error ?? '',
     );
 
@@ -59,6 +75,28 @@ export class QrCodeService {
       imageHeight,
     );
 
-    return canvas.toDataURL();
+    return {
+      text: value,
+      type: 'png',
+      format: 'base64',
+      errorCorrectionLevel: 'M',
+      result: canvas.toDataURL(),
+    };
+  }
+
+  checkIfImageIsValid(url: string) {
+    return new Promise((resolve, reject) => {
+      fetch(url)
+        .then((response) => {
+          if (response.ok) {
+            const currentContentType = response.headers.get('Content-Type');
+            if (currentContentType.indexOf('image') > -1) {
+              return resolve(url);
+            }
+          }
+          reject(false);
+        })
+        .catch(reject);
+    });
   }
 }
