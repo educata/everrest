@@ -113,6 +113,8 @@ export enum QRCodeExpectionKeys {
   ImageUrlShouldNotBeEmpty = 'errors.image_url_should_not_be_empty',
   TextShouldHaveValue = 'errors.text_should_have_value',
   InvalidImageURL = 'errors.invalid_image_url',
+  InvalidImage = 'errors.invalid_image',
+  NotConvertable = 'errors.not_convertable_text_to_qr',
 }
 
 export enum QuoteExpectionKeys {
