@@ -9,6 +9,7 @@ export class QrCodeService {
   generateQrCode(text: string) {
     return new Promise((resolve, reject) => {
       QRCode.toDataURL(text, (err, url) => {
+        console.log(err);
         if (err) {
           reject(err);
         }
