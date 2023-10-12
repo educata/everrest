@@ -18,7 +18,7 @@ https://api.everrest.educata.dev/echo
 
 ```sh
 curl -X 'POST' \
-  'http://localhost:3000/echo/json' \
+  'https://api.everrest.educata.dev/echo/json' \
   -H 'accept: application/json' \
   -d '{
     "key_one": "value",
@@ -44,7 +44,7 @@ curl -X 'POST' \
 
 ```sh
 curl -X 'POST' \
-  'http://localhost:3000/echo/html' \
+  'https://api.everrest.educata.dev/echo/html' \
   -H 'accept: text/html' \
   -d '{
     "key_one": "value",
