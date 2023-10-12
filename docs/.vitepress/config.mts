@@ -6,7 +6,14 @@ export default defineConfig({
   title: 'EverREST',
   description: 'Build real CRUD applications with EverREST API',
   lang: 'en-US',
-  head: [...Metadata, ['style', {}, 'html { scroll-behavior: smooth; @media (prefers-reduced-motion) { html { scroll-behavior: initial; } }']],
+  head: [
+    ...Metadata,
+    [
+      'style',
+      {},
+      'html { scroll-behavior: smooth; @media (prefers-reduced-motion) { html { scroll-behavior: initial; } }',
+    ],
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -29,10 +36,11 @@ export default defineConfig({
             ],
           },
           { text: 'QR', link: '/qr' },
-          { text: 'Quote', link: '/quote'},
+          { text: 'Quote', link: '/quote' },
           { text: 'Errors', link: '/errors' },
+          { text: 'Echo', link: '/echo' },
           { text: 'Team Members', link: '/team' },
-          { text: 'Changelog', link: '/CHANGELOG' }
+          { text: 'Changelog', link: '/CHANGELOG' },
         ],
       },
     ],
