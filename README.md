@@ -15,4 +15,4 @@
 
 <hr>
 
-<p align="center">Copyrigth © <b><a href="https://github.com/educata">Educata</a></b></p>
+<p align="center">Copyright © <b><a href="https://github.com/educata">Educata</a></b></p>
