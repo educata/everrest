@@ -37,7 +37,7 @@ export class QrCodeService {
         QRCodeExpectionKeys.InvalidImage,
       );
     });
-    const qrCode = QRCode.create(value, { errorCorrectionLevel: 'M' });
+    const qrCode = QRCode.create(value, { errorCorrectionLevel: 'H' });
     const canvas = createCanvas(
       qrCode.modules.size * 8,
       qrCode.modules.size * 8,
@@ -46,7 +46,7 @@ export class QrCodeService {
     QRCode.toCanvas(
       canvas,
       value,
-      { errorCorrectionLevel: 'M', margin: 0 },
+      { errorCorrectionLevel: 'H', margin: 0 },
       (error) => error ?? '',
     );
 
@@ -79,7 +79,8 @@ export class QrCodeService {
       text: value,
       type: 'png',
       format: 'base64',
-      errorCorrectionLevel: 'M',
+      errorCorrectionLevel: 'H',
+      imageURL: imageSrc,
       result: canvas.toDataURL(),
     };
   }
