@@ -61,6 +61,7 @@ export enum GlobalExceptionKeys {
   EndPointNotFound = 'errors.endpoint_not_found',
   RatingTooHigh = 'errors.rating_too_high',
   RatingTooLow = 'errors.rating_too_low',
+  InvalidJSON = 'errors.invalid_json',
 }
 
 export enum AuthExpectionKeys {
