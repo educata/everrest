@@ -30,12 +30,26 @@ export class HttpExceptionsFilter implements ExceptionFilter {
       `Cannot OPTIONS ${request.url}`,
     ];
 
+    const badJSONTexts = ['Unexpected token }', 'in JSON', 'at position'];
+    let isBadJSON = false;
+
+    if (!Array.isArray(exceptionResponse.message)) {
+      console.log(badJSONTexts.includes(exceptionResponse.message));
+      if (
+        badJSONTexts.some((e) => e.search(exceptionResponse.message as string))
+      ) {
+        isBadJSON = true;
+      }
+    }
+
     response.status(status).json({
-      error: exceptionResponse.error,
+      error: isBadJSON ? 'Invalid JSON input' : exceptionResponse.error,
       errorKeys: exceptionResponseNotFoundURL.includes(
         exceptionResponse.message as string,
       )
         ? [GlobalExceptionKeys.EndPointNotFound]
+        : isBadJSON
+        ? [GlobalExceptionKeys.InvalidJSON]
         : exceptionResponse.message,
       statusCode: status,
       timestamp: new Date().toISOString(),
