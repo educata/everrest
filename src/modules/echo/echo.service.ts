@@ -3,23 +3,17 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class EchoService {
   jsonToHtml(body: object) {
+    body = this.flattenObject(body);
     const array = Object.keys(body);
     return `
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
-        body {
-          margin: 0px;
-          padding: 0px;
-          font-family: 'Open Sans', sans-serif;
-        }
         .card {
           width: 100%;
           max-width: 320px;
           min-height: 100px;
-          margin: 50px auto 0px;
           border-radius: 4px;
           box-shadow: rgba(0,0,0,0.35) 0px 2px 7px;
-          padding: 25px;
+          padding: 20px;
         }
         .card h2 {
           margin: 0px;
@@ -38,9 +32,12 @@ export class EchoService {
         .elements p {
           margin: 0px;
         }
-        h5 {
+        h5, h6 {
           text-align: center;
           margin: 0px;
+        }
+        a {
+          text-decoration: none;
         }
       </style>
       <div class="card">
@@ -52,13 +49,43 @@ export class EchoService {
             (e, i) => `
           <div class="elements">
             <h4>${array[i][0].toUpperCase() + array[i].slice(1)} : </h4>
-            <p>${body[array[i]]}</p>
+            <p>
+              ${
+                /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
+                  body[array[i]],
+                )
+                  ? `<a href="${body[array[i]]}" target="_blank">${
+                      body[array[i]]
+                    }</a>`
+                  : body[array[i]]
+              }
+            </p>
           </div>
         `,
           )
           .join('')}
           ${array.length === 0 ? '<h5>Nothing to display</h5>' : ''}
+        <hr>
+        <h6>
+          Copyright © 2023-present <a href="https://everrest.educata.dev/" target="_blank">Educata</a>
+        </h6>
       </div>
     `;
+  }
+
+  flattenObject(obj: object, parentKey = ''): Record<string, object> {
+    return Object.keys(obj).reduce((acc, key) => {
+      const newKey = parentKey ? `${parentKey}.${key}` : key;
+      if (
+        typeof obj[key] === 'object' &&
+        !Array.isArray(obj[key]) &&
+        obj[key] !== null
+      ) {
+        Object.assign(acc, this.flattenObject(obj[key], newKey));
+      } else {
+        acc[newKey] = obj[key];
+      }
+      return acc;
+    }, {});
   }
 }
