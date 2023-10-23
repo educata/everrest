@@ -60,14 +60,38 @@ curl -X 'POST' \
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Echo | EverREST</title>
+    <!-- Meta & Link tags -->
+    <style>
+      /* Global styles */
+    </style>
   </head>
+
   <body>
-<pre>
-{
-    "key_one": "value",
-    "key_two": 420
-} 
-</pre>
+    <main>
+      <style>
+        /* Echo styles */
+      </style>
+      <div class="card">
+        <h2>Echo of EverREST</h2>
+        <hr />
+
+        <div class="elements">
+          <h4>Key_one :</h4>
+          <p>value</p>
+        </div>
+
+        <div class="elements">
+          <h4>Key_two :</h4>
+          <p>420</p>
+        </div>
+
+        <hr />
+        <h6>
+          Copyright © 2023-present
+          <a href="https://everrest.educata.dev/" target="_blank">Educata</a>
+        </h6>
+      </div>
+    </main>
   </body>
 </html>
 ```
