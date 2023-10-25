@@ -54,9 +54,9 @@ export class EchoService {
                 /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
                   body[array[i]],
                 )
-                  ? `<a href="${body[array[i]]}" target="_blank">${
-                      body[array[i]]
-                    }</a>`
+                  ? `<a href="${this.appendHTTP(
+                      body[array[i]],
+                    )}" target="_blank">${body[array[i]]}</a>`
                   : body[array[i]]
               }
             </p>
@@ -87,5 +87,9 @@ export class EchoService {
       }
       return acc;
     }, {});
+  }
+
+  appendHTTP(link: string) {
+    return /^(http|https):\/\//.test(link) ? link : `https://${link}`;
   }
 }
