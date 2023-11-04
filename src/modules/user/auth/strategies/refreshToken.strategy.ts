@@ -16,6 +16,10 @@ export class RefreshJwtStrategy extends PassportStrategy(
         if (refreshToken) {
           return refreshToken;
         }
+        refreshToken = req.body.refresh_token;
+        if (refreshToken) {
+          return refreshToken;
+        }
         return ExtractJwt.fromAuthHeaderAsBearerToken();
       },
       ignoreExpiration: false,
