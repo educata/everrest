@@ -30,7 +30,7 @@ export class HttpExceptionsFilter implements ExceptionFilter {
       `Cannot OPTIONS ${request.url}`,
     ];
 
-    const badJSONTexts = ['Unexpected token }', 'in JSON', 'at position'];
+    const badJSONTexts = ['in JSON', 'at position'];
     let isBadJSON = false;
 
     if (!Array.isArray(exceptionResponse.message)) {
