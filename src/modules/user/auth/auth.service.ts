@@ -122,6 +122,16 @@ export class AuthService {
     if (!refreshToken) {
       refreshToken = response.req.cookies['refresh_token'];
     }
+    if (!refreshToken) {
+      refreshToken = response.req.body.refresh_token;
+    }
+    if (!refreshToken) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.BadRequest,
+        'Refresh token not found',
+        AuthExpectionKeys.TokenNotFound,
+      );
+    }
     const data = this.jwtService.decode(refreshToken) as UserPayload;
     const user = await this.userModel.findOne({ email: data.email });
     const accessToken = this.jwtService.sign(

@@ -294,7 +294,7 @@ curl -X 'GET' \
 
 ## Refresh Token
 
-- Method: `GET`
+- Method: `POST`
 - URL: `https://api.everrest.educata.dev/auth/refresh`
 
 ### Example
@@ -316,6 +316,10 @@ Response body
   "access_token": "<refreshed_token_here>"
 }
 ```
+
+::: info NOTE
+Server must get someway refresh_token, it could be from body, cookie or header.
+:::
 
 ## Update User Data
 
