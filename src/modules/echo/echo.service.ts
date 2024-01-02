@@ -31,6 +31,7 @@ export class EchoService {
         .elements h4,
         .elements p {
           margin: 0px;
+          line-break: anywhere;
         }
         h5, h6 {
           text-align: center;
@@ -48,18 +49,8 @@ export class EchoService {
           .map(
             (e, i) => `
           <div class="elements">
-            <h4>${array[i][0].toUpperCase() + array[i].slice(1)} : </h4>
-            <p>
-              ${
-                /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(
-                  body[array[i]],
-                )
-                  ? `<a href="${this.appendHTTP(
-                      body[array[i]],
-                    )}" target="_blank">${body[array[i]]}</a>`
-                  : body[array[i]]
-              }
-            </p>
+            <h4>${array[i]} : </h4>
+            <p>${body[array[i]]}</p>
           </div>
         `,
           )
@@ -87,9 +78,5 @@ export class EchoService {
       }
       return acc;
     }, {});
-  }
-
-  appendHTTP(link: string) {
-    return /^(http|https):\/\//.test(link) ? link : `https://${link}`;
   }
 }
