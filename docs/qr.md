@@ -11,7 +11,7 @@ https://api.everrest.educata.dev/qrcode
 ## Sample
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/qrcode`
+- URL: `https://api.everrest.educata.dev/qrcode`
 
 ### Example
 
@@ -39,7 +39,7 @@ curl -X 'GET' \
 ## Generate
 
 - Method: `POST`
-- URL: `https://api.everrest.dev/qrcode/generate`
+- URL: `https://api.everrest.educata.dev/qrcode/generate`
 
 ### Body
 
@@ -74,7 +74,7 @@ curl -X 'POST' \
 ## Generate with image
 
 - Method: `POST`
-- URL: `https://api.everrest.dev/qrcode/generate_with_image`
+- URL: `https://api.everrest.educata.dev/qrcode/generate_with_image`
 
 ### Body
 

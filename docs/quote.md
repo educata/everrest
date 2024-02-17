@@ -23,13 +23,13 @@ https://api.everrest.educata.dev/quote
 ```
 
 ::: tip Tip
-Every paginated dataset can be modified using `queries` for `page` and `limit`. For example: `https://api.everrest.dev/quotes?page_index=1&page_size=2`
+Every paginated dataset can be modified using `queries` for `page` and `limit`. For example: `https://api.everrest.educata.dev/quotes?page_index=1&page_size=2`
 :::
 
 ## All Quote
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/quote`
+- URL: `https://api.everrest.educata.dev/quote`
 
 ### Query Params
 
@@ -75,7 +75,7 @@ curl -X 'GET' \
 ## Random Quote
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/quote/random`
+- URL: `https://api.everrest.educata.dev/quote/random`
 
 ### Example
 

@@ -24,7 +24,7 @@ All endpoints for the cart module require the user to be authorized. This means 
 ## Create cart
 
 - Method: `POST`
-- URL: `https://api.everrest.dev/shop/cart/product`
+- URL: `https://api.everrest.educata.dev/shop/cart/product`
 
 ### Body
 
@@ -78,7 +78,7 @@ This endpoint works if the user does not already have a cart.
 ## Get cart
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/cart`
+- URL: `https://api.everrest.educata.dev/shop/cart`
 
 ### Example
 
@@ -118,7 +118,7 @@ curl -X 'GET' \
 ## Update cart
 
 - Method: `PATCH`
-- URL: `https://api.everrest.dev/shop/cart/product`
+- URL: `https://api.everrest.educata.dev/shop/cart/product`
 
 ### Body
 
@@ -178,7 +178,7 @@ This endpoint works if the user already has a cart.
 ## Clear cart
 
 - Method: `DELETE`
-- URL: `https://api.everrest.dev/shop/cart`
+- URL: `https://api.everrest.educata.dev/shop/cart`
 
 ### Example
 
@@ -200,7 +200,7 @@ curl -X 'DELETE' \
 ## Delete item
 
 - Method: `DELETE`
-- URL: `https://api.everrest.dev/shop/cart/product`
+- URL: `https://api.everrest.educata.dev/shop/cart/product`
 
 ### Body
 
@@ -242,7 +242,7 @@ curl -X 'DELETE' \
 ## Checkout
 
 - Method: `POST`
-- URL: `https://api.everrest.dev/shop/cart/checkout`
+- URL: `https://api.everrest.educata.dev/shop/cart/checkout`
 
 ### Example
 

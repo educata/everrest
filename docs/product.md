@@ -23,13 +23,13 @@ https://api.everrest.educata.dev/shop/product
 ```
 
 ::: tip Tip
-Every paginated dataset can be modified using `queries` for `page` and `limit`. For example: `https://api.everrest.dev/shop/product/all?page_index=1&page_size=2`
+Every paginated dataset can be modified using `queries` for `page` and `limit`. For example: `https://api.everrest.educata.dev/shop/product/all?page_index=1&page_size=2`
 :::
 
 ## All product
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/all`
+- URL: `https://api.everrest.educata.dev/shop/product/all`
 
 ### Query Params
 
@@ -87,7 +87,7 @@ curl -X 'GET' \
 ## Product by Id
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/id/{id}`
+- URL: `https://api.everrest.educata.dev/shop/product/id/{id}`
 
 ### Example
 
@@ -143,7 +143,7 @@ curl -X 'GET' \
 ## Search
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/search`
+- URL: `https://api.everrest.educata.dev/shop/product/search`
 
 ### Query Params
 
@@ -216,7 +216,7 @@ curl -X 'GET' \
 ## Categories
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/categories`
+- URL: `https://api.everrest.educata.dev/shop/product/categories`
 
 ### Example
 
@@ -246,7 +246,7 @@ curl -X 'GET' \
 ## Category by Id
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/categories/{category_id}`
+- URL: `https://api.everrest.educata.dev/shop/product/categories/{category_id}`
 
 ### Query Params
 
@@ -308,7 +308,7 @@ curl -X 'GET' \
 ## Brands
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/brands`
+- URL: `https://api.everrest.educata.dev/shop/product/brands`
 
 ### Example
 
@@ -327,7 +327,7 @@ curl -X 'GET' \
 ## Brand by Name
 
 - Method: `GET`
-- URL: `https://api.everrest.dev/shop/product/brand/{brand_name}`
+- URL: `https://api.everrest.educata.dev/shop/product/brand/{brand_name}`
 
 ### Query Params
 
@@ -389,7 +389,7 @@ curl -X 'GET' \
 ## Rate
 
 - Method: `POST`
-- URL: `https://api.everrest.dev/shop/product/rate`
+- URL: `https://api.everrest.educata.dev/shop/product/rate`
 
 ### Body
 
