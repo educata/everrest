@@ -403,7 +403,8 @@ export class AuthService {
       );
     }
 
-    user.password = body.newPassword;
+    const hashedPassword = await this.encryptionService.hash(body.newPassword);
+    user.password = hashedPassword;
     await user.save();
 
     return this.signIn(
