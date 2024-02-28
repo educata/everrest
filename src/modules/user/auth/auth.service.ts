@@ -126,6 +126,9 @@ export class AuthService {
       refreshToken = response.req.body.refresh_token;
     }
     if (!refreshToken) {
+      refreshToken = response.req.headers['refresh_token'] as string;
+    }
+    if (!refreshToken) {
       this.exceptionService.throwError(
         ExceptionStatusKeys.BadRequest,
         'Refresh token not found',
