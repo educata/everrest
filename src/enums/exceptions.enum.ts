@@ -100,6 +100,7 @@ export enum AuthExpectionKeys {
   UserNotFound = 'errors.user_not_found',
   ShouldProvideEmail = 'errors.should_provide_email',
   ShouldProvidePassword = 'errors.should_provide_password',
+  ClearingDatabase = 'errors.clearing_database',
 }
 
 export enum CartExpectionKeys {

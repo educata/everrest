@@ -34,7 +34,6 @@ export class HttpExceptionsFilter implements ExceptionFilter {
     let isBadJSON = false;
 
     if (!Array.isArray(exceptionResponse.message)) {
-      console.log(badJSONTexts.includes(exceptionResponse.message));
       if (
         badJSONTexts.some((e) => e.search(exceptionResponse.message as string))
       ) {
