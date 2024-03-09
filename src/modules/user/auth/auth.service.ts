@@ -22,7 +22,7 @@ import {
   generateVerifyPageTemplate,
   generateResetPageTemplate,
 } from 'src/modules/mail/templates';
-import { API_CONFIG } from 'src/consts';
+import { API_CONFIG, MAX_DATABASE_USER } from 'src/consts';
 
 @Injectable()
 export class AuthService {
@@ -38,6 +38,7 @@ export class AuthService {
   ) {}
 
   async signUp(body: SignUpDto) {
+    this.handleMaximumAmountUsers();
     const userExsists = await this.userModel.findOne({ email: body.email });
     if (userExsists) {
       this.exceptionService.throwError(
@@ -471,6 +472,28 @@ export class AuthService {
       users: users.map((user) => {
         return this.createPayload(user as unknown as UserInterface);
       }),
+    };
+  }
+
+  async handleMaximumAmountUsers() {
+    const usersAmount = await this.userModel.find({}).countDocuments();
+    if (usersAmount <= MAX_DATABASE_USER) {
+      return;
+    }
+
+    const deletedCount = this.userModel
+      .deleteMany({})
+      .deleteMany()
+      .countDocuments();
+
+    this.exceptionService.throwError(
+      ExceptionStatusKeys.Conflict,
+      'Database reached maximum uesrs, currently deleting all user, send request again',
+      AuthExpectionKeys.ClearingDatabase,
+    );
+
+    return {
+      deleted: deletedCount,
     };
   }
 }
