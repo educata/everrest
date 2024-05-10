@@ -4,7 +4,6 @@ import {
   MaxLength,
   IsNumber,
   IsPositive,
-  IsEmail,
   IsPhoneNumber,
   IsUrl,
   IsEnum,
@@ -52,13 +51,6 @@ export class UpdateUserDto {
   @IsNumber({}, { message: AuthExpectionKeys.InvalidAge })
   @IsPositive({ message: AuthExpectionKeys.InvalidAge })
   age: number;
-
-  @IsOptional()
-  @ApiProperty({
-    required: false,
-  })
-  @IsEmail({}, { message: AuthExpectionKeys.InvalidEmail })
-  email: string;
 
   @IsOptional()
   @ApiProperty({

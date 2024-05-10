@@ -347,7 +347,6 @@ export class AuthService {
       !body.firstName &&
       !body.lastName &&
       !body.age &&
-      !body.email &&
       !body.address &&
       !body.phone &&
       !body.zipcode &&
@@ -366,7 +365,6 @@ export class AuthService {
         firstName: body.firstName,
         lastName: body.lastName,
         age: body.age,
-        email: body.email,
         address: body.address,
         phone: body.phone,
         zipcode: body.zipcode,
