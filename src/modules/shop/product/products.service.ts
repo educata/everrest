@@ -39,6 +39,10 @@ export class ProductsService {
       );
     }
 
+    if (product.brand) {
+      product.brand = product.brand.toLocaleLowerCase();
+    }
+
     return this.productModel.create({
       ...product,
       rating: 0,
@@ -55,6 +59,10 @@ export class ProductsService {
   }
 
   async updateProduct(id: string, body: UpdateProductDto): Promise<Product> {
+    if (body.brand) {
+      body.brand = body.brand.toLowerCase();
+    }
+
     const product = await this.productModel.findOneAndUpdate({ _id: id }, body);
     if (!product) {
       this.exceptionService.throwError(ExceptionStatusKeys.NotFound);
@@ -264,7 +272,7 @@ export class ProductsService {
     const { currentPage, responsePerPage, skip } =
       this.getPaginationData(query);
     const products = await this.productModel
-      .find({ brand: brandName })
+      .find({ brand: brandName.toLocaleLowerCase() })
       .sort({ 'price.current': 1 })
       .limit(responsePerPage)
       .skip(skip);
