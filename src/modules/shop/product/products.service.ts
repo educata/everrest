@@ -166,7 +166,11 @@ export class ProductsService {
     } = {};
 
     if (query.keywords) {
-      queryObject.title = { $regex: query.keywords, $options: 'i' };
+      const keywordsArray = query.keywords.split(' ');
+      const regexPattern = keywordsArray
+        .map((keyword) => `(?=.*${keyword})`)
+        .join('');
+      queryObject.title = { $regex: regexPattern, $options: 'i' };
     }
     if (query.category_id) {
       queryObject['category.id'] = query.category_id;
