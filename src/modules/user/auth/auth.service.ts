@@ -37,6 +37,20 @@ export class AuthService {
     private mongooseValidator: MongooseValidatorService,
   ) {}
 
+  async getCurrentUser(payload: UserPayload) {
+    const user = await this.userModel.findOne({ _id: payload._id });
+
+    if (!user) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        'User not found',
+        AuthExpectionKeys.UserNotFound,
+      );
+    }
+
+    return user;
+  }
+
   async signUp(body: SignUpDto) {
     this.handleMaximumAmountUsers();
     const userExsists = await this.userModel.findOne({ email: body.email });

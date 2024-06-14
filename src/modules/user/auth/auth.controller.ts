@@ -39,7 +39,7 @@ export class AuthController {
   @UseGuards(JwtGuard)
   @UseInterceptors(CurrentUserInterceptor)
   getCurrentUser(@CurrentUser() user: UserPayload) {
-    return user;
+    return this.authService.getCurrentUser(user);
   }
 
   @Get('id/:id')
