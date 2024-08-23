@@ -283,6 +283,15 @@ export class ProductsService {
     const productsCount = await this.productModel.countDocuments({
       brand: brandName,
     });
+
+    if (productsCount === 0) {
+      this.exceptionService.throwError(
+        ExceptionStatusKeys.NotFound,
+        'No products found with this brand',
+        ProductExceptionKeys.ProductNotFound,
+      );
+    }
+
     return {
       total: productsCount,
       limit: responsePerPage,
