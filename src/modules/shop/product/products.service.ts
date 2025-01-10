@@ -176,12 +176,12 @@ export class ProductsService {
       queryObject['category.id'] = query.category_id;
     }
     if (query.price_min) {
-      queryObject['price.current'] = { $gt: query.price_min };
+      queryObject['price.current'] = { $gte: query.price_min };
     }
     if (query.price_max) {
       queryObject['price.current'] = {
         ...queryObject['price.current'],
-        $lt: query.price_max,
+        $lte: query.price_max,
       };
     }
     if (query.brand) {
