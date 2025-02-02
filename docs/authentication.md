@@ -476,4 +476,15 @@ interface TokenData {
   gender: Gender;
   verified: boolean;
 }
+
+enum Gender {
+  Male = 'MALE',
+  Female = 'FEMALE',
+  Other = 'OTHER',
+}
+
+enum UserRole {
+  Default = 'default',
+  Admin = 'admin',
+}
 ```
