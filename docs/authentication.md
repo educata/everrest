@@ -455,3 +455,25 @@ curl -X 'PATCH' \
 :::info NOTE
 This endpoint essentialy signs the user in again, hence the tokens in response.
 :::
+
+## Interface of JWT Token
+
+This [content](https://github.com/educata/everrest/blob/main/src/interfaces/user.interface.ts#L24) will be encoded inside the JWT token.
+
+```ts
+interface TokenData {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  age: number;
+  email: string;
+  password: string;
+  address: string;
+  role: UserRole;
+  phone: string;
+  zipcode: string;
+  avatar: string;
+  gender: Gender;
+  verified: boolean;
+}
+```
