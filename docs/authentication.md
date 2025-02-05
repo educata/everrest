@@ -88,6 +88,27 @@ curl -X 'POST' \
 Email verification may also be required.
 :::
 
+::: info NOTE
+List of possible errors:
+`"errors.firstname_should_be_string"` when first name is not a string
+`"errors.firstname_too_short"` when first name length is < 2 characters
+`"errors.firstname_too_long"` when first name length is > 20 characters 
+`"errors.lastname_should_be_string"` when last name is not a string
+`"errors.lastname_too_short"` when last name is < 2 characters
+`"errors.lastname_too_long"`  when last name is > 20 characters
+`"errors.invalid_age"` when age is either not a number or is negative
+`"errors.invalid_email"` when email is invalid
+`"errors.invalid_password"` when password is not a string
+`"errors.password_too_short"` when password is < 8 characters
+`"errors.password_too_long"` when password is > 30 characters
+`"errors.invalid_address"` when address is not a string
+`"errors.invalid_phone_number"` when phone number is invalid (needs to have country code with +)
+`"errors.invalid_zipcode"` when zipcode is not a string
+`"errors.invalid_avatar"` when avatar url is not a url
+`"errors.invalid_gender"` when gender is not `'MALE'`, `'FEMALE'` or `'OTHER'`
+`"errors.email_in_use"` when email is already in use
+:::
+
 ## Sign In
 
 - Method: `POST`
