@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { JwtService } from '@nestjs/jwt';
 import { Model } from 'mongoose';
 import { Response } from 'express';
-import { User, UserDocument } from 'src/schemas';
+import { User, UserDocument, Cart, CartDocument } from 'src/schemas';
 import {
   EncryptionService,
   ExceptionService,
@@ -30,6 +30,7 @@ export class AuthService {
 
   constructor(
     @InjectModel(User.name) private userModel: Model<UserDocument>,
+    @InjectModel(Cart.name) private cartModel: Model<CartDocument>,
     private exceptionService: ExceptionService,
     private encryptionService: EncryptionService,
     private jwtService: JwtService,
@@ -52,7 +53,10 @@ export class AuthService {
   }
 
   async signUp(body: SignUpDto) {
-    this.handleMaximumAmountUsers();
+    const result = await this.handleMaximumAmountUsers();
+    if (result.deleted > 0) {
+      return result;
+    }
     const userExsists = await this.userModel.findOne({ email: body.email });
     if (userExsists) {
       this.exceptionService.throwError(
@@ -489,23 +493,35 @@ export class AuthService {
 
   async handleMaximumAmountUsers() {
     const usersAmount = await this.userModel.find({}).countDocuments();
+
     if (usersAmount <= MAX_DATABASE_USER) {
-      return;
+      return {
+        deleted: 0,
+        message: 'Database has less than maximum users',
+      };
     }
 
-    const deletedCount = this.userModel
-      .deleteMany({})
-      .deleteMany()
-      .countDocuments();
-
-    this.exceptionService.throwError(
-      ExceptionStatusKeys.Conflict,
-      'Database reached maximum uesrs, currently deleting all user, send request again',
-      AuthExpectionKeys.ClearingDatabase,
-    );
+    const adminUsers = await this.userModel.find({
+      role: UserRole.Admin,
+    });
+    const adminUserIds = adminUsers.map((user) => user._id.toString());
+    const adminCarts = await this.cartModel.find({
+      userId: { $in: adminUserIds },
+    });
+    const adminCartIds = adminCarts.map((cart) => cart._id);
+    const cartDeletionResult = await this.cartModel.deleteMany({
+      _id: { $nin: adminCartIds },
+    });
+    const deletedCartsCount = cartDeletionResult.deletedCount;
+    const userDeletionResult = await this.userModel.deleteMany({
+      role: { $ne: UserRole.Admin },
+    });
+    const deletedUsersCount = userDeletionResult.deletedCount;
 
     return {
-      deleted: deletedCount,
+      deleted: deletedUsersCount,
+      deletedCarts: deletedCartsCount,
+      message: `Database reached maximum users (${MAX_DATABASE_USER}), deleted ${deletedUsersCount} non-admin users and ${deletedCartsCount} associated carts. Admin users and their carts were preserved. Please send request again.`,
     };
   }
 }
