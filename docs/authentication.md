@@ -88,6 +88,30 @@ curl -X 'POST' \
 Email verification may also be required.
 :::
 
+::: info NOTE
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.firstname_should_be_string"` | When firstName is not a string                                   |
+| `"errors.firstname_too_short"`        | When firstName is < 2 characters                                 |
+| `"errors.firstname_too_long"`         | When firstName is > 20 characters                                |
+| `"errors.lastname_should_be_string"`  | When lastName is not a string                                    |
+| `"errors.lastname_too_short"`         | When lastName is < 2 characters                                  |
+| `"errors.lastname_too_long"`          | When lastName is > 20 characters                                 |
+| `"errors.invalid_age"`                | When age is either not a number or is negative                   |
+| `"errors.invalid_email"`              | When email is invalid                                            |
+| `"errors.invalid_password"`           | When password is not a string                                    |
+| `"errors.password_too_short"`         | When password is < 8 characters                                  |
+| `"errors.password_too_long"`          | When password is > 30 characters                                 |
+| `"errors.invalid_address"`            | When address is not a string                                     |
+| `"errors.invalid_phone_number"`       | When phone number is invalid (needs + and country code)          |
+| `"errors.invalid_zipcode"`            | When zipcode is not a string                                     |
+| `"errors.invalid_avatar"`             | When avatar url is not a url                                     |
+| `"errors.invalid_gender"`             | When gender is not `'MALE'`, `'FEMALE'` or `'OTHER'`             |
+| `"errors.email_in_use"`               | When email is already registered                                 |
+<!-- | `"errors.teapot"`                     | When brewing coffee is requested                                 | -->
+:::
+
 ## Sign In
 
 - Method: `POST`

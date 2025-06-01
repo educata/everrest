@@ -20,7 +20,7 @@ export class SignUpDto {
     message: AuthExpectionKeys.FirstnameTooShort,
   })
   @MaxLength(API_CONFIG.MAX_FIRSTNAME_LENGTH, {
-    message: AuthExpectionKeys.LastnameTooLong,
+    message: AuthExpectionKeys.FirstnameTooLong,
   })
   firstName: string;
 
