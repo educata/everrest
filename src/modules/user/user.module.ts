@@ -8,7 +8,7 @@ import {
 } from 'src/shared';
 import { AuthController, AuthService } from './auth';
 import { MongooseModule } from '@nestjs/mongoose';
-import { User, UserSchema } from 'src/schemas';
+import { User, UserSchema, Cart, CartSchema } from 'src/schemas';
 import {
   JwtStrategy,
   LocalStrategy,
@@ -20,7 +20,10 @@ import { MailModule } from '../mail';
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
+    MongooseModule.forFeature([
+      { name: User.name, schema: UserSchema },
+      { name: Cart.name, schema: CartSchema },
+    ]),
     JwtModule.register({
       secret: `${process.env.JWT_SECRET}`,
       signOptions: { expiresIn: `${process.env.JWT_EXPIRES_IN || '1'}h` },
