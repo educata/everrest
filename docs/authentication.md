@@ -88,7 +88,6 @@ curl -X 'POST' \
 Email verification may also be required.
 :::
 
-::: info NOTE
 List of possible errors:
 | Error                                 | Condition                                                        |
 | ------------------------------------- | ---------------------------------------------------------------- |
@@ -109,8 +108,7 @@ List of possible errors:
 | `"errors.invalid_avatar"`             | When avatar url is not a url                                     |
 | `"errors.invalid_gender"`             | When gender is not `'MALE'`, `'FEMALE'` or `'OTHER'`             |
 | `"errors.email_in_use"`               | When email is already registered                                 |
-<!-- | `"errors.teapot"`                     | When brewing coffee is requested                                 | -->
-:::
+
 
 ## Sign In
 
@@ -143,6 +141,15 @@ curl -X 'POST' \
   "refresh_token": "example_refresh_token_string"
 }
 ```
+
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.incorrect_email_or_password"`| When the email or password is incorrect                          |
+| `"errors.invalid_email"`              | When the email is invalid                                        |
+| `"errors.should_provide_email"`       | When the email is not sent with the request body                 |
+| `"errors.invalid_email"`              | When the password is not sent with the request body              |
+
 
 ## Verify Email
 
@@ -177,6 +184,12 @@ curl -X 'POST' \
 ::: info NOTE
 The user will be required to follow the verification link sent to their email.
 :::
+
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.invalid_email"`              | When the email is invalid                                        |
+| `"errors.already_verified"`           | When the email has already been verified                         |
 
 ## Get Current User
 
@@ -234,6 +247,10 @@ curl -X 'GET' \
   -H 'accept: application/json'
 ```
 
+::: info NOTE
+requires access token attatched either to cookies or `Authorization` header.
+:::
+
 ### Response
 
 ```json
@@ -255,6 +272,12 @@ curl -X 'GET' \
 }
 ```
 
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.user_not_found"`             | When a user could not be found with the given id                 |
+
+
 ## Get All Users
 
 - Method: `GET`
@@ -272,6 +295,10 @@ curl -X 'GET' \
   'https://api.everrest.educata.dev/auth/all?page_index=1&page_size=5' \
   -H 'accept: */*'
 ```
+
+::: info NOTE
+requires access token attatched either to cookies or `Authorization` header.
+:::
 
 ### Response
 
@@ -345,6 +372,12 @@ Response body
 Server must get someway refresh_token, it could be from body, cookie or header.
 :::
 
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.token_not_found"`            | When there is no refresh token in the body, cookie or header     |
+
+
 ## Update User Data
 
 - Method: `PATCH`
@@ -404,6 +437,8 @@ curl -X 'PATCH' \
 }
 ```
 
+List of possible errors: Same as Sign Up
+
 ## Recover Password
 
 - METHOD: `POST`
@@ -438,6 +473,11 @@ curl -X 'POST' \
 This changes user's password into an automatically generated one which will be sent to their email.
 The user then can access his account with it and optionally [change it](#change-password).
 :::
+
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.invalid_email"`              | When the email is invalid                                        |
 
 ## Change Password
 
@@ -479,6 +519,16 @@ curl -X 'PATCH' \
 :::info NOTE
 This endpoint essentialy signs the user in again, hence the tokens in response.
 :::
+
+List of possible errors:
+| Error                                 | Condition                                                        |
+| ------------------------------------- | ---------------------------------------------------------------- |
+| `"errors.invalid_old_password"`       | When the old password is not a string                            |
+| `"errors.old_password_incorrect"`     | When the old password is incorrect                               |
+| `"errors.invalid_change_password"`    | When the new password is not a string                            |
+| `"errors.new_password_matches_old"`   | When the new password is the same as the old one                 |
+| `"errors.password_too_short"`         | When the new password is shorter than 8 characters               |
+| `"errors.password_too_long"`          | When the new password is longer than 30 characters               |
 
 ## Interface of JWT Token
 
