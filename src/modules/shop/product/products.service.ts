@@ -304,4 +304,8 @@ export class ProductsService {
   deleteAllProduct() {
     return this.productModel.deleteMany({});
   }
+
+  restockAll(stock = 100) {
+    return this.productModel.updateMany({}, { stock });
+  }
 }

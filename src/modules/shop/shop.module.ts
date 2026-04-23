@@ -10,7 +10,7 @@ import {
   UserSchema,
 } from 'src/schemas';
 import { ExceptionService, MongooseValidatorService } from 'src/shared';
-import { ProductsController, ProductsService } from './product';
+import { ProductsController, ProductsService, ProductsCron } from './product';
 import { CartsController, CartsService } from './cart';
 import { ConfigModule } from '@nestjs/config';
 
@@ -30,6 +30,7 @@ import { ConfigModule } from '@nestjs/config';
   providers: [
     ExceptionService,
     ProductsService,
+    ProductsCron,
     CartsService,
     MongooseValidatorService,
   ],
