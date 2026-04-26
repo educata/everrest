@@ -30,7 +30,7 @@ import { ConfigModule } from '@nestjs/config';
   providers: [
     ExceptionService,
     ProductsService,
-    ProductsCron,
+    // ProductsCron,
     CartsService,
     MongooseValidatorService,
   ],
