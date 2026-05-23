@@ -155,7 +155,7 @@ curl -X 'GET' \
 - `rating`: number
 - `price_min`: number
 - `price_max`: number
-- `sort_by`: `"rating"`, `"price"`, `"isse_date"`, `"title"`
+- `sort_by`: `"rating"`, `"price"`, `"issue_date"`, `"title"`
 - `sort_direction`: `"asc"`, `"desc"`
 
 ::: info NOTE

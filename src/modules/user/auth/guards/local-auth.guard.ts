@@ -16,7 +16,7 @@ export class LocalAuthGuard extends AuthGuard('local') {
       if (!email && !password) {
         this.exceptionService.throwError(
           ExceptionStatusKeys.BadRequest,
-          'Should be provide: Email and Password',
+          'Should be provided: Email and Password',
           [
             AuthExpectionKeys.ShouldProvideEmail,
             AuthExpectionKeys.ShouldProvidePassword,
